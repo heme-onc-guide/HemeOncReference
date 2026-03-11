@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumor Lysis Syndrome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: white; }
+        
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .header-subtitle { opacity: 0.9; font-size: 0.95em; }
+        
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        .nav-btn:hover, .nav-btn.active { background: #667eea; color: white; }
+        
+        .content { padding: 30px; }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        .section.concern     { border-left-color: #ed8936; }
+        .section.diagnosis   { border-left-color: #f56565; }
+        .section.prophylaxis { border-left-color: #48bb78; }
+        .section.treatment   { border-left-color: #4299e1; }
+        .section.electrolytes{ border-left-color: #9f7aea; }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+
+        h4 { font-size: 1.05em; color: #2d3748; margin-bottom: 8px; }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge.urgent    { background: #f56565; color: white; }
+        .badge.standard  { background: #48bb78; color: white; }
+        .badge.caution   { background: #ed8936; color: white; }
+        .badge.info      { background: #4299e1; color: white; }
+        .badge.low       { background: #48bb78; color: white; }
+        .badge.inter     { background: #ed8936; color: white; }
+        .badge.high      { background: #f56565; color: white; }
+        
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .warning-box h4 { color: #c53030; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .success-box h4 { color: #276749; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .orange-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .orange-box h4 { color: #9c4221; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .purple-box {
+            background: #faf5ff;
+            border-left: 4px solid #9f7aea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .purple-box h4 { color: #553c9a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .regimen-title { font-size: 1.2em; font-weight: 600; color: #2d3748; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        tr:hover { background: #f7fafc; }
+        .highlight-row-green { background: #f0fff4 !important; }
+        .highlight-row-yellow { background: #fffff0 !important; }
+        .highlight-row-red   { background: #fff5f5 !important; }
+
+        .drug-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.88em;
+            border: 1px solid #81e6d9;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        /* Risk tier cards */
+        .risk-card {
+            border-radius: 10px;
+            padding: 18px;
+            border: 2px solid;
+        }
+        .risk-card.low  { background: #f0fff4; border-color: #48bb78; }
+        .risk-card.inter{ background: #fffaf0; border-color: #ed8936; }
+        .risk-card.high { background: #fff5f5; border-color: #f56565; }
+
+        .risk-card-title {
+            font-weight: 700;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .risk-card.low  .risk-card-title { color: #276749; }
+        .risk-card.inter .risk-card-title { color: #9c4221; }
+        .risk-card.high .risk-card-title { color: #9b2c2c; }
+
+        .risk-card ul { padding-left: 18px; }
+        .risk-card li { margin-bottom: 5px; font-size: 0.93em; }
+
+        /* Electrolyte cards */
+        .electrolyte-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        .electrolyte-card {
+            background: #faf5ff;
+            border: 2px solid #d6bcfa;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .electrolyte-title {
+            font-weight: 700;
+            color: #553c9a;
+            margin-bottom: 10px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .electrolyte-card ul { padding-left: 18px; }
+        .electrolyte-card li { margin-bottom: 5px; font-size: 0.93em; }
+
+        /* Algorithm */
+        .algo-container {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .algo-title {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .algo-root {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .algo-node {
+            display: inline-block;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .algo-node.root    { background: #667eea; color: white; font-weight: 700; }
+        .algo-node.branch  { background: #bee3f8; color: #1a365d; font-weight: 600; border: 2px solid #4299e1; }
+        .algo-node.low     { background: #c6f6d5; color: #1c4532; border: 2px solid #48bb78; }
+        .algo-node.inter   { background: #fefcbf; color: #744210; border: 2px solid #d69e2e; }
+        .algo-node.high    { background: #fed7d7; color: #742a2a; border: 2px solid #f56565; }
+
+        .algo-arrow { text-align: center; color: #4299e1; font-size: 1.2em; font-weight: 700; margin: 4px 0; }
+        .algo-label { text-align: center; font-size: 0.8em; color: #718096; font-style: italic; margin: 2px 0; }
+
+        .algo-branches {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .algo-col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+        .algo-treatment {
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 0.85em;
+            line-height: 1.5;
+            width: 100%;
+            text-align: left;
+        }
+        .algo-treatment.low   { background: #c6f6d5; color: #1c4532; border: 1.5px solid #48bb78; }
+        .algo-treatment.inter { background: #fefcbf; color: #744210; border: 1.5px solid #d69e2e; }
+        .algo-treatment.high  { background: #fed7d7; color: #742a2a; border: 1.5px solid #f56565; }
+
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4299e1;
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 8px 14px;
+            border: 1.5px solid #4299e1;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        .source-link:hover { background: #ebf8ff; }
+
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 6px; }
+
+        @media (max-width: 900px) {
+            .algo-branches { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .two-col, .three-col, .electrolyte-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.9em; }
+            .content { padding: 20px 15px; }
+        }
+        @media (max-width: 500px) {
+            .algo-branches { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>⚡ Tumor Lysis Syndrome</h1>
+            <p class="header-subtitle">Recognition, risk stratification, prophylaxis, and treatment of TLS in hematologic malignancies</p>
+        </header>
+        
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('concern')">When to Be Concerned</button>
+            <button class="nav-btn" onclick="scrollToSection('diagnosis')">Diagnosis</button>
+            <button class="nav-btn" onclick="scrollToSection('prophylaxis')">Prophylaxis</button>
+            <button class="nav-btn" onclick="scrollToSection('treatment')">Treatment</button>
+            <button class="nav-btn" onclick="scrollToSection('electrolytes')">Electrolytes</button>
+            <button class="nav-btn" onclick="scrollToSection('hd')">Hemodialysis</button>
+        </nav>
+        
+        <div class="content">
+
+            <!-- WHEN TO BE CONCERNED -->
+            <section id="concern" class="section concern">
+                <h2>🔎 When to Be Concerned</h2>
+
+                <div class="orange-box">
+                    <h4>⚠️ Highest Risk Window</h4>
+                    <p>TLS most commonly occurs when starting treatment — monitor closely during the <strong>first 72 hours after chemotherapy</strong> is administered.</p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Also watch for TLS when:</strong> A patient is being re-treated at relapse, particularly if they have <strong>high-volume disease</strong> or previously responded rapidly to therapy.
+                </div>
+            </section>
+
+            <!-- DIAGNOSIS -->
+            <section id="diagnosis" class="section diagnosis">
+                <h2>🧪 Diagnosis</h2>
+
+                <h3>Cairo-Bishop Definition — Laboratory TLS</h3>
+                <p style="margin-bottom: 12px;">Requires <strong>2 or more</strong> of the following laboratory changes within 3 days before or 7 days after chemotherapy:</p>
+
+                <table>
+                    <tr>
+                        <th>Lab Value</th>
+                        <th>Threshold</th>
+                        <th>Or</th>
+                    </tr>
+                    <tr class="highlight-row-red">
+                        <td><strong>Uric Acid</strong></td>
+                        <td>&gt;8 mg/dL</td>
+                        <td>25% increase from baseline</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Potassium</strong></td>
+                        <td>&gt;6 mmol/L</td>
+                        <td>25% increase from baseline</td>
+                    </tr>
+                    <tr class="highlight-row-red">
+                        <td><strong>Phosphorus</strong></td>
+                        <td>&gt;4.5 mg/dL</td>
+                        <td>25% increase from baseline</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Calcium</strong></td>
+                        <td>&lt;7 mg/dL</td>
+                        <td>25% decrease from baseline</td>
+                    </tr>
+                </table>
+
+                <h3>Clinical TLS Criteria</h3>
+                <p style="margin-bottom: 12px;">Laboratory TLS <strong>plus</strong> one or more of the following:</p>
+
+                <div class="two-col">
+                    <div class="warning-box" style="margin:0;">
+                        <h4>⚠️ Clinical Criteria</h4>
+                        <ul style="margin-top:8px;">
+                            <li>Creatinine &gt;1.5× upper limit of normal</li>
+                            <li>Seizure</li>
+                            <li>Cardiac arrhythmia</li>
+                            <li>Sudden death</li>
+                        </ul>
+                    </div>
+                    <div class="info-box" style="margin:0;">
+                        <strong>Key Labs to Monitor</strong>
+                        <ul style="margin-top:8px;">
+                            <li>Potassium</li>
+                            <li>Phosphorus</li>
+                            <li>Calcium (ionized)</li>
+                            <li>Uric acid</li>
+                            <li>BMP (Cr, BUN)</li>
+                            <li>LDH</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROPHYLAXIS -->
+            <section id="prophylaxis" class="section prophylaxis">
+                <h2>🛡️ Prophylaxis</h2>
+
+                <h3>Risk Stratification</h3>
+                <div class="three-col">
+                    <div class="risk-card low">
+                        <div class="risk-card-title">🟢 Low Risk</div>
+                        <ul>
+                            <li>Solid tumors</li>
+                            <li>Multiple myeloma</li>
+                            <li>CLL</li>
+                        </ul>
+                    </div>
+                    <div class="risk-card inter">
+                        <div class="risk-card-title">🟡 Intermediate Risk</div>
+                        <ul>
+                            <li>SCLC</li>
+                            <li>AML with WBC &gt;25K</li>
+                        </ul>
+                    </div>
+                    <div class="risk-card high">
+                        <div class="risk-card-title">🔴 High Risk</div>
+                        <ul>
+                            <li>Lymphomas with large disease burden</li>
+                            <li>Leukemia with WBC &gt;100K</li>
+                            <li>LDH &gt;2× ULN</li>
+                            <li>Renal involvement</li>
+                            <li>High baseline uric acid, K, or Phos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Prophylaxis by Risk</h3>
+                <table>
+                    <tr>
+                        <th>Risk</th>
+                        <th>Intervention</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr class="highlight-row-green">
+                        <td><span class="badge low">Low</span></td>
+                        <td>No pharmacologic intervention</td>
+                        <td>Monitor labs; hydration as clinically indicated</td>
+                    </tr>
+                    <tr class="highlight-row-yellow">
+                        <td><span class="badge inter">Intermediate</span></td>
+                        <td><strong>Allopurinol</strong> + IV fluids</td>
+                        <td>Allopurinol only if uric acid &lt;8 mg/dL; switch to rasburicase if uric acid rises</td>
+                    </tr>
+                    <tr class="highlight-row-red">
+                        <td><span class="badge high">High</span></td>
+                        <td><strong>Rasburicase</strong> + IV fluids</td>
+                        <td>Check G6PD before giving rasburicase; always contact fellow</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>💧 Fluid Hydration Goals for Prophylaxis</strong>
+                    <ul style="margin-top: 8px;">
+                        <li>Target: <strong>2–3 L/m² daily</strong></li>
+                        <li>Urine output goal: <strong>≥80–100 mL/m²/hour</strong></li>
+                        <li>Use <strong>normal saline</strong> — avoid lactated Ringer's (contains potassium)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TREATMENT ALGORITHM -->
+            <section id="treatment" class="section treatment">
+                <h2>💊 Treatment</h2>
+
+                <!-- Algorithm -->
+                <div class="algo-container">
+                    <div class="algo-title">Figure: TLS Treatment Algorithm</div>
+
+                    <div class="algo-root">
+                        <div class="algo-node root">TLS Labs: Potassium, Phosphorus, Calcium, Uric Acid</div>
+                    </div>
+                    <div class="algo-arrow">↙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘</div>
+
+                    <div class="algo-branches">
+                        <!-- 1 abnormal branch -->
+                        <div class="algo-col" style="grid-column: span 3;">
+                            <div class="algo-node branch">1 Abnormal Test</div>
+                            <div class="algo-arrow">↙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘</div>
+                            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; width:100%;">
+                                <div class="algo-col">
+                                    <div class="algo-node low" style="width:100%;">Low risk / low tumor burden</div>
+                                    <div class="algo-arrow">↓</div>
+                                    <div class="algo-treatment low">
+                                        <strong>Low Risk</strong><br>
+                                        • No treatment needed
+                                    </div>
+                                </div>
+                                <div class="algo-col">
+                                    <div class="algo-node inter" style="width:100%;">Intermediate risk / low tumor burden</div>
+                                    <div class="algo-arrow">↓</div>
+                                    <div class="algo-treatment inter">
+                                        <strong>Intermediate Risk</strong><br>
+                                        • Hydration<br>
+                                        • Allopurinol or Rasburicase<br>
+                                        • Labs every 8–12 hours
+                                    </div>
+                                </div>
+                                <div class="algo-col">
+                                    <div class="algo-node high" style="width:100%;">High risk / low tumor burden</div>
+                                    <div class="algo-arrow">↓</div>
+                                    <div class="algo-treatment high">
+                                        <strong>High Risk</strong><br>
+                                        • Hydration<br>
+                                        • Rasburicase<br>
+                                        • Cardiac monitoring<br>
+                                        • Labs every 6–8 hours
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 2 abnormal branch -->
+                        <div class="algo-col">
+                            <div class="algo-node branch">2 Abnormal Tests</div>
+                            <div class="algo-arrow">↓</div>
+                            <div class="algo-treatment high" style="width:100%;">
+                                <strong>High Risk</strong><br>
+                                • Hydration<br>
+                                • Rasburicase<br>
+                                • Cardiac monitoring<br>
+                                • Labs every 6–8 hours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>IV Fluid Management</h3>
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">IV Fluid Protocol</span>
+                        <span class="badge info">First-Line</span>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Target</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Fluid of choice</strong></td>
+                            <td>Normal saline — <em>avoid LR (contains potassium)</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Daily volume</strong></td>
+                            <td>2–3 L/m² per day</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Urine output goal</strong></td>
+                            <td>80–100 mL/m²/hour</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Rasburicase</h3>
+                <div class="regimen-card" style="border-color: #f56565;">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Rasburicase — Uric Acid Reduction</span>
+                        <span class="badge urgent">Call Fellow First</span>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Consideration</th>
+                            <th>Detail</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Indication</strong></td>
+                            <td>Uric acid &gt;8 mg/dL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pre-requisite</strong></td>
+                            <td>Check <strong>G6PD</strong> prior to administration — rasburicase causes hemolysis in G6PD deficiency</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Escalation</strong></td>
+                            <td><strong>Always contact the fellow</strong> before ordering rasburicase</td>
+                        </tr>
+                    </table>
+                    <div class="warning-box" style="margin-top: 12px;">
+                        <h4>⚠️ G6PD Deficiency Contraindication</h4>
+                        <p>Rasburicase is absolutely contraindicated in G6PD deficiency. It can cause severe hemolytic anemia and methemoglobinemia. Confirm G6PD result before administration.</p>
+                    </div>
+                </div>
+
+                <h3>Supportive Care Monitoring</h3>
+                <div class="success-box">
+                    <h4>✓ Supportive Care Checklist</h4>
+                    <ul style="margin-top: 8px;">
+                        <li>Telemetry / cardiac monitoring (for arrhythmia from hyperkalemia/hypocalcemia)</li>
+                        <li>Strict urine output measurement</li>
+                        <li>Frequent TLS labs: uric acid, BMP, phosphorus, ionized calcium</li>
+                        <li>Daily weights</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ELECTROLYTES -->
+            <section id="electrolytes" class="section electrolytes">
+                <h2>🔬 Electrolyte Management</h2>
+
+                <div class="electrolyte-grid">
+                    <div class="electrolyte-card">
+                        <div class="electrolyte-title">🔺 Hyperkalemia</div>
+                        <ul>
+                            <li>Potassium binders: <strong>Lokelma</strong> or <strong>Kayexalate</strong></li>
+                            <li><strong>Calcium gluconate</strong> — membrane stabilization</li>
+                            <li>Cardiac monitoring (telemetry)</li>
+                            <li><strong>Insulin + D50</strong> — shift K intracellularly</li>
+                        </ul>
+                    </div>
+
+                    <div class="electrolyte-card">
+                        <div class="electrolyte-title">🔺 Hyperphosphatemia</div>
+                        <ul>
+                            <li>Phosphate binders:</li>
+                            <li style="list-style:none; padding-left:8px;">— <strong>Calcium acetate</strong></li>
+                            <li style="list-style:none; padding-left:8px;">— <strong>Sevelamer</strong></li>
+                            <li style="list-style:none; padding-left:8px;">— <strong>Calcium carbonate</strong></li>
+                            <li>Dietary phosphate restriction</li>
+                        </ul>
+                    </div>
+
+                    <div class="electrolyte-card">
+                        <div class="electrolyte-title">🔻 Hypocalcemia</div>
+                        <ul>
+                            <li><strong>Calcium gluconate IV</strong> — only if <em>symptomatic</em></li>
+                            <li>Do <strong>not</strong> routinely correct asymptomatic hypocalcemia (may precipitate calcium-phosphate crystals)</li>
+                            <li>Monitor for tetany, seizure, arrhythmia</li>
+                        </ul>
+                    </div>
+
+                    <div class="electrolyte-card">
+                        <div class="electrolyte-title">🔺 Hyperuricemia</div>
+                        <ul>
+                            <li>Uric acid &lt;8: <strong>Allopurinol</strong></li>
+                            <li>Uric acid ≥8 or high risk: <strong>Rasburicase</strong> (check G6PD first)</li>
+                            <li>Aggressive IV hydration</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HEMODIALYSIS -->
+            <section id="hd" class="section">
+                <h2>🔄 Indications for Hemodialysis</h2>
+
+                <div class="warning-box">
+                    <h4>⚠️ Consult Nephrology First</h4>
+                    <p>Always consult nephrology before initiating hemodialysis. Severe TLS cases may require HD when medical management fails.</p>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Indication</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Refractory Hyperkalemia</strong></td>
+                        <td>Not responding to medical management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oliguria / Anuria</strong></td>
+                        <td>Inadequate urine output despite fluids</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fluid Overload</strong></td>
+                        <td>Unable to maintain fluid balance with diuretics</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Severe Uremia</strong></td>
+                        <td>Rapidly rising creatinine or BUN</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 20px;">
+                    <a href="https://www.uptodate.com/contents/tumor-lysis-syndrome-prevention-and-treatment" target="_blank" class="source-link">
+                        📖 UpToDate Reference: TLS Prevention and Treatment
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

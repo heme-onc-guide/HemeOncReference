@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heme/Onc Resident Guide</title>
+    <title>Hematology-Oncology Clinical Reference | Resident Guide</title>
+    <meta name="description" content="Comprehensive clinical reference guide for hematology-oncology residents covering acute leukemia, multiple myeloma, lymphoma, and more.">
     <style>
         * {
             margin: 0;
@@ -12,263 +13,475 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #8b5cf6 100%);
             min-height: 100vh;
-            padding: 40px 20px;
-            color: #2d3748;
+            color: #1f2937;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #1e3a8a;
+        }
+
+        .badge-beta {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            position: relative;
         }
         
         header {
             text-align: center;
             color: white;
-            margin-bottom: 50px;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
         }
         
         h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 3.5em;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            line-height: 1.1;
+        }
+
+        .title-accent {
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .subtitle {
-            font-size: 1.2em;
+            font-size: 1.35em;
             opacity: 0.95;
-            font-weight: 300;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.75rem;
+            margin-top: 2rem;
         }
         
         .card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
             display: block;
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
-        .card:before {
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 12px 24px rgba(0, 0, 0, 0.1),
+                0 20px 40px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
         }
         
-        .card.available:before {
-            background: linear-gradient(90deg, #48bb78, #38a169);
+        .card.available::before {
+            background: linear-gradient(90deg, #10b981, #059669);
         }
         
         .card.coming-soon {
-            opacity: 0.6;
+            opacity: 0.7;
             cursor: not-allowed;
+            background: rgba(255, 255, 255, 0.8);
         }
         
         .card.coming-soon:hover {
             transform: none;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .card-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
+            font-size: 3.5em;
+            margin-bottom: 1.25rem;
+            display: block;
+            filter: grayscale(0);
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
         }
         
         .card-title {
             font-size: 1.5em;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1a202c;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1f2937;
+            line-height: 1.3;
         }
         
         .card-description {
-            color: #718096;
+            color: #6b7280;
             font-size: 0.95em;
             line-height: 1.6;
+            margin-bottom: 1.25rem;
         }
         
         .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
             font-weight: 600;
             text-transform: uppercase;
-            margin-top: 15px;
+            letter-spacing: 0.025em;
         }
         
         .badge.available {
-            background: #c6f6d5;
-            color: #22543d;
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge.available::before {
+            content: '✓';
+            font-size: 1.1em;
         }
         
         .badge.coming-soon {
-            background: #fed7e2;
-            color: #702459;
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge.coming-soon::before {
+            content: '⏱';
         }
         
         footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 5rem;
+            padding: 2.5rem 2rem;
             color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            opacity: 0.95;
+        }
+
+        .footer-text {
+            opacity: 0.85;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
             opacity: 0.8;
-            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
             h1 {
-                font-size: 2em;
+                font-size: 2.25em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .nav-links {
+                display: none;
             }
             
             .cards-grid {
                 grid-template-columns: 1fr;
             }
+
+            .container {
+                padding: 2rem 1rem 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-content {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="logo-icon">🩺</span>
+                <span>HemeOnc Clinical Reference</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#guides" class="nav-link">Clinical Guides</a>
+                <span class="badge-beta">Beta</span>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
-            <h1>🩺 Hematology/Oncology</h1>
-            <p class="subtitle">Quick Reference Guide for Residents</p>
+            <h1><span class="title-accent">Clinical Reference Guide</span><br>Hematology-Oncology</h1>
+            <p class="subtitle">Evidence-based protocols and clinical decision support for hematology-oncology residents and fellows</p>
         </header>
         
-        <div class="cards-grid">
+        <div class="cards-grid" id="guides">
             <!-- Available Cards -->
             <a href="acute-leukemia.html" class="card available">
-                <div class="card-icon">🔬</div>
+                <span class="card-icon">🔬</span>
                 <div class="card-title">Acute Leukemia Treatment</div>
                 <div class="card-description">
-                    AML, APL, and ALL treatment protocols with dosing, day-by-day schedules, toxicities, and monitoring
+                    Comprehensive AML, APL, and ALL treatment protocols including induction regimens, consolidation therapy, day-by-day dosing schedules, toxicity management, and monitoring guidelines
                 </div>
-                <span class="badge available">Available</span>
+                <span class="badge available">Available Now</span>
             </a>
             
             <a href="multiple-myeloma.html" class="card available">
-                <div class="card-icon">🧬</div>
+                <span class="card-icon">🧬</span>
                 <div class="card-title">Multiple Myeloma</div>
                 <div class="card-description">
-                    Diagnosis criteria, risk stratification, induction regimens, maintenance, and bispecific therapies
+                    SLIM-CRAB diagnostic criteria, ISS/R-ISS risk stratification, quadruplet induction regimens, maintenance strategies, relapsed/refractory options, and bispecific antibodies
                 </div>
-                <span class="badge available">Available</span>
+                <span class="badge available">Available Now</span>
             </a>
 
             <a href="lymphoma.html" class="card available">
-                <div class="card-icon">🦠</div>
-                <div class="card-title">Lymphoma</div>
+                <span class="card-icon">🦠</span>
+                <div class="card-title">Lymphoma Management</div>
                 <div class="card-description">
-                    Aggressive lymphoma staging, treatment algorithms (R-CHOP, DA-EPOCH-R), and CNS prophylaxis
+                    IPI scoring, Hans algorithm, aggressive lymphoma treatment (R-CHOP, DA-EPOCH-R, R-ICE), CNS prophylaxis protocols, high-dose methotrexate management, and CAR-T therapy
                 </div>
-                <span class="badge available">Available</span>
+                <span class="badge available">Available Now</span>
             </a>
 
             <a href="antimicrobial-prophylaxis.html" class="card available">
-                <div class="card-icon">💊</div>
+                <span class="card-icon">💊</span>
                 <div class="card-title">Antimicrobial Prophylaxis</div>
                 <div class="card-description">
-                    Guidelines for antibacterial, antifungal, antiviral, and PJP prophylaxis by disease and regimen
+                    Disease-specific prophylaxis guidelines for antibacterial, antifungal, antiviral, and PJP coverage. Includes drug interactions, dosing adjustments, and duration recommendations
                 </div>
-                <span class="badge available">Available</span>
+                <span class="badge available">Available Now</span>
             </a>
 
             <a href="new-leukemia-diagnosis.html" class="card available">
-                <div class="card-icon">📋</div>
+                <span class="card-icon">📋</span>
                 <div class="card-title">New Leukemia Diagnosis</div>
                 <div class="card-description">
-                    Initial workup checklist, flow cytometry panels, urgent situations, and day 1 action items
+                    Complete initial workup checklist, flow cytometry ordering, bone marrow biopsy protocols, emergency management for hyperleukocytosis and APL, and Day 1 action items
                 </div>
-                <span class="badge available">Available</span>
+                <span class="badge available">Available Now</span>
             </a>
             
             <!-- Coming Soon Cards -->
             <div class="card coming-soon">
-                <div class="card-icon">🌡️</div>
+                <span class="card-icon">🌡️</span>
                 <div class="card-title">Neutropenic Fever</div>
                 <div class="card-description">
-                    Management algorithms, empiric antibiotic choices, when to escalate, and antifungal coverage
+                    Evidence-based management algorithms, empiric antibiotic selection, escalation criteria, antifungal coverage timing, and source control strategies
                 </div>
                 <span class="badge coming-soon">Coming Soon</span>
             </div>
             
             <div class="card coming-soon">
-                <div class="card-icon">⚡</div>
+                <span class="card-icon">⚡</span>
                 <div class="card-title">Tumor Lysis Syndrome</div>
                 <div class="card-description">
-                    Risk stratification, prophylaxis protocols, monitoring schedules, and treatment algorithms
+                    Cairo-Bishop criteria, risk stratification tools, prophylaxis protocols (allopurinol vs rasburicase), monitoring schedules, and treatment algorithms for established TLS
                 </div>
                 <span class="badge coming-soon">Coming Soon</span>
             </div>
             
             <div class="card coming-soon">
-                <div class="card-icon">🧠</div>
+                <span class="card-icon">🧠</span>
                 <div class="card-title">CRS and ICANS</div>
                 <div class="card-description">
-                    Cytokine release syndrome and neurotoxicity grading, monitoring, and management
+                    ASTCT consensus grading, bedside assessment tools (ICE score), cytokine release syndrome management, neurotoxicity protocols, and tocilizumab/steroid algorithms
                 </div>
                 <span class="badge coming-soon">Coming Soon</span>
             </div>
             
             <div class="card coming-soon">
-                <div class="card-icon">📞</div>
-                <div class="card-title">When To Call the Fellow?</div>
+                <span class="card-icon">📞</span>
+                <div class="card-title">When to Call the Fellow</div>
                 <div class="card-description">
-                    Red flags and critical situations requiring immediate fellow or attending notification
+                    Critical clinical scenarios requiring immediate escalation, red flag symptoms, laboratory thresholds, and communication templates for urgent consultations
                 </div>
                 <span class="badge coming-soon">Coming Soon</span>
             </div>
             
             <div class="card coming-soon">
-                <div class="card-icon">🔄</div>
+                <span class="card-icon">🔄</span>
                 <div class="card-title">Differentiation Syndrome</div>
                 <div class="card-description">
-                    Recognition, grading, and management in APL and with IDH/FLT3 inhibitors
+                    Recognition criteria in APL and with IDH/FLT3 inhibitors, grading systems, dexamethasone dosing, when to hold therapy, and prevention strategies
                 </div>
                 <span class="badge coming-soon">Coming Soon</span>
             </div>
             
             <div class="card coming-soon">
-                <div class="card-icon">🩸</div>
-                <div class="card-title">Transfusions</div>
+                <span class="card-icon">🩸</span>
+                <div class="card-title">Transfusion Medicine</div>
                 <div class="card-description">
-                    RBC, platelet, FFP, and cryoprecipitate thresholds, special products, and reactions
+                    RBC, platelet, FFP, and cryoprecipitate transfusion thresholds by clinical scenario, special products (CMV-negative, irradiated, HLA-matched), and reaction management
                 </div>
                 <span class="badge coming-soon">Coming Soon</span>
             </div>
             
             <div class="card coming-soon">
-                <div class="card-icon">🎯</div>
+                <span class="card-icon">🎯</span>
                 <div class="card-title">CAR-T Cell Therapy</div>
                 <div class="card-description">
-                    Patient selection, bridging therapy, lymphodepletion, toxicity management, and long-term monitoring
+                    Patient selection criteria, bridging therapy options, lymphodepletion regimens, toxicity management (CRS/ICANS), infection prophylaxis, and long-term follow-up protocols
                 </div>
                 <span class="badge coming-soon">Coming Soon</span>
             </div>
         </div>
         
         <footer>
-            <p>Comprehensive resident reference guide • Updated regularly</p>
+            <div class="footer-content">
+                <div class="footer-title">About This Resource</div>
+                <p class="footer-text">
+                    This clinical reference guide is designed as an educational resource for hematology-oncology residents, fellows, and healthcare professionals. Content is regularly updated to reflect current evidence-based practices and treatment guidelines.
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Disclaimer</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Feedback</a>
+                </div>
+            </div>
         </footer>
     </div>
 </body>

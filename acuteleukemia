@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acute Leukemia Treatment Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+        }
+        
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        
+        .section.aml {
+            border-left-color: #667eea;
+        }
+        
+        .section.apl {
+            border-left-color: #f56565;
+        }
+        
+        .section.all {
+            border-left-color: #48bb78;
+        }
+        
+        .section.monitoring {
+            border-left-color: #ed8936;
+        }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+        
+        h4 {
+            color: #2d3748;
+            font-size: 1.1em;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge.intensive {
+            background: #667eea;
+            color: white;
+        }
+        
+        .badge.lower-intensity {
+            background: #ed8936;
+            color: white;
+        }
+        
+        .badge.high-risk {
+            background: #f56565;
+            color: white;
+        }
+        
+        .badge.standard {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .badge.emergency {
+            background: #e53e3e;
+            color: white;
+        }
+        
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .warning-box h4 {
+            color: #c53030;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .resident-alert {
+            background: #fef5e7;
+            border-left: 4px solid #f6ad55;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .resident-alert h4 {
+            color: #c05621;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checklist {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .checklist h4 {
+            color: #22543d;
+            margin-bottom: 10px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-size: 1.2em;
+        }
+        
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .regimen-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        tr:hover {
+            background: #f7fafc;
+        }
+        
+        .drug-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            border: 1px solid #81e6d9;
+            display: inline-block;
+            margin: 2px;
+        }
+        
+        .indication {
+            background: #fef5e7;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-style: italic;
+            border-left: 3px solid #f6ad55;
+        }
+        
+        .toxicity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .toxicity-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .toxicity-card h5 {
+            color: #e53e3e;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .dose-table {
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        
+        .glossary {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .glossary h3 {
+            background: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        
+        .abbrev {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .abbrev-term {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .quick-nav {
+                flex-direction: column;
+            }
+            
+            .regimen-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            .toxicity-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🩺 Acute Leukemia Treatment Guide</h1>
+            <p class="header-subtitle">Comprehensive resident reference for AML, APL, and ALL treatment protocols with dosing, toxicities, and monitoring</p>
+        </header>
+        
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('aml')">AML</button>
+            <button class="nav-btn" onclick="scrollToSection('apl')">APL</button>
+            <button class="nav-btn" onclick="scrollToSection('all')">ALL</button>
+            <button class="nav-btn" onclick="scrollToSection('monitoring')">Monitoring</button>
+            <button class="nav-btn" onclick="scrollToSection('toxicities')">Toxicities</button>
+            <button class="nav-btn" onclick="scrollToSection('supportive')">Supportive Care</button>
+            <button class="nav-btn" onclick="scrollToSection('glossary')">Glossary</button>
+        </nav>
+        
+        <div class="content">
+            <!-- AML SECTION -->
+            <section id="aml" class="section aml">
+                <h2>Acute Myeloid Leukemia (AML)</h2>
+                <p><strong>Treatment pathway:</strong> Induction → Consolidation → Allogeneic transplant (if eligible)</p>
+                
+                <h3>Intensive Induction Regimens</h3>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">7+3 (Standard Induction)</span>
+                        <span class="badge intensive">Intensive</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Preferred for patients eligible for intensive induction (age <60-65, good performance status, no major comorbidities)
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Cytarabine</strong></td>
+                            <td>100-200 mg/m² IV</td>
+                            <td>Continuous infusion Days 1-7</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Daunorubicin</strong></td>
+                            <td>60-90 mg/m² IV</td>
+                            <td>Days 1, 2, 3</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;"><em>OR</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Idarubicin</strong></td>
+                            <td>12 mg/m² IV</td>
+                            <td>Days 1, 2, 3</td>
+                        </tr>
+                    </table>
+                    
+                    <!-- 7+3 Day Chart -->
+                    <div style="overflow-x:auto; margin: 15px 0;">
+                        <table style="min-width:700px; border-collapse:collapse; width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="background:#2d3748;color:white;padding:10px 8px;text-align:left;min-width:160px;border:1px solid #4a5568;font-size:0.85em;">Drug</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D1</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D2</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D3</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D4</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D5</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D6</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D7</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Cytarabine<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">100-200 mg/m² cont. infusion</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Daunorubicin/Idarubicin<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">60-90 mg/m² / 12 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:15px;font-size:0.83em;">
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#c6f6d5;border-radius:3px;display:inline-block;"></span>Cytarabine (Days 1-7)</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#fed7e2;border-radius:3px;display:inline-block;"></span>Anthracycline (Days 1-3)</span>
+                    </div>
+
+                    <div class="resident-alert">
+                        <h4>📋 Resident Action Items</h4>
+                        <ul>
+                            <li><strong>Day 1:</strong> Verify cardiac clearance (ECHO/MUGA with EF >50%), place central line, start hydration</li>
+                            <li><strong>Daily:</strong> Monitor CBC, BMP, LFTs, coags (check fibrinogen if low platelet count)</li>
+                            <li><strong>Day 14-21:</strong> Nadir - watch for neutropenic fever, mucositis</li>
+                            <li><strong>Day 28:</strong> Bone marrow biopsy (or at count recovery if delayed)</li>
+                            <li><strong>Transfusion goals:</strong> Plt >10K (>50K if bleeding/fever), Hgb >7-8</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="toxicity-grid">
+                        <div class="toxicity-card">
+                            <h5>Myelosuppression</h5>
+                            <p><strong>Timing:</strong> Nadir Day 14-21</p>
+                            <p><strong>Monitor:</strong> Daily CBC</p>
+                            <p><strong>Action:</strong> Transfuse as needed, G-CSF after Day 14 if prolonged neutropenia</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Cardiotoxicity</h5>
+                            <p><strong>Risk:</strong> Anthracyclines (cumulative dose-dependent)</p>
+                            <p><strong>Monitor:</strong> Baseline ECHO, repeat if symptoms</p>
+                            <p><strong>Action:</strong> Consider dexrazoxane if high cumulative dose</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Mucositis</h5>
+                            <p><strong>Timing:</strong> Days 7-14</p>
+                            <p><strong>Prevention:</strong> Oral care, magic mouthwash</p>
+                            <p><strong>Action:</strong> Pain control, consider TPN if severe</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Tumor Lysis Syndrome</h5>
+                            <p><strong>Risk:</strong> High WBC (>50K), high LDH</p>
+                            <p><strong>Prevention:</strong> Allopurinol 300mg daily, aggressive hydration</p>
+                            <p><strong>Monitor:</strong> BMP, uric acid, LDH, phosphorus q6-12h initially</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Vyxeos (CPX-351)</span>
+                        <span class="badge intensive">Intensive</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Treatment-related AML or AML with prior MDS
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>CPX-351</strong><br>(Liposomal Cytarabine 100mg/m² + Daunorubicin 44mg/m²)</td>
+                            <td>Units: 100</td>
+                            <td>IV over 90 minutes on Days 1, 3, 5<br><strong>Consolidation:</strong> Days 1, 3 only</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="resident-alert">
+                        <h4>📋 Resident Action Items</h4>
+                        <ul>
+                            <li><strong>Infusion:</strong> Must be given over exactly 90 minutes (not a push)</li>
+                            <li><strong>Pre-meds:</strong> Ondansetron, dexamethasone</li>
+                            <li><strong>Day 28:</strong> Bone marrow biopsy</li>
+                            <li><strong>Note:</strong> Prolonged myelosuppression expected (median 40-45 days to count recovery)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ Vyxeos-Specific Toxicities</h4>
+                        <ul>
+                            <li>More prolonged cytopenias than standard 7+3</li>
+                            <li>Higher rate of infection during prolonged neutropenia</li>
+                            <li>Consider prophylactic antimicrobials earlier</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">FLAVIDA</span>
+                        <span class="badge intensive">Intensive</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Alternative induction in fit individuals; also used in relapsed/refractory setting
+                    </div>
+
+                    <!-- Day-by-day chart -->
+                    <div style="overflow-x:auto; margin: 15px 0;">
+                        <table style="min-width:520px; border-collapse:collapse; width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="background:#2d3748;color:white;padding:10px 8px;text-align:left;min-width:150px;border:1px solid #4a5568;font-size:0.85em;">Drug</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D1</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D2</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D3</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D4</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D5</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D6</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D7</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Fludarabine <span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">30 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Cytarabine <span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">2 g/m² IV (4h after Flu)</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">G-CSF <span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">5 mcg/kg SQ (priming)</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Idarubicin <span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">10 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Venetoclax <span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">400 mg PO daily</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Legend -->
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:15px;font-size:0.83em;">
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#bee3f8;border-radius:3px;display:inline-block;"></span>Fludarabine</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#c6f6d5;border-radius:3px;display:inline-block;"></span>Cytarabine</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#fefcbf;border-radius:3px;display:inline-block;"></span>G-CSF</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#fed7e2;border-radius:3px;display:inline-block;"></span>Idarubicin</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#e9d8fd;border-radius:3px;display:inline-block;"></span>Venetoclax</span>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ TLS Risk - Very High!</h4>
+                        <p>FLAVIDA has very high TLS risk due to venetoclax + high-dose cytarabine</p>
+                        <ul>
+                            <li>Rasburicase 0.2 mg/kg on Day 1 (if high risk)</li>
+                            <li>Aggressive hydration (150-200 mL/hr)</li>
+                            <li>Monitor BMP, uric acid, phosphorus, LDH q6h for first 24-48h</li>
+                            <li>Hold venetoclax if K >6, creat >2x baseline, or uric acid >10</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Targeted Therapies (Add-on to Induction or Maintenance)</h3>
+                
+                <table>
+                    <tr>
+                        <th>Target/Mutation</th>
+                        <th>Drug</th>
+                        <th>Dose</th>
+                        <th>Schedule</th>
+                        <th>Key Toxicities</th>
+                    </tr>
+                    <tr>
+                        <td>CD33</td>
+                        <td>Gemtuzumab ozogamicin</td>
+                        <td>3 mg/m² IV</td>
+                        <td>Days 1, 4, 7 (with 7+3)</td>
+                        <td>Hepatotoxicity, VOD risk</td>
+                    </tr>
+                    <tr>
+                        <td>FLT3-ITD or TKD</td>
+                        <td>Midostaurin</td>
+                        <td>50 mg PO BID</td>
+                        <td>Days 8-21</td>
+                        <td>Nausea, rash, QTc prolongation</td>
+                    </tr>
+                    <tr>
+                        <td>FLT3-ITD only</td>
+                        <td>Quizartinib</td>
+                        <td>53.4 mg PO daily</td>
+                        <td>Days 8-21</td>
+                        <td>QTc prolongation, myelosuppression</td>
+                    </tr>
+                </table>
+                
+                <div class="resident-alert">
+                    <h4>📋 Monitoring for Targeted Therapies</h4>
+                    <ul>
+                        <li><strong>Gemtuzumab:</strong> Monitor LFTs daily, watch for VOD (RUQ pain, weight gain, rising bili)</li>
+                        <li><strong>Midostaurin/Quizartinib:</strong> Baseline ECG, repeat weekly (hold if QTc >500ms)</li>
+                        <li><strong>Drug interactions:</strong> Avoid strong CYP3A4 inhibitors/inducers (azoles, rifampin)</li>
+                    </ul>
+                </div>
+                
+                <h3>Lower Intensity Induction</h3>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">HMA-Venetoclax</span>
+                        <span class="badge lower-intensity">Lower Intensity</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Age >60-75, ECOG PS ≥2, significant comorbidities, TP53 mutation, relapsed/refractory setting
+                    </div>
+
+                    <!-- HMA-Ven Day Chart -->
+                    <div style="overflow-x:auto; margin: 15px 0;">
+                        <table style="min-width:700px; border-collapse:collapse; width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="background:#2d3748;color:white;padding:10px 8px;text-align:left;min-width:160px;border:1px solid #4a5568;font-size:0.85em;">Drug</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D1</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D2</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D3</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D4</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D5</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D6</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D7</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D8-14</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Decitabine<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">20 mg/m² IV daily</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Azacitidine (alt.)<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">75 mg/m² IV/SQ daily</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Venetoclax<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">400 mg PO daily (ramp D1-3)</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">100mg</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">200mg</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">400mg</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">400mg</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">400mg</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">400mg</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">400mg</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">400mg</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:15px;font-size:0.83em;">
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#bee3f8;border-radius:3px;display:inline-block;"></span>Decitabine (Days 1-5)</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#c6f6d5;border-radius:3px;display:inline-block;"></span>Azacitidine alt. (Days 1-7)</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#e9d8fd;border-radius:3px;display:inline-block;"></span>Venetoclax (ramp up D1-3, then 400mg D3-28)</span>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Decitabine IV</strong></td>
+                            <td>20 mg/m² IV daily</td>
+                            <td>Days 1-5 (28-day cycle)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;"><em>OR</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Azacitidine IV/SQ</strong></td>
+                            <td>75 mg/m² IV/SQ daily</td>
+                            <td>Days 1-7 (28-day cycle)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;"><em>PLUS</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Venetoclax PO</strong></td>
+                            <td>400 mg PO daily<br>(100mg Day 1, 200mg Day 2, 400mg Day 3+)</td>
+                            <td>Days 1-14 or 1-28 depending on protocol</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ Venetoclax Dosing with Azoles - CRITICAL</h4>
+                        <p><strong>With posaconazole or voriconazole:</strong> Reduce venetoclax to 100 mg daily (75% reduction)</p>
+                        <p><strong>With fluconazole:</strong> Reduce venetoclax to 200 mg daily (50% reduction)</p>
+                        <p><strong>TLS risk:</strong> Very high in first cycle, especially with high WBC or bulky disease</p>
+                    </div>
+                    
+                    <div class="resident-alert">
+                        <h4>📋 Resident Action Items - Cycle 1 Critical</h4>
+                        <ul>
+                            <li><strong>Day 0:</strong> Check BMP, uric acid, LDH, phosphorus. Start allopurinol 300mg daily OR rasburicase if high risk</li>
+                            <li><strong>Day 1:</strong> Aggressive hydration (150 mL/hr), venetoclax ramp (100mg), monitor BMP/UA/LDH q6-8h</li>
+                            <li><strong>Days 2-3:</strong> Continue labs q12-24h during venetoclax ramp</li>
+                            <li><strong>Days 7-14:</strong> Expect cytopenias, monitor CBC 2-3x/week</li>
+                            <li><strong>Days 21-28:</strong> Assess response (BM biopsy if counts recovering or Day 28)</li>
+                            <li><strong>Infection prophylaxis:</strong> Start posaconazole (adjust venetoclax!), acyclovir, atovaquone</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="toxicity-grid">
+                        <div class="toxicity-card">
+                            <h5>Tumor Lysis Syndrome</h5>
+                            <p><strong>Highest risk:</strong> Cycle 1, especially if WBC >25K</p>
+                            <p><strong>Monitor:</strong> BMP, uric acid, phosphorus, LDH q6-12h × 2-3 days</p>
+                            <p><strong>Treatment:</strong> Rasburicase, aggressive hydration, hold venetoclax if severe</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Myelosuppression</h5>
+                            <p><strong>Expected:</strong> Prolonged cytopenias cycle 1-2</p>
+                            <p><strong>Action:</strong> May need to delay subsequent cycles, dose-reduce venetoclax to 7-14 days</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Infections</h5>
+                            <p><strong>Risk:</strong> Very high due to prolonged neutropenia</p>
+                            <p><strong>Prophylaxis:</strong> Antifungal (azole), antiviral (acyclovir), PJP (atovaquone)</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>GI Toxicity</h5>
+                            <p><strong>Common:</strong> Nausea, diarrhea (especially azacitidine)</p>
+                            <p><strong>Management:</strong> Aggressive antiemetics, loperamide prn</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Consolidation</h3>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">HiDAC (High-Dose Ara-C)</span>
+                        <span class="badge standard">Standard</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Post-induction consolidation for patients in CR, especially favorable/intermediate cytogenetics
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Cytarabine IV</strong></td>
+                            <td>3 g/m² IV over 3h q12h<br>(1.5 g/m² if age >60 or CrCl <60)</td>
+                            <td>Days 1, 3, 5 (6 doses total)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>G-CSF</strong></td>
+                            <td>5 mcg/kg SQ daily</td>
+                            <td>Starting Day 7 until ANC >1000</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="info-box">
+                        <strong>Duration:</strong> Repeat monthly for 3-4 cycles (typically wait until ANC >1500, Plt >100K)
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ Cerebellar Toxicity - WATCH CLOSELY</h4>
+                        <p><strong>Risk factors:</strong> Age >60, renal dysfunction, cumulative dose, q12h dosing</p>
+                        <p><strong>Symptoms:</strong> Ataxia, dysarthria, nystagmus, difficulty with fine motor tasks</p>
+                        <p><strong>Action:</strong> STOP HiDAC immediately if any cerebellar signs. Toxicity may be irreversible!</p>
+                    </div>
+                    
+                    <div class="resident-alert">
+                        <h4>📋 Resident Action Items</h4>
+                        <ul>
+                            <li><strong>Before each dose:</strong> Neuro exam (finger-to-nose, gait, handwriting test)</li>
+                            <li><strong>Pre-treatment:</strong> Check CrCl, reduce dose if <60 mL/min</li>
+                            <li><strong>Eye care:</strong> Steroid eye drops (prednisolone 1%) BID during treatment to prevent conjunctivitis</li>
+                            <li><strong>Hydration:</strong> 150 mL/hr NS before and after each dose</li>
+                            <li><strong>Nadir:</strong> Expect Day 14-21, monitor CBC 2-3x/week</li>
+                            <li><strong>G-CSF:</strong> Start Day 7, continue until ANC >1000</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Relapsed/Refractory AML</h3>
+                
+                <p><strong>FLAVIDA:</strong> Can be used as alternative for relapsed disease (see dosing above)</p>
+                
+                <table>
+                    <tr>
+                        <th>Target/Mutation</th>
+                        <th>Drug</th>
+                        <th>Dose</th>
+                        <th>Key Monitoring</th>
+                    </tr>
+                    <tr>
+                        <td>FLT3</td>
+                        <td>Gilteritinib</td>
+                        <td>120 mg PO daily continuously</td>
+                        <td>QTc monitoring, LFTs, differentiation syndrome</td>
+                    </tr>
+                    <tr>
+                        <td>IDH1</td>
+                        <td>Ivosidenib</td>
+                        <td>500 mg PO daily continuously</td>
+                        <td>QTc monitoring, LFTs, differentiation syndrome</td>
+                    </tr>
+                    <tr>
+                        <td>IDH1</td>
+                        <td>Olutasidenib</td>
+                        <td>150 mg PO BID continuously</td>
+                        <td>QTc monitoring, differentiation syndrome</td>
+                    </tr>
+                    <tr>
+                        <td>IDH2</td>
+                        <td>Enasidenib</td>
+                        <td>100 mg PO daily continuously</td>
+                        <td>QTc monitoring, LFTs, differentiation syndrome</td>
+                    </tr>
+                    <tr>
+                        <td>KMT2A, NPM1</td>
+                        <td>Revumenib</td>
+                        <td>163 mg PO BID (28d on, 7d off)</td>
+                        <td>QTc monitoring, differentiation syndrome</td>
+                    </tr>
+                </table>
+                
+                <div class="warning-box">
+                    <h4>⚠️ Differentiation Syndrome with IDH/FLT3 Inhibitors</h4>
+                    <p><strong>Incidence:</strong> 10-20% with IDH inhibitors, gilteritinib</p>
+                    <p><strong>Timing:</strong> Usually within first month, can occur anytime</p>
+                    <p><strong>Symptoms:</strong> Fever, dyspnea, hypoxia, pulmonary infiltrates, pleural/pericardial effusions, peripheral edema, hypotension, AKI</p>
+                    <p><strong>Treatment:</strong> Dexamethasone 10 mg IV BID, hold drug if severe, diuretics if volume overloaded</p>
+                </div>
+            </section>
+            
+            <!-- APL SECTION -->
+            <section id="apl" class="section apl">
+                <h2>Acute Promyelocytic Leukemia (APL)</h2>
+                
+                <div class="warning-box">
+                    <h4>⚠️ APL is a MEDICAL EMERGENCY</h4>
+                    <p><strong>Start ATRA immediately if APL suspected</strong> - do NOT wait for confirmatory testing!</p>
+                    <p>Early mortality is from bleeding (DIC) - start treatment ASAP</p>
+                </div>
+                
+                <h3>Diagnostic Features</h3>
+                <div class="info-box">
+                    <ul>
+                        <li><strong>Morphology:</strong> Promyelocytes with Auer rods (faggot cells)</li>
+                        <li><strong>Flow:</strong> CD34 negative, CD33+, HLA-DR negative</li>
+                        <li><strong>Genetic:</strong> PML-RARA fusion (t(15;17))</li>
+                        <li><strong>Coags:</strong> Low fibrinogen, elevated D-dimer, prolonged PT/PTT</li>
+                    </ul>
+                </div>
+                
+                <h3>Risk Stratification</h3>
+                <table>
+                    <tr>
+                        <th>Risk Category</th>
+                        <th>Criteria</th>
+                        <th>Differentiation Syndrome Risk</th>
+                    </tr>
+                    <tr>
+                        <td><span class="badge high-risk">High Risk</span></td>
+                        <td>WBC >10,000</td>
+                        <td>Higher risk (~25%)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge standard">Low-Intermediate Risk</span></td>
+                        <td>WBC ≤10,000</td>
+                        <td>Lower risk (~10%)</td>
+                    </tr>
+                </table>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">ATRA-ATO (Standard of Care)</span>
+                        <span class="badge standard">Standard</span>
+                    </div>
+                    
+                    <!-- ATRA-ATO Day Chart - Induction -->
+                    <p style="font-weight:600; margin-bottom:6px;">Induction (up to 60 days)</p>
+                    <div style="overflow-x:auto; margin: 10px 0 15px;">
+                        <table style="min-width:500px; border-collapse:collapse; width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="background:#2d3748;color:white;padding:10px 8px;text-align:left;min-width:160px;border:1px solid #4a5568;font-size:0.85em;">Drug</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D1</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D2</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D4</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D6</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D8</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D9–CR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">ATRA (Tretinoin)<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">45 mg/m² PO BID daily</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">Daily until CR</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">ATO (Arsenic Trioxide)<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">0.15 mg/kg IV daily</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">Daily until CR</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Idarubicin <span style="color:#e53e3e;font-size:0.8em;">(HIGH RISK ONLY)</span><span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">12 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:15px;font-size:0.83em;">
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#fefcbf;border-radius:3px;display:inline-block;"></span>ATRA (daily until CR)</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#bee3f8;border-radius:3px;display:inline-block;"></span>ATO (daily until CR)</span>
+                        <span style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;background:#fed7e2;border-radius:3px;display:inline-block;"></span>Idarubicin (high risk: D2,4,6,8 only)</span>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>ATRA (Tretinoin)</strong></td>
+                            <td>45 mg/m² PO divided BID (with food)</td>
+                            <td>Daily until remission (typically 30-60 days)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ATO (Arsenic Trioxide)</strong></td>
+                            <td>0.15 mg/kg IV daily</td>
+                            <td>Daily until remission (typically 30-60 days)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Idarubicin</strong><br>(HIGH RISK ONLY)</td>
+                            <td>12 mg/m² IV</td>
+                            <td>Days 2, 4, 6, 8 (if WBC >10K)</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="info-box">
+                        <p><strong>Induction:</strong> Continue until CR (usually 30-60 days), confirm with bone marrow showing <5% blasts</p>
+                        <p><strong>Consolidation:</strong></p>
+                        <ul>
+                            <li><strong>ATO:</strong> 0.15 mg/kg IV 5 days/week for 4 weeks, every 8 weeks × 4 cycles</li>
+                            <li><strong>ATRA:</strong> 45 mg/m² PO BID for 2 weeks, every 4 weeks × 7 cycles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resident-alert">
+                        <h4>📋 Daily Resident Checklist for APL</h4>
+                        <ul>
+                            <li><strong>Coags EVERY morning:</strong> PT, PTT, fibrinogen, D-dimer (goal fibrinogen >150)</li>
+                            <li><strong>Platelet transfusion:</strong> Keep >30-50K at ALL times (even higher if active bleeding)</li>
+                            <li><strong>Cryoprecipitate:</strong> If fibrinogen <100-150 mg/dL, give 10 units</li>
+                            <li><strong>Monitor WBC:</strong> If rising rapidly, may need hydroxyurea or chemotherapy</li>
+                            <li><strong>Watch for differentiation syndrome:</strong> Daily weights, O2 sat, exam for edema/crackles</li>
+                            <li><strong>ECG:</strong> Baseline, then 2x/week (ATO causes QTc prolongation)</li>
+                            <li><strong>Electrolytes:</strong> Daily (ATO can cause hypokalemia, hypomagnesemia)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ CRITICAL - Coagulopathy Management</h4>
+                        <p><strong>Goal fibrinogen >150 mg/dL</strong> - transfuse cryoprecipitate liberally</p>
+                        <p><strong>Goal platelets >30-50K</strong> - may need multiple units daily</p>
+                        <p><strong>DO NOT give FFP routinely</strong> - only if active bleeding and elevated PT/PTT</p>
+                        <p><strong>Avoid procedures</strong> until coags stabilize (typically 5-7 days after starting ATRA)</p>
+                        <p><strong>NO ANTICOAGULATION</strong> unless absolutely necessary (even for central line thrombosis - treat with ATRA improvement)</p>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ Differentiation Syndrome - LIFE THREATENING</h4>
+                        <p><strong>Timing:</strong> Usually Days 2-21 (median Day 10-12)</p>
+                        <p><strong>Clinical features:</strong></p>
+                        <ul>
+                            <li>Fever (often first sign)</li>
+                            <li>Dyspnea, hypoxia</li>
+                            <li>Pulmonary infiltrates on CXR</li>
+                            <li>Pleural or pericardial effusions</li>
+                            <li>Peripheral edema, weight gain (>5 kg)</li>
+                            <li>Hypotension</li>
+                            <li>Acute kidney injury</li>
+                        </ul>
+                        <p><strong>Treatment - START IMMEDIATELY if suspected:</strong></p>
+                        <ul>
+                            <li><strong>Dexamethasone 10 mg IV BID</strong> (continue for at least 3 days after resolution, taper over 1-2 weeks)</li>
+                            <li><strong>Hold ATRA/ATO if severe</strong> (can restart after resolution)</li>
+                            <li><strong>Diuretics if volume overloaded</strong></li>
+                            <li><strong>Supportive care:</strong> O2, monitoring in ICU if severe</li>
+                        </ul>
+                        <p><strong>Prevention:</strong> Some give prophylactic steroids if WBC rising rapidly (>10K or doubling)</p>
+                    </div>
+                    
+                    <div class="toxicity-grid">
+                        <div class="toxicity-card">
+                            <h5>QTc Prolongation (ATO)</h5>
+                            <p><strong>Incidence:</strong> Very common (>50%)</p>
+                            <p><strong>Monitor:</strong> ECG 2-3x/week</p>
+                            <p><strong>Action:</strong> Hold ATO if QTc >500ms, replete K >4, Mg >2</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Headache (ATRA)</h5>
+                            <p><strong>Incidence:</strong> Very common (>50%)</p>
+                            <p><strong>Management:</strong> Acetaminophen, divide dose to TID/QID, rule out pseudotumor cerebri if severe</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Hepatotoxicity</h5>
+                            <p><strong>Both ATRA and ATO can cause transaminitis</strong></p>
+                            <p><strong>Monitor:</strong> LFTs weekly</p>
+                            <p><strong>Action:</strong> Hold if AST/ALT >5x ULN</p>
+                        </div>
+                        <div class="toxicity-card">
+                            <h5>Peripheral Neuropathy (ATO)</h5>
+                            <p><strong>Usually in consolidation</strong></p>
+                            <p><strong>Monitor:</strong> Symptoms, exam</p>
+                            <p><strong>Action:</strong> Dose reduce or hold ATO</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- ALL SECTION -->
+            <section id="all" class="section all">
+                <h2>Acute Lymphoblastic Leukemia (ALL)</h2>
+                
+                <h3>E1910 Regimen (C10403)</h3>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Cycle 1 (Induction)</span>
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Daunorubicin</strong></td>
+                            <td>25 mg/m² IV</td>
+                            <td>Days 1, 8, 15, 22</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vincristine</strong></td>
+                            <td>2 mg IV (max 2 mg)</td>
+                            <td>Days 1, 8, 15, 22</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dexamethasone</strong></td>
+                            <td>10 mg/m² PO daily</td>
+                            <td>Days 1-7 and Days 15-21</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pegaspargase</strong></td>
+                            <td>2500 units/m² IM/IV</td>
+                            <td>Day 18</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="resident-alert">
+                        <h4>📋 Cycle 1 Resident Checklist</h4>
+                        <ul>
+                            <li><strong>Day 1:</strong> Baseline ECHO, LFTs, fibrinogen, triglycerides, amylase/lipase</li>
+                            <li><strong>Vincristine:</strong> Check for neuropathy before each dose, constipation prophylaxis</li>
+                            <li><strong>Day 15:</strong> Bone marrow biopsy to assess early response</li>
+                            <li><strong>Day 18 (Pegaspargase):</strong> Check fibrinogen, watch for bleeding/thrombosis next 2 weeks</li>
+                            <li><strong>Day 28:</strong> Bone marrow to confirm CR, flow cytometry for MRD</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Cycle 2 (Consolidation)</span>
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Cyclophosphamide</strong></td>
+                            <td>1000 mg/m² IV</td>
+                            <td>Days 1, 29</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cytarabine</strong></td>
+                            <td>75 mg/m² IV/SQ</td>
+                            <td>Days 1-4, 8-11, 15-18, 22-25 (3 on/4 off pattern)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6-Mercaptopurine</strong></td>
+                            <td>60 mg/m² PO daily</td>
+                            <td>Days 1-14, 29-42</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pegaspargase</strong></td>
+                            <td>2500 units/m² IM/IV</td>
+                            <td>Day 15</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="info-box">
+                        <strong>After Cycle 2:</strong> Consolidation with Blinatumomab 28 mcg/day continuous IV infusion for 28 days (4 weeks on, 2 weeks off)
+                    </div>
+                </div>
+                
+                <h3>Hyper-CVAD Regimen</h3>
+                
+                <div class="regimen-card">
+                    <p><strong>Structure:</strong> 8 cycles total (alternating A and B), 21-day cycles</p>
+                    
+                    <h4>Part A (Cycles 1, 3, 5, 7)</h4>
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Cyclophosphamide</strong></td>
+                            <td>300 mg/m² IV over 3h q12h</td>
+                            <td>Days 1, 2, 3 (6 doses total)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mesna</strong></td>
+                            <td>600 mg/m²/day continuous infusion</td>
+                            <td>Days 1-3 (start with cyclophosphamide, continue 12h after last dose)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vincristine</strong></td>
+                            <td>2 mg IV (no cap)</td>
+                            <td>Days 4, 11</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Doxorubicin</strong></td>
+                            <td>50 mg/m² IV over 24h</td>
+                            <td>Day 4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dexamethasone</strong></td>
+                            <td>40 mg PO daily</td>
+                            <td>Days 1-4, 11-14</td>
+                        </tr>
+                    </table>
+                    
+                    <h4>Part B (Cycles 2, 4, 6, 8)</h4>
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Methotrexate</strong></td>
+                            <td>1000 mg/m² IV over 24h</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Leucovorin</strong></td>
+                            <td>15 mg IV/PO q6h × 8 doses</td>
+                            <td>Start 12h after end of MTX, continue until MTX level <0.1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cytarabine</strong></td>
+                            <td>3 g/m² IV over 2h q12h</td>
+                            <td>Days 2, 3 (4 doses total)<br>(1 g/m² if age >60)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Methylprednisolone</strong></td>
+                            <td>50 mg IV BID</td>
+                            <td>Days 1-3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Steroid eye drops</strong></td>
+                            <td>Prednisolone acetate 1%</td>
+                            <td>Start before cytarabine, continue during treatment</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="resident-alert">
+                        <h4>📋 Hyper-CVAD Monitoring</h4>
+                        <p><strong>Part A:</strong></p>
+                        <ul>
+                            <li>Check urine for blood q8h during cyclophosphamide (hemorrhagic cystitis risk)</li>
+                            <li>Aggressive hydration (150-200 mL/hr)</li>
+                            <li>Constipation prophylaxis for vincristine</li>
+                        </ul>
+                        <p><strong>Part B:</strong></p>
+                        <ul>
+                            <li><strong>MTX levels:</strong> Check at 24h (end of infusion), then daily until <0.1 μmol/L</li>
+                            <li><strong>Increase leucovorin</strong> if MTX level elevated (50 mg IV q6h if level >5 at 48h)</li>
+                            <li><strong>Alkalinize urine</strong> (bicarbonate drip to keep pH >7)</li>
+                            <li><strong>Daily BMP, Mg, Phos</strong> during MTX infusion</li>
+                            <li><strong>Neuro checks</strong> before each cytarabine dose (cerebellar toxicity)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Special Considerations for ALL</h3>
+                
+                <table>
+                    <tr>
+                        <th>Subtype/Feature</th>
+                        <th>Additional Treatment</th>
+                        <th>Key Points</th>
+                    </tr>
+                    <tr>
+                        <td><strong>BCR-ABL+ (Ph+)</strong></td>
+                        <td>Add TKI:<br>• Dasatinib 140 mg daily<br>• Ponatinib 30-45 mg daily<br>• Imatinib 600 mg daily</td>
+                        <td>Start with induction, continue long-term. Monitor for pleural effusions (dasatinib), vascular events (ponatinib)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CD20+ (>20%)</strong></td>
+                        <td>Add Rituximab 375 mg/m² IV</td>
+                        <td>Days 1, 8 each cycle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Elderly (>60-65)</strong></td>
+                        <td>Lower intensity options:<br>• Blinatumomab<br>• Inotuzumab<br>• Vincristine/Dexamethasone ± TKI</td>
+                        <td>Avoid intensive chemotherapy if poor PS or significant comorbidities</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CNS+ at diagnosis</strong></td>
+                        <td>IT chemotherapy weekly during induction</td>
+                        <td>Total 8-12 doses, continue q2-4 weeks in consolidation</td>
+                    </tr>
+                </table>
+                
+                <h3>CNS Prophylaxis & Treatment</h3>
+                
+                <div class="info-box">
+                    <p><strong>NO CNS involvement (CNS-1):</strong></p>
+                    <ul>
+                        <li><strong>Cycle 1:</strong> IT MTX or cytarabine on Days 1, 14</li>
+                        <li><strong>Cycle 2:</strong> IT MTX or cytarabine on Days 1, 8, 15, 22</li>
+                        <li><strong>Dose:</strong> MTX 12 mg IT OR cytarabine 50-70 mg IT</li>
+                        <li><strong>Route:</strong> Lumbar puncture or Ommaya reservoir</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>⚠️ CNS Involvement Present (CNS-2 or CNS-3)</h4>
+                    <p><strong>IT chemotherapy:</strong> Weekly during induction (minimum 4 doses), then every 2 weeks during consolidation</p>
+                    <p><strong>Total doses:</strong> Minimum 8-12 doses, continue until 2 consecutive clear LPs</p>
+                    <p><strong>Consider:</strong> Triple IT therapy (MTX + cytarabine + hydrocortisone) for CNS-3</p>
+                    <p><strong>Radiation:</strong> May need cranial RT if refractory CNS disease</p>
+                </div>
+                
+                <div class="resident-alert">
+                    <h4>📋 IT Chemotherapy Administration</h4>
+                    <ul>
+                        <li><strong>Timing:</strong> Give BEFORE systemic chemotherapy when possible</li>
+                        <li><strong>Platelet goal:</strong> >50K (some say >20K acceptable if no other bleeding)</li>
+                        <li><strong>Technique:</strong> Remove equivalent volume of CSF before injecting drug</li>
+                        <li><strong>Post-procedure:</strong> Lie flat × 30-60 minutes to prevent headache</li>
+                        <li><strong>Send CSF:</strong> Cell count, cytology, flow cytometry (if CNS+)</li>
+                    </ul>
+                </div>
+                
+                <h3>ALL-Specific Toxicities</h3>
+                
+                <div class="toxicity-grid">
+                    <div class="toxicity-card">
+                        <h5>Vincristine Neuropathy</h5>
+                        <p><strong>Symptoms:</strong> Paresthesias, constipation, foot drop, jaw pain</p>
+                        <p><strong>Prevention:</strong> Bowel regimen (senna, miralax)</p>
+                        <p><strong>Management:</strong> Dose reduce if severe, gabapentin for pain</p>
+                    </div>
+                    <div class="toxicity-card">
+                        <h5>Asparaginase Reactions</h5>
+                        <p><strong>Allergic:</strong> Rash, anaphylaxis (more with E. coli formulation)</p>
+                        <p><strong>Pancreatitis:</strong> Check amylase/lipase before each dose, hold if >3x ULN</p>
+                        <p><strong>Thrombosis:</strong> Check fibrinogen weekly, give FFP if <100</p>
+                        <p><strong>Hepatotoxicity:</strong> Monitor LFTs, usually transient</p>
+                    </div>
+                    <div class="toxicity-card">
+                        <h5>Steroid Side Effects</h5>
+                        <p><strong>Common:</strong> Hyperglycemia, insomnia, mood changes, proximal myopathy</p>
+                        <p><strong>Monitoring:</strong> Fingersticks QID, PPI for GI prophylaxis</p>
+                        <p><strong>PJP prophylaxis:</strong> Atovaquone or Bactrim while on steroids</p>
+                    </div>
+                    <div class="toxicity-card">
+                        <h5>MTX Toxicity</h5>
+                        <p><strong>Mucositis, renal dysfunction, hepatotoxicity</strong></p>
+                        <p><strong>Prevention:</strong> Alkalinize urine, aggressive hydration</p>
+                        <p><strong>Monitor:</strong> MTX levels, increase leucovorin if delayed clearance</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- MONITORING SECTION -->
+            <section id="monitoring" class="section monitoring">
+                <h2>Monitoring Protocols</h2>
+                
+                <h3>Laboratory Monitoring by Regimen</h3>
+                
+                <div class="regimen-card">
+                    <h4>7+3 / Intensive Induction</h4>
+                    <div class="checklist">
+                        <h4>✓ Daily During Chemotherapy</h4>
+                        <ul>
+                            <li>CBC with differential</li>
+                            <li>BMP (electrolytes, creatinine)</li>
+                            <li>LFTs (AST, ALT, alkaline phosphatase, bilirubin)</li>
+                            <li>PT/PTT/INR, fibrinogen (if thrombocytopenic)</li>
+                        </ul>
+                    </div>
+                    <div class="checklist">
+                        <h4>✓ During Neutropenia (ANC <500)</h4>
+                        <ul>
+                            <li>CBC daily</li>
+                            <li>BMP every 2-3 days</li>
+                            <li>Blood cultures if fever >38.3°C once or >38°C × 1 hour</li>
+                        </ul>
+                    </div>
+                    <div class="checklist">
+                        <h4>✓ Weekly After Count Recovery</h4>
+                        <ul>
+                            <li>CBC</li>
+                            <li>BMP</li>
+                            <li>LFTs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="regimen-card">
+                    <h4>HMA-Venetoclax</h4>
+                    <div class="checklist">
+                        <h4>✓ Cycle 1 Days 1-3 (TLS Risk)</h4>
+                        <ul>
+                            <li>BMP, uric acid, phosphorus, LDH q6-8h</li>
+                            <li>CBC daily</li>
+                            <li>Continuous telemetry if high risk</li>
+                        </ul>
+                    </div>
+                    <div class="checklist">
+                        <h4>✓ During Each Cycle</h4>
+                        <ul>
+                            <li>CBC 2-3x per week</li>
+                            <li>BMP twice weekly</li>
+                            <li>LFTs weekly</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="regimen-card">
+                    <h4>APL (ATRA-ATO)</h4>
+                    <div class="checklist">
+                        <h4>✓ Daily During Induction</h4>
+                        <ul>
+                            <li>CBC with differential</li>
+                            <li>PT, PTT, fibrinogen, D-dimer</li>
+                            <li>BMP (ATO can cause electrolyte abnormalities)</li>
+                            <li>Daily weights (differentiation syndrome monitoring)</li>
+                        </ul>
+                    </div>
+                    <div class="checklist">
+                        <h4>✓ Twice Weekly</h4>
+                        <ul>
+                            <li>ECG (QTc monitoring for ATO)</li>
+                            <li>Magnesium, potassium</li>
+                        </ul>
+                    </div>
+                    <div class="checklist">
+                        <h4>✓ Weekly</h4>
+                        <ul>
+                            <li>LFTs</li>
+                            <li>Triglycerides (ATRA can cause hypertriglyceridemia)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Bone Marrow Biopsy Schedule</h3>
+                
+                <table>
+                    <tr>
+                        <th>Timepoint</th>
+                        <th>Purpose</th>
+                        <th>What to Order</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 14 (optional)</strong></td>
+                        <td>Early response assessment</td>
+                        <td>Morphology, flow cytometry - mainly to assess if in aplasia or persistent disease</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Day 28</strong></td>
+                        <td>End-of-induction assessment</td>
+                        <td>Morphology, flow cytometry (MRD), cytogenetics, molecular (if mutations present at diagnosis)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Post-consolidation</strong></td>
+                        <td>Confirm continued remission</td>
+                        <td>Morphology, flow cytometry (MRD)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pre-transplant</strong></td>
+                        <td>Confirm remission status</td>
+                        <td>Full work-up including flow, cytogenetics, molecular</td>
+                    </tr>
+                </table>
+                
+                <h3>Response Criteria</h3>
+                
+                <table>
+                    <tr>
+                        <th>Response</th>
+                        <th>Definition</th>
+                    </tr>
+                    <tr>
+                        <td><strong>CR (Complete Remission)</strong></td>
+                        <td>BM blasts <5%, no Auer rods, ANC >1000, platelets >100K, no extramedullary disease</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CRi (CR with incomplete recovery)</strong></td>
+                        <td>BM blasts <5%, but ANC <1000 or platelets <100K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CRh (CR with partial hematologic recovery)</strong></td>
+                        <td>BM blasts <5%, ANC >500, platelets >50K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MLFS (Morphologic leukemia-free state)</strong></td>
+                        <td>BM blasts <5%, but no peripheral count recovery requirement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MRD negative</strong></td>
+                        <td>No detectable disease by flow cytometry (<0.1%) or molecular testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PR (Partial Remission)</strong></td>
+                        <td>BM blasts 5-25% with ≥50% decrease from baseline</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Refractory</strong></td>
+                        <td>Failure to achieve CR/CRi after induction</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <!-- TOXICITIES SECTION -->
+            <section id="toxicities" class="section">
+                <h2>Common Toxicities & Management</h2>
+                
+                <h3>Febrile Neutropenia</h3>
+                
+                <div class="warning-box">
+                    <h4>⚠️ Definition & Initial Management</h4>
+                    <p><strong>Definition:</strong> ANC <500 AND single temp >38.3°C OR temp >38°C for >1 hour</p>
+                    <p><strong>IMMEDIATE actions (within 1 hour):</strong></p>
+                    <ul>
+                        <li>Blood cultures × 2 (peripheral and from each lumen of central line)</li>
+                        <li>Urine culture, CXR</li>
+                        <li>CBC with differential, BMP, LFTs</li>
+                        <li><strong>Start empiric antibiotics</strong> (don't wait for culture results!)</li>
+                    </ul>
+                </div>
+                
+                <div class="regimen-card">
+                    <h4>Empiric Antibiotic Regimens</h4>
+                    
+                    <p><strong>First-line (choose one):</strong></p>
+                    <ul>
+                        <li><strong>Cefepime</strong> 2g IV q8h</li>
+                        <li><strong>Piperacillin-tazobactam</strong> 4.5g IV q6h</li>
+                        <li><strong>Meropenem</strong> 1g IV q8h (if prior resistant organisms or severe sepsis)</li>
+                    </ul>
+                    
+                    <p><strong>Add vancomycin if:</strong></p>
+                    <ul>
+                        <li>Hemodynamically unstable</li>
+                        <li>Skin/soft tissue infection</li>
+                        <li>Mucositis</li>
+                        <li>Positive blood culture for Gram-positive cocci before speciation</li>
+                        <li>Prior MRSA colonization/infection</li>
+                    </ul>
+                    
+                    <p><strong>Consider antifungal if:</strong></p>
+                    <ul>
+                        <li>Persistent fever >4-7 days despite broad-spectrum antibiotics</li>
+                        <li>CT chest showing nodules/infiltrates</li>
+                        <li>Galactomannan or beta-D-glucan positive</li>
+                        <li><strong>Options:</strong> Micafungin 100mg IV daily, voriconazole 6mg/kg IV q12h × 2 doses then 4mg/kg q12h, liposomal amphotericin B 3-5mg/kg IV daily</li>
+                    </ul>
+                </div>
+                
+                <h3>Mucositis</h3>
+                
+                <div class="regimen-card">
+                    <h4>Grading & Management</h4>
+                    
+                    <table>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Description</th>
+                            <th>Management</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Erythema, soreness</td>
+                            <td>Oral care, salt/soda rinses, bland diet</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Ulcers, can eat solids</td>
+                            <td>Magic mouthwash, viscous lidocaine, soft diet</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ulcers, liquid diet only</td>
+                            <td>Oral opioids, consider PCA if severe, liquid diet</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Cannot eat/drink orally</td>
+                            <td>IV opioid PCA, TPN, consider palifermin</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="info-box">
+                        <p><strong>Magic Mouthwash Recipe:</strong></p>
+                        <ul>
+                            <li>Diphenhydramine 12.5mg/5mL</li>
+                            <li>Lidocaine 2% viscous</li>
+                            <li>Maalox or Mylanta</li>
+                            <li>Mix equal parts, swish and spit q4-6h prn</li>
+                        </ul>
+                        <p><strong>Prevention:</strong> Oral care protocol (brush with soft toothbrush after meals, salt/soda rinses), consider cryotherapy during chemotherapy for some regimens</p>
+                    </div>
+                </div>
+                
+                <h3>Nausea/Vomiting</h3>
+                
+                <div class="regimen-card">
+                    <h4>Prophylaxis by Emetogenic Risk</h4>
+                    
+                    <table>
+                        <tr>
+                            <th>Emetogenic Risk</th>
+                            <th>Chemotherapy</th>
+                            <th>Prophylaxis</th>
+                        </tr>
+                        <tr>
+                            <td><strong>High</strong></td>
+                            <td>Cytarabine (high-dose), cyclophosphamide</td>
+                            <td>5-HT3 antagonist (ondansetron 16-24mg IV) + NK1 antagonist (fosaprepitant 150mg IV or aprepitant PO) + dexamethasone 12mg IV + olanzapine 5-10mg PO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Moderate</strong></td>
+                            <td>Cytarabine (standard), daunorubicin, doxorubicin</td>
+                            <td>5-HT3 antagonist + dexamethasone 8mg IV/PO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Low</strong></td>
+                            <td>Methotrexate, vincristine</td>
+                            <td>5-HT3 antagonist or metoclopramide</td>
+                        </tr>
+                    </table>
+                    
+                    <p><strong>Breakthrough nausea:</strong> Add prochlorperazine 10mg IV/PO q6h, metoclopramide 10mg IV/PO q6h, or lorazepam 0.5-1mg PO/SL q6h</p>
+                </div>
+                
+                <h3>Diarrhea</h3>
+                
+                <div class="warning-box">
+                    <h4>⚠️ Rule Out C. difficile in Neutropenic Patients</h4>
+                    <p>Send stool for C. diff PCR if diarrhea, especially if recent antibiotics</p>
+                    <p><strong>Treatment if positive:</strong> Vancomycin 125mg PO QID × 10-14 days (first-line), fidaxomicin if recurrent</p>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>Non-infectious diarrhea (chemotherapy-induced):</strong></p>
+                    <ul>
+                        <li><strong>First-line:</strong> Loperamide 4mg initially, then 2mg after each loose stool (max 16mg/day)</li>
+                        <li><strong>Refractory:</strong> Tincture of opium 10 drops (0.6mL) PO q6h or paregoric</li>
+                        <li><strong>Severe (Grade 3-4):</strong> Consider octreotide 100-150 mcg SQ TID</li>
+                    </ul>
+                </div>
+                
+                <h3>Tumor Lysis Syndrome (TLS)</h3>
+                
+                <div class="warning-box">
+                    <h4>⚠️ Laboratory TLS (≥2 of the following within 3 days before or 7 days after chemotherapy)</h4>
+                    <ul>
+                        <li>Uric acid >8 mg/dL or 25% increase</li>
+                        <li>Potassium >6 mEq/L or 25% increase</li>
+                        <li>Phosphorus >4.5 mg/dL or 25% increase</li>
+                        <li>Calcium <7 mg/dL or 25% decrease</li>
+                    </ul>
+                    <p><strong>Clinical TLS:</strong> Laboratory TLS PLUS one or more of the following:</p>
+                    <ul>
+                        <li>Creatinine ≥1.5× ULN</li>
+                        <li>Cardiac arrhythmia/sudden death</li>
+                        <li>Seizure</li>
+                    </ul>
+                </div>
+                
+                <div class="regimen-card">
+                    <h4>Prevention & Treatment</h4>
+                    
+                    <p><strong>Risk Stratification:</strong></p>
+                    <ul>
+                        <li><strong>High risk:</strong> WBC >50-100K (AML) or >100K (ALL), high LDH, bulky disease, baseline renal dysfunction</li>
+                        <li><strong>Intermediate risk:</strong> WBC 10-50K, moderate LDH elevation</li>
+                        <li><strong>Low risk:</strong> WBC <10K, normal LDH</li>
+                    </ul>
+                    
+                    <table>
+                        <tr>
+                            <th>Risk Level</th>
+                            <th>Prophylaxis</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Low</strong></td>
+                            <td>Allopurinol 300mg PO daily, hydration 2-3 L/day</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intermediate</strong></td>
+                            <td>Allopurinol 300mg PO daily OR rasburicase 0.2mg/kg × 1 dose, aggressive hydration (150-200 mL/hr)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>High</strong></td>
+                            <td>Rasburicase 0.2mg/kg IV × 1-2 doses, aggressive hydration (200 mL/hr), monitor BMP q6h</td>
+                        </tr>
+                    </table>
+                    
+                    <p><strong>Treatment of established TLS:</strong></p>
+                    <ul>
+                        <li><strong>Hyperkalemia (K >6):</strong> Calcium gluconate, insulin/dextrose, kayexelate, consider dialysis if >7 or ECG changes</li>
+                        <li><strong>Hyperphosphatemia (Phos >6):</strong> Phosphate binders (sevelamer), avoid calcium-containing binders</li>
+                        <li><strong>Hypocalcemia:</strong> Only treat if symptomatic (avoid calcium if phosphate elevated - risk of precipitation)</li>
+                        <li><strong>Hyperuricemia:</strong> Rasburicase 0.2mg/kg (can repeat daily)</li>
+                        <li><strong>AKI:</strong> Aggressive hydration, avoid nephrotoxins, consult nephrology for possible dialysis</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- SUPPORTIVE CARE -->
+            <section id="supportive" class="section">
+                <h2>Supportive Care</h2>
+                
+                <h3>Transfusion Guidelines</h3>
+                
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Threshold</th>
+                        <th>Special Considerations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>RBCs</strong></td>
+                        <td>Hgb <7-8 g/dL</td>
+                        <td>• Higher threshold (Hgb <8) if symptomatic, cardiac disease, or active bleeding<br>• Use leukoreduced, irradiated products<br>• CMV-negative if CMV-negative patient and transplant candidate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Platelets</strong></td>
+                        <td>• <10K (prophylactic)<br>• <50K (fever, bleeding, pre-procedure)<br>• <100K (DIC, APL)</td>
+                        <td>• Single-donor apheresis platelets preferred<br>• HLA-matched if refractory<br>• ABO-match preferred but not required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FFP</strong></td>
+                        <td>INR >1.5-2 with active bleeding</td>
+                        <td>• NOT for routine coagulopathy without bleeding<br>• Dose: 10-15 mL/kg<br>• APL: May need higher fibrinogen goals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cryoprecipitate</strong></td>
+                        <td>Fibrinogen <100-150 mg/dL</td>
+                        <td>• Each unit increases fibrinogen by ~5-10 mg/dL<br>• Typical dose: 10 units<br>• APL: Goal fibrinogen >150 mg/dL</td>
+                    </tr>
+                </table>
+                
+                <h3>G-CSF (Granulocyte Colony-Stimulating Factor)</h3>
+                
+                <div class="info-box">
+                    <p><strong>Timing:</strong> Start at least 24-48 hours AFTER chemotherapy completion (at least 24h after cytotoxic drugs)</p>
+                    <p><strong>Stop:</strong> 24 hours before next chemotherapy cycle</p>
+                    <p><strong>Indication:</strong> Neutropenic fever risk >20%, prior neutropenic fever, or prolonged neutropenia</p>
+                </div>
+                
+                <table>
+                    <tr>
+                        <th>Formulation</th>
+                        <th>Dosing</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Neupogen (filgrastim)</strong></td>
+                        <td>5 mcg/kg SQ daily</td>
+                        <td>Short-acting, requires daily injections until ANC >1000-1500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Neulasta (pegfilgrastim)</strong></td>
+                        <td>6 mg SQ × 1 dose</td>
+                        <td>Long-acting; give 24h after chemo, hold 14 days before next cycle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zarxio (filgrastim-sndz)</strong></td>
+                        <td>5 mcg/kg SQ daily</td>
+                        <td>Biosimilar to Neupogen</td>
+                    </tr>
+                </table>
+                
+                <h3>Antimicrobial Prophylaxis</h3>
+                
+                <div class="regimen-card">
+                    <h4>Standard Prophylaxis During Neutropenia (ANC <500)</h4>
+                    
+                    <table>
+                        <tr>
+                            <th>Category</th>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Duration</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Antibacterial</strong></td>
+                            <td>Levofloxacin<br><em>OR</em><br>Ciprofloxacin</td>
+                            <td>500mg PO daily<br><br>500mg PO BID</td>
+                            <td>While ANC <500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Antifungal</strong></td>
+                            <td>Posaconazole<br><em>OR</em><br>Voriconazole<br><em>OR</em><br>Fluconazole</td>
+                            <td>300mg PO daily (with food)<br><br>200mg PO BID<br><br>400mg PO daily</td>
+                            <td>During and 2-4 weeks after intensive chemotherapy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Antiviral</strong></td>
+                            <td>Acyclovir<br><em>OR</em><br>Valacyclovir</td>
+                            <td>400mg PO BID-TID<br><br>500mg PO daily</td>
+                            <td>Throughout treatment if HSV+</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PJP</strong></td>
+                            <td>Atovaquone<br><em>OR</em><br>Bactrim DS<br><em>OR</em><br>Pentamidine</td>
+                            <td>1500mg PO daily<br><br>1 tab PO daily or 3x/week<br><br>300mg inhaled monthly</td>
+                            <td>While on steroids + 4-6 weeks after</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ Azole-Venetoclax Interaction - CRITICAL</h4>
+                        <p>If patient on venetoclax + azole antifungal:</p>
+                        <ul>
+                            <li><strong>Posaconazole or voriconazole:</strong> Reduce venetoclax to 100mg daily (75% reduction)</li>
+                            <li><strong>Fluconazole:</strong> Reduce venetoclax to 200mg daily (50% reduction)</li>
+                            <li>Document dose adjustment clearly in orders!</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Pre-Treatment Checklist</h3>
+                
+                <div class="checklist">
+                    <h4>✓ Before Starting Chemotherapy</h4>
+                    <ul>
+                        <li><strong>Cardiac:</strong> ECHO or MUGA (baseline EF, repeat if anthracycline cumulative dose high)</li>
+                        <li><strong>Infectious disease:</strong> HIV, HBV, HCV serologies (if positive, need specialist input)</li>
+                        <li><strong>Tumor lysis labs:</strong> BMP, uric acid, LDH, phosphorus</li>
+                        <li><strong>Coagulation:</strong> PT, PTT, fibrinogen, D-dimer (especially APL)</li>
+                        <li><strong>Type & screen:</strong> For transfusion support</li>
+                        <li><strong>Pregnancy test:</strong> In all patients of childbearing potential</li>
+                        <li><strong>Fertility preservation:</strong> Discuss and offer referral BEFORE chemotherapy</li>
+                        <li><strong>Central line:</strong> Tunneled catheter (Hickman) or PICC for intensive therapy</li>
+                        <li><strong>Dental clearance:</strong> Especially before intensive chemotherapy or transplant</li>
+                        <li><strong>Advance directives:</strong> Goals of care discussion</li>
+                        <li><strong>Social work:</strong> Financial counseling, disability paperwork</li>
+                    </ul>
+                </div>
+                
+                <h3>When to Consult Transplant</h3>
+                
+                <div class="info-box">
+                    <p><strong>Consult BMT team early for:</strong></p>
+                    <ul>
+                        <li>All AML patients achieving CR1 (especially intermediate/high-risk cytogenetics)</li>
+                        <li>ALL patients in CR1 (most will need transplant)</li>
+                        <li>Relapsed/refractory disease considering salvage therapy</li>
+                        <li>High-risk molecular features (FLT3-ITD with high allelic ratio, TP53 mutation, complex karyotype)</li>
+                    </ul>
+                    <p><strong>Do NOT delay:</strong> HLA typing can take 2-4 weeks, donor search can take months</p>
+                </div>
+            </section>
+            
+            <!-- GLOSSARY -->
+            <section id="glossary" class="glossary">
+                <h3>📚 Abbreviations & Glossary</h3>
+                
+                <div class="abbrev">
+                    <span class="abbrev-term">ALL</span>
+                    <span>Acute Lymphoblastic Leukemia</span>
+                    
+                    <span class="abbrev-term">AML</span>
+                    <span>Acute Myeloid Leukemia</span>
+                    
+                    <span class="abbrev-term">ANC</span>
+                    <span>Absolute Neutrophil Count</span>
+                    
+                    <span class="abbrev-term">APL</span>
+                    <span>Acute Promyelocytic Leukemia</span>
+                    
+                    <span class="abbrev-term">ATO</span>
+                    <span>Arsenic Trioxide</span>
+                    
+                    <span class="abbrev-term">ATRA</span>
+                    <span>All-Trans Retinoic Acid (Tretinoin)</span>
+                    
+                    <span class="abbrev-term">BM Bx</span>
+                    <span>Bone Marrow Biopsy</span>
+                    
+                    <span class="abbrev-term">CNS</span>
+                    <span>Central Nervous System</span>
+                    
+                    <span class="abbrev-term">CR</span>
+                    <span>Complete Remission</span>
+                    
+                    <span class="abbrev-term">CRi</span>
+                    <span>Complete Remission with incomplete count recovery</span>
+                    
+                    <span class="abbrev-term">DIC</span>
+                    <span>Disseminated Intravascular Coagulation</span>
+                    
+                    <span class="abbrev-term">ECOG PS</span>
+                    <span>Eastern Cooperative Oncology Group Performance Status</span>
+                    
+                    <span class="abbrev-term">G-CSF</span>
+                    <span>Granulocyte Colony-Stimulating Factor</span>
+                    
+                    <span class="abbrev-term">HiDAC</span>
+                    <span>High-Dose Cytarabine (Ara-C)</span>
+                    
+                    <span class="abbrev-term">HMA</span>
+                    <span>Hypomethylating Agent (Azacitidine, Decitabine)</span>
+                    
+                    <span class="abbrev-term">IT</span>
+                    <span>Intrathecal</span>
+                    
+                    <span class="abbrev-term">MDS</span>
+                    <span>Myelodysplastic Syndrome</span>
+                    
+                    <span class="abbrev-term">MRD</span>
+                    <span>Measurable Residual Disease (previously Minimal Residual Disease)</span>
+                    
+                    <span class="abbrev-term">MTX</span>
+                    <span>Methotrexate</span>
+                    
+                    <span class="abbrev-term">Ph+</span>
+                    <span>Philadelphia chromosome positive (BCR-ABL fusion)</span>
+                    
+                    <span class="abbrev-term">PJP</span>
+                    <span>Pneumocystis jirovecii Pneumonia</span>
+                    
+                    <span class="abbrev-term">TKD</span>
+                    <span>Tyrosine Kinase Domain</span>
+                    
+                    <span class="abbrev-term">TKI</span>
+                    <span>Tyrosine Kinase Inhibitor</span>
+                    
+                    <span class="abbrev-term">TLS</span>
+                    <span>Tumor Lysis Syndrome</span>
+                    
+                    <span class="abbrev-term">VOD</span>
+                    <span>Veno-Occlusive Disease (Sinusoidal Obstruction Syndrome)</span>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</body>
+</html>

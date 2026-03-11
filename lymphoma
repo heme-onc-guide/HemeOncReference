@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lymphoma Treatment Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #48bb78;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #48bb78;
+        }
+        
+        .nav-btn:hover {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #48bb78;
+            padding-left: 20px;
+        }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+        
+        h4 {
+            color: #2d3748;
+            font-size: 1.1em;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge.first-line { background: #48bb78; color: white; }
+        .badge.high-risk { background: #f56565; color: white; }
+        .badge.relapsed { background: #ed8936; color: white; }
+        .badge.cns { background: #4299e1; color: white; }
+        
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .warning-box h4 {
+            color: #c53030;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .resident-alert {
+            background: #fef5e7;
+            border-left: 4px solid #f6ad55;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .resident-alert h4 {
+            color: #c05621;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checklist {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .checklist h4 {
+            color: #22543d;
+            margin-bottom: 10px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-size: 1.2em;
+        }
+        
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .regimen-card:hover {
+            border-color: #48bb78;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.15);
+        }
+        
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .regimen-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        tr:hover {
+            background: #f7fafc;
+        }
+        
+        .indication {
+            background: #fef5e7;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-style: italic;
+            border-left: 3px solid #f6ad55;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .glossary {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .glossary h3 {
+            background: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        
+        .abbrev {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .abbrev-term {
+            font-weight: 600;
+            color: #48bb78;
+        }
+
+        .score-box {
+            background: #f0fff4;
+            border: 2px solid #48bb78;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .score-box h4 {
+            color: #22543d;
+            margin-bottom: 10px;
+        }
+
+        .mnemonic {
+            background: #e6fffa;
+            border-left: 4px solid #319795;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .regimen-header { flex-direction: column; align-items: flex-start; }
+            table { font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🦠 Lymphoma Treatment Guide</h1>
+            <p class="header-subtitle">Comprehensive reference for aggressive lymphoma treatment protocols, staging, and CNS prophylaxis</p>
+        </header>
+        
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('types')">Types & Staging</button>
+            <button class="nav-btn" onclick="scrollToSection('first-line')">First-Line Therapy</button>
+            <button class="nav-btn" onclick="scrollToSection('relapsed')">Relapsed/Refractory</button>
+            <button class="nav-btn" onclick="scrollToSection('cns')">CNS Prophylaxis</button>
+            <button class="nav-btn" onclick="scrollToSection('advanced')">CAR-T & Bispecifics</button>
+            <button class="nav-btn" onclick="scrollToSection('glossary')">Glossary</button>
+        </nav>
+        
+        <div class="content">
+            <!-- TYPES AND STAGING -->
+            <section id="types" class="section">
+                <h2>Aggressive Lymphoma Types & Staging</h2>
+                
+                <div class="info-box">
+                    <p><strong>Note:</strong> In the hospital, you'll primarily see aggressive lymphomas. Less aggressive forms are typically managed outpatient.</p>
+                </div>
+
+                <h3>Types of Aggressive Lymphoma</h3>
+                
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Key Features</th>
+                    </tr>
+                    <tr>
+                        <td><strong>DLBCL</strong><br>(Diffuse Large B-Cell Lymphoma)</td>
+                        <td>Most common aggressive lymphoma; rapid growth; potentially curable with chemotherapy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HGBCL</strong><br>(High-Grade B-Cell Lymphoma)</td>
+                        <td>Includes "double-hit" and "triple-hit" lymphomas with MYC rearrangements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Burkitt Lymphoma</strong></td>
+                        <td>Highly aggressive; MYC translocation; requires intensive chemotherapy (DA-EPOCH-R)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Primary Mediastinal B-Cell Lymphoma</strong></td>
+                        <td>Arises in mediastinum; often in young women; good prognosis with DA-EPOCH-R</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CNS Lymphoma</strong></td>
+                        <td>Primary brain lymphoma; requires high-dose methotrexate-based therapy</td>
+                    </tr>
+                </table>
+
+                <h3>IPI Score (International Prognostic Index)</h3>
+                
+                <div class="mnemonic">
+                    <strong>Mnemonic: APLES</strong> (remember "apples" for lymphoma staging)
+                </div>
+
+                <div class="score-box">
+                    <h4>IPI Risk Factors (1 point each):</h4>
+                    <ul>
+                        <li><strong>A</strong>ge >60 years</li>
+                        <li><strong>P</strong>erformance status (ECOG) ≥2</li>
+                        <li><strong>L</strong>DH elevated (>upper limit of normal)</li>
+                        <li><strong>E</strong>xtranodal sites >1</li>
+                        <li><strong>S</strong>tage III or IV disease</li>
+                    </ul>
+                    
+                    <p style="margin-top:15px;"><strong>Interpretation:</strong></p>
+                    <ul>
+                        <li><strong>Low risk (0-1):</strong> ~70-90% 5-year survival</li>
+                        <li><strong>Low-intermediate (2):</strong> ~50-70% 5-year survival</li>
+                        <li><strong>High-intermediate (3):</strong> ~30-50% 5-year survival</li>
+                        <li><strong>High risk (4-5):</strong> ~15-30% 5-year survival</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Quick IPI Calculator:</strong> Use MDCalc for easy calculation</p>
+                </div>
+
+                <h3>Double-Hit and Triple-Hit Lymphoma</h3>
+
+                <div class="warning-box">
+                    <h4>⚠️ High-Grade B-Cell Lymphoma (HGBCL)</h4>
+                    <p>Characterized by rearrangements in <strong>MYC</strong> plus <strong>BCL-2</strong> and/or <strong>BCL-6</strong></p>
+                    
+                    <ul style="margin-top:10px;">
+                        <li><strong>Double-Hit:</strong> MYC + (BCL-2 OR BCL-6)</li>
+                        <li><strong>Triple-Hit:</strong> MYC + BCL-2 + BCL-6</li>
+                    </ul>
+                    
+                    <p style="margin-top:10px;"><strong>Treatment:</strong> Requires intensive therapy (DA-EPOCH-R), NOT standard R-CHOP</p>
+                </div>
+
+                <h3>Hans Algorithm</h3>
+                
+                <div class="info-box">
+                    <p><strong>Purpose:</strong> Sub-classifies DLBCL based on cell of origin using immunohistochemistry</p>
+                    <ul>
+                        <li><strong>GCB (Germinal Center B-cell):</strong> Better prognosis</li>
+                        <li><strong>Non-GCB (Activated B-cell):</strong> Worse prognosis</li>
+                    </ul>
+                </div>
+
+                <!-- Hans Algorithm Flowchart -->
+                <div style="background: white; border: 2px solid #e2e8f0; border-radius: 8px; padding: 30px; margin: 20px 0;">
+                    <svg viewBox="0 0 800 400" style="width: 100%; max-width: 800px; margin: 0 auto; display: block;">
+                        <!-- CD10 box -->
+                        <rect x="50" y="150" width="120" height="80" fill="#2c5aa0" stroke="#1e3a8a" stroke-width="2" rx="8"/>
+                        <text x="110" y="195" text-anchor="middle" fill="white" font-size="24" font-weight="bold">CD10</text>
+                        
+                        <!-- CD10+ arrow to GCB -->
+                        <path d="M 170 170 L 280 90" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowblue)"/>
+                        <text x="200" y="120" font-size="20" font-weight="bold">+</text>
+                        
+                        <!-- GCB box (top) -->
+                        <rect x="280" y="50" width="120" height="80" fill="#93c5fd" stroke="#2563eb" stroke-width="2" rx="8"/>
+                        <text x="340" y="95" text-anchor="middle" fill="#1e3a8a" font-size="22" font-weight="bold">GCB</text>
+                        
+                        <!-- CD10- arrow to BCL6 -->
+                        <path d="M 170 210 L 280 240" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowblue)"/>
+                        <text x="200" y="235" font-size="20" font-weight="bold">−</text>
+                        
+                        <!-- BCL6 box -->
+                        <rect x="280" y="200" width="120" height="80" fill="#2c5aa0" stroke="#1e3a8a" stroke-width="2" rx="8"/>
+                        <text x="340" y="245" text-anchor="middle" fill="white" font-size="22" font-weight="bold">BCL6</text>
+                        
+                        <!-- BCL6+ arrow to MUM1 -->
+                        <path d="M 400 220 L 490 160" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowblue)"/>
+                        <text x="430" y="180" font-size="20" font-weight="bold">+</text>
+                        
+                        <!-- MUM1 box -->
+                        <rect x="490" y="120" width="120" height="80" fill="#2c5aa0" stroke="#1e3a8a" stroke-width="2" rx="8"/>
+                        <text x="550" y="165" text-anchor="middle" fill="white" font-size="22" font-weight="bold">MUM1</text>
+                        
+                        <!-- MUM1+ arrow to Non-GCB (top right) -->
+                        <path d="M 610 140 L 680 90" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowgray)"/>
+                        <text x="630" y="105" font-size="20" font-weight="bold">+</text>
+                        
+                        <!-- Non-GCB box (top right) -->
+                        <rect x="650" y="50" width="140" height="80" fill="#9ca3af" stroke="#4b5563" stroke-width="2" rx="8"/>
+                        <text x="720" y="95" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Non-GCB</text>
+                        
+                        <!-- MUM1- arrow to GCB (middle right) -->
+                        <path d="M 610 180 L 680 200" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowblue2)"/>
+                        <text x="630" y="200" font-size="20" font-weight="bold">−</text>
+                        
+                        <!-- GCB box (middle right) -->
+                        <rect x="650" y="160" width="140" height="80" fill="#93c5fd" stroke="#2563eb" stroke-width="2" rx="8"/>
+                        <text x="720" y="205" text-anchor="middle" fill="#1e3a8a" font-size="22" font-weight="bold">GCB</text>
+                        
+                        <!-- BCL6- arrow to Non-GCB (bottom) -->
+                        <path d="M 400 260 L 490 320" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowgray)"/>
+                        <text x="430" y="300" font-size="20" font-weight="bold">−</text>
+                        
+                        <!-- Non-GCB box (bottom) -->
+                        <rect x="490" y="280" width="140" height="80" fill="#9ca3af" stroke="#4b5563" stroke-width="2" rx="8"/>
+                        <text x="560" y="325" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Non-GCB</text>
+                        
+                        <!-- Arrow markers -->
+                        <defs>
+                            <marker id="arrowblue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#2c5aa0" />
+                            </marker>
+                            <marker id="arrowblue2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#2c5aa0" />
+                            </marker>
+                            <marker id="arrowgray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#2c5aa0" />
+                            </marker>
+                        </defs>
+                    </svg>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 3px solid #2563eb;">
+                        <p style="font-weight: 600; margin-bottom: 8px;">Quick Reference:</p>
+                        <ul style="margin-left: 20px; font-size: 0.9em;">
+                            <li><strong>CD10+</strong> → GCB (stop here, best prognosis)</li>
+                            <li><strong>CD10−, BCL6−</strong> → Non-GCB</li>
+                            <li><strong>CD10−, BCL6+, MUM1+</strong> → Non-GCB</li>
+                            <li><strong>CD10−, BCL6+, MUM1−</strong> → GCB</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FIRST-LINE THERAPY -->
+            <section id="first-line" class="section">
+                <h2>First-Line Therapy</h2>
+
+                <h3>R-CHOP (Standard First-Line)</h3>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">R-CHOP</span>
+                        <span class="badge first-line">First-Line</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Standard first-line for DLBCL or aggressive B-cell lymphoma WITHOUT high-risk genetics (MYC, BCL-2/6)
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Rituximab (R)</strong></td>
+                            <td>375 mg/m² IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cyclophosphamide (C)</strong></td>
+                            <td>750 mg/m² IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Doxorubicin/Hydroxydaunomycin (H)</strong></td>
+                            <td>50 mg/m² IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vincristine/Oncovin (O)</strong></td>
+                            <td>1.4 mg/m² IV (max 2 mg)</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prednisone (P)</strong></td>
+                            <td>100 mg PO daily</td>
+                            <td>Days 1-5</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Cycle:</strong> 21 days × 6 cycles (can be done outpatient)</p>
+
+                    <!-- R-CHOP Day Chart -->
+                    <div style="overflow-x:auto; margin: 15px 0;">
+                        <p style="font-weight:600; margin-bottom:8px;">21-Day Cycle Schedule:</p>
+                        <table style="min-width:500px; border-collapse:collapse; width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="background:#2d3748;color:white;padding:10px 8px;text-align:left;min-width:160px;border:1px solid #4a5568;font-size:0.85em;">Drug</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D1</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D2</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D3</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D4</th>
+                                    <th style="background:#2d3748;color:white;padding:10px 6px;text-align:center;border:1px solid #4a5568;font-size:0.85em;">D5</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Rituximab<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">375 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Cyclophosphamide<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">750 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Doxorubicin<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">50 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Vincristine<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">1.4 mg/m² IV (max 2mg)</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Prednisone<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">100 mg PO daily</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 8px;border-radius:4px;font-weight:600;font-size:0.82em;">✓</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="resident-alert">
+                        <h4>📋 Resident Monitoring</h4>
+                        <ul>
+                            <li><strong>Rituximab:</strong> Pre-med with acetaminophen, diphenhydramine. Monitor for infusion reactions.</li>
+                            <li><strong>Doxorubicin:</strong> Baseline ECHO (cumulative dose limit ~450-550 mg/m²). Watch for cardiotoxicity.</li>
+                            <li><strong>Vincristine:</strong> Constipation prophylaxis (senna, miralax). Monitor for neuropathy.</li>
+                            <li><strong>Nadir:</strong> Days 10-14. Monitor CBC weekly initially.</li>
+                            <li><strong>G-CSF:</strong> Consider if neutropenic fever or high-risk patient.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Pola-R-CHP (First-Line for Higher Risk)</h3>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Pola-R-CHP</span>
+                        <span class="badge first-line">First-Line</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Advanced stage disease (IPI ≥2) WITHOUT high-risk genetics (no MYC, BCL-2/6 rearrangements)
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Note:</strong> Less commonly seen in hospital due to insurance coverage issues with polatuzumab vedotin</p>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Polatuzumab vedotin (Pola)</strong></td>
+                            <td>1.8 mg/kg IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rituximab (R)</strong></td>
+                            <td>375 mg/m² IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cyclophosphamide (C)</strong></td>
+                            <td>750 mg/m² IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Doxorubicin (H)</strong></td>
+                            <td>50 mg/m² IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prednisone (P)</strong></td>
+                            <td>100 mg PO daily</td>
+                            <td>Days 1-5</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Cycle:</strong> 21 days × 6 cycles</p>
+                </div>
+
+                <h3>DA-EPOCH-R (Dose-Adjusted)</h3>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">DA-EPOCH-R</span>
+                        <span class="badge high-risk">High-Risk</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indications:</strong>
+                        <ul>
+                            <li>"Double-hit" or "triple-hit" DLBCL (MYC + BCL-2 and/or BCL-6)</li>
+                            <li>High-risk lymphoma, Burkitt lymphoma</li>
+                            <li>Primary mediastinal B-cell lymphoma</li>
+                            <li>HIV-associated lymphoma (use DA-EPOCH-RR with rituximab on D1 and D5)</li>
+                        </ul>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Starting Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Etoposide (E)</strong></td>
+                            <td>50 mg/m²/day</td>
+                            <td>24h continuous infusion Days 1-4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prednisone (P)</strong></td>
+                            <td>60 mg/m² PO</td>
+                            <td>Days 1-5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vincristine/Oncovin (O)</strong></td>
+                            <td>0.4 mg/m²/day</td>
+                            <td>24h continuous infusion Days 1-4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cyclophosphamide (C)</strong></td>
+                            <td>750 mg/m² IV</td>
+                            <td>Day 5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Doxorubicin/Hydroxydaunomycin (H)</strong></td>
+                            <td>10 mg/m²/day</td>
+                            <td>24h continuous infusion Days 1-4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rituximab (R)</strong></td>
+                            <td>375 mg/m² IV</td>
+                            <td>Day 1 (or Days 1 and 5 for HIV+)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Filgrastim (G-CSF)</strong></td>
+                            <td>5 mcg/kg SQ</td>
+                            <td>Starting Day 6 until ANC recovery</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Cycle:</strong> 21 days × 6 cycles</p>
+
+                    <!-- DA-EPOCH-R Day Chart -->
+                    <div style="overflow-x:auto; margin: 15px 0;">
+                        <p style="font-weight:600; margin-bottom:8px;">21-Day Cycle Schedule:</p>
+                        <table style="min-width:700px; border-collapse:collapse; width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="background:#2d3748;color:white;padding:10px 8px;text-align:left;min-width:160px;border:1px solid #4a5568;font-size:0.85em;">Drug</th>
+                                    <th style="background:#2d3748;color:white;padding:8px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D1</th>
+                                    <th style="background:#2d3748;color:white;padding:8px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D2</th>
+                                    <th style="background:#2d3748;color:white;padding:8px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D3</th>
+                                    <th style="background:#2d3748;color:white;padding:8px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D4</th>
+                                    <th style="background:#2d3748;color:white;padding:8px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D5</th>
+                                    <th style="background:#2d3748;color:white;padding:8px 5px;text-align:center;border:1px solid #4a5568;font-size:0.8em;">D6+</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Etoposide<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">50 mg/m²/day (24h infusion)</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Doxorubicin<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">10 mg/m²/day (24h infusion)</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fed7e2;color:#702459;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Vincristine<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">0.4 mg/m²/day (24h infusion)</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#bee3f8;color:#2a4365;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Prednisone<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">60 mg/m² PO daily</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Cyclophosphamide<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">750 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#c6f6d5;color:#22543d;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Rituximab<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">375 mg/m² IV</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#e9d8fd;color:#44337a;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">✓</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #e2e8f0;padding:8px 10px;font-weight:600;font-size:0.85em;background:#f7fafc;">Filgrastim (G-CSF)<span style="display:block;font-weight:400;color:#718096;font-size:0.85em;">5 mcg/kg SQ</span></td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;color:#cbd5e0;">—</td>
+                                    <td style="border:1px solid #e2e8f0;padding:6px;text-align:center;"><span style="background:#fefcbf;color:#744210;padding:4px 6px;border-radius:4px;font-weight:600;font-size:0.8em;">Daily until recovery</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Dose Adjustment Protocol - CRITICAL</h4>
+                        <p><strong>Doses are adjusted each cycle based on ANC and platelet nadir:</strong></p>
+                        <ul>
+                            <li><strong>If ANC >500 AND platelets >25K at nadir:</strong> INCREASE dose by 20% next cycle</li>
+                            <li><strong>If ANC <500 OR platelets <25K at nadir:</strong> DECREASE dose by 20% next cycle</li>
+                            <li><strong>Target:</strong> Keep ANC nadir around 500 and platelet nadir around 25K</li>
+                        </ul>
+                        <p style="margin-top:10px;"><strong>Expected nadir:</strong> Days 7-14 post-chemotherapy</p>
+                    </div>
+
+                    <div class="resident-alert">
+                        <h4>📋 DA-EPOCH-R Monitoring</h4>
+                        <ul>
+                            <li><strong>Continuous infusion pump:</strong> Verify pump settings for 24h infusions (E, D, O)</li>
+                            <li><strong>CBC:</strong> Check on Day 10-14 to assess nadir for dose adjustment</li>
+                            <li><strong>Central line:</strong> Required for continuous infusions</li>
+                            <li><strong>Cardiac monitoring:</strong> Baseline ECHO due to doxorubicin</li>
+                            <li><strong>TLS prophylaxis:</strong> Allopurinol, hydration (especially Burkitt)</li>
+                            <li><strong>For HIV+ patients:</strong> Coordinate with ID for HAART continuation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RELAPSED/REFRACTORY -->
+            <section id="relapsed" class="section">
+                <h2>Relapsed/Refractory Disease</h2>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">R-ICE</span>
+                        <span class="badge relapsed">Relapsed/Refractory</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Relapsed or primary refractory lymphoma (relapse <1 year), bridging therapy to CAR-T or autologous transplant
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Rituximab (R)</strong></td>
+                            <td>375 mg/m² IV</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ifosfamide (I)</strong></td>
+                            <td>5000 mg/m² IV over 24h</td>
+                            <td>Day 2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mesna</strong></td>
+                            <td>5000 mg/m² continuous infusion</td>
+                            <td>Days 2-3 (with ifosfamide + 12h after)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carboplatin (C)</strong></td>
+                            <td>AUC 5 (max 800 mg) IV</td>
+                            <td>Day 2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Etoposide (E)</strong></td>
+                            <td>100 mg/m² IV</td>
+                            <td>Days 1, 2, 3</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Cycle:</strong> 21 days (typically 2-3 cycles before proceeding to transplant/CAR-T)</p>
+
+                    <div class="resident-alert">
+                        <h4>📋 R-ICE Monitoring</h4>
+                        <ul>
+                            <li><strong>Mesna CRITICAL:</strong> Must run continuously with ifosfamide + 12h after to prevent hemorrhagic cystitis</li>
+                            <li><strong>Hydration:</strong> Aggressive IV fluids (150-200 mL/hr) during and after ifosfamide</li>
+                            <li><strong>Carboplatin dosing:</strong> Use Calvert formula (GFR × [AUC + 25])</li>
+                            <li><strong>Stem cell collection:</strong> Often done after cycle 2 if responding</li>
+                            <li><strong>G-CSF:</strong> Start Day 5-7, continue until ANC >1000</li>
+                            <li><strong>PET scan:</strong> After 2 cycles to assess response</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Ifosfamide Toxicities</h4>
+                        <ul>
+                            <li><strong>Hemorrhagic cystitis:</strong> Prevent with mesna + hydration</li>
+                            <li><strong>Encephalopathy:</strong> Confusion, somnolence (can use methylene blue 50mg IV q4h if occurs)</li>
+                            <li><strong>Myelosuppression:</strong> Nadir Days 10-14</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CNS PROPHYLAXIS -->
+            <section id="cns" class="section">
+                <h2>CNS Prophylaxis & Treatment</h2>
+
+                <h3>Who Needs CNS Prophylaxis?</h3>
+
+                <div class="checklist">
+                    <h4>✓ Indications for CNS Prophylaxis:</h4>
+                    <ul>
+                        <li><strong>ALL</strong> (acute lymphoblastic leukemia)</li>
+                        <li><strong>Lymphoma with CNS-IPI score 4-6</strong></li>
+                        <li><strong>High-risk extranodal involvement:</strong> Testicular, breast, kidney, adrenal, uterine, ovarian</li>
+                        <li><strong>High LDH levels</strong> in aggressive lymphoma</li>
+                        <li><strong>Adult T-cell leukemia/lymphoma</strong></li>
+                        <li><strong>Burkitt lymphoma</strong></li>
+                    </ul>
+                </div>
+
+                <h3>CNS Prophylaxis Regimens</h3>
+
+                <div class="info-box">
+                    <p><strong>Option 1: Intrathecal Chemotherapy</strong></p>
+                    <ul>
+                        <li><strong>Drug:</strong> Methotrexate 12 mg IT (or cytarabine 50-70 mg IT)</li>
+                        <li><strong>Frequency:</strong> 4 doses during front-line therapy (typically with cycles 1-4)</li>
+                        <li><strong>Route:</strong> Lumbar puncture or Ommaya reservoir</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Option 2: High-Dose Systemic Therapy</strong></p>
+                    <ul>
+                        <li><strong>Drugs:</strong> High-dose methotrexate (≥3 g/m²) OR high-dose cytarabine (≥2 g/m²)</li>
+                        <li><strong>Frequency:</strong> 2 cycles after completion of front-line therapy</li>
+                        <li><strong>Advantage:</strong> Better CNS penetration than IT alone</li>
+                    </ul>
+                </div>
+
+                <h3>CNS Lymphoma Treatment (Primary or Secondary)</h3>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">High-Dose MTX-based (MTR)</span>
+                        <span class="badge cns">CNS</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Primary CNS DLBCL or secondary CNS involvement
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Methotrexate (M)</strong></td>
+                            <td>3.5 g/m² IV over 4h</td>
+                            <td>Day 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Leucovorin rescue</strong></td>
+                            <td>15-25 mg IV/PO q6h</td>
+                            <td>Starting Day 2 until MTX cleared (<0.1 μmol/L)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rituximab (R)</strong></td>
+                            <td>375 mg/m² IV</td>
+                            <td>Day 3 (cycles 1-6 only)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Temozolomide (T)</strong></td>
+                            <td>150 mg/m² PO daily</td>
+                            <td>Days 7-11 of cycles 1, 3, 5, 7</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Cycle:</strong> 14 days × 7 cycles</p>
+
+                    <div class="warning-box">
+                        <h4>⚠️ MTX Drug Interactions - MUST HOLD</h4>
+                        <p><strong>The following medications interfere with MTX clearance and MUST be held:</strong></p>
+                        <ul>
+                            <li><strong>PPIs</strong> (proton pump inhibitors) - use H2 blockers if needed</li>
+                            <li><strong>Bactrim/TMP-SMX</strong> - switch to atovaquone for PJP prophylaxis</li>
+                            <li><strong>Levofloxacin</strong> - use alternative antibiotic</li>
+                            <li><strong>NSAIDs</strong> - avoid completely</li>
+                        </ul>
+                    </div>
+
+                    <div class="resident-alert">
+                        <h4>📋 MTX Clearance Schedule - CRITICAL</h4>
+                        <ul>
+                            <li><strong>Pre-MTX:</strong> Aggressive hydration (150-200 mL/hr NS), alkalinize urine (add bicarbonate to keep urine pH >7)</li>
+                            <li><strong>MTX levels:</strong>
+                                <ul style="margin-left:20px;">
+                                    <li><strong>24h post-infusion:</strong> Goal <10 μmol/L</li>
+                                    <li><strong>48h post-infusion:</strong> Goal <1 μmol/L</li>
+                                    <li><strong>72h post-infusion:</strong> Goal <0.1 μmol/L</li>
+                                </ul>
+                            </li>
+                            <li><strong>If MTX not clearing:</strong>
+                                <ul style="margin-left:20px;">
+                                    <li>Increase leucovorin frequency to q3-4h and/or increase dose</li>
+                                    <li>Increase IV fluids to 200-250 mL/hr</li>
+                                    <li>Check urine pH (goal >7)</li>
+                                    <li>Stat CMP (check creatinine)</li>
+                                    <li>Page fellow AND pharmacy immediately</li>
+                                </ul>
+                            </li>
+                            <li><strong>Monitor:</strong> Daily BMP, Mg, Phos during MTX clearance</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Overnight MTX Management</h4>
+                        <p><strong>If concerned about MTX toxicity or delayed clearance overnight:</strong></p>
+                        <ol>
+                            <li>Order STAT CMP and MTX level</li>
+                            <li>Increase leucovorin to q3-4h if level elevated</li>
+                            <li>Page fellow immediately</li>
+                            <li>Page pharmacy for dosing recommendations</li>
+                            <li>Ensure IV fluids running at appropriate rate</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ADVANCED THERAPIES -->
+            <section id="advanced" class="section">
+                <h2>CAR-T & Bispecific Antibodies</h2>
+
+                <h3>CAR-T Cell Therapy</h3>
+
+                <div class="info-box">
+                    <p><strong>FDA-approved CAR-T for lymphoma:</strong></p>
+                    <ul>
+                        <li><strong>Axicabtagene ciloleucel (Yescarta)</strong> - CD19-targeted</li>
+                        <li><strong>Tisagenlecleucel (Kymriah)</strong> - CD19-targeted</li>
+                        <li><strong>Lisocabtagene maraleucel (Breyanzi)</strong> - CD19-targeted</li>
+                    </ul>
+                    
+                    <p style="margin-top:10px;"><strong>Indications:</strong></p>
+                    <ul>
+                        <li>Relapsed/refractory large B-cell lymphoma after ≥2 prior lines</li>
+                        <li>Relapsed/refractory follicular lymphoma after ≥2 prior lines</li>
+                        <li>Primary refractory or early relapse (<12 months) DLBCL</li>
+                    </ul>
+                </div>
+
+                <div class="resident-alert">
+                    <h4>📋 CAR-T Process Overview</h4>
+                    <ol>
+                        <li><strong>Leukapheresis:</strong> Collect patient T-cells</li>
+                        <li><strong>Manufacturing:</strong> 2-4 weeks (patient may need bridging chemo)</li>
+                        <li><strong>Lymphodepletion:</strong> Fludarabine + cyclophosphamide × 3 days</li>
+                        <li><strong>CAR-T infusion:</strong> Single infusion (outpatient possible in some centers)</li>
+                        <li><strong>Monitoring:</strong> Close follow-up for CRS/ICANS (Days 1-14 highest risk)</li>
+                    </ol>
+                </div>
+
+                <h3>Epcoritamab (Bispecific T-Cell Engager)</h3>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Epcoritamab (Epkinly)</span>
+                        <span class="badge relapsed">Relapsed/Refractory</span>
+                    </div>
+                    
+                    <div class="indication">
+                        <strong>Indication:</strong> Relapsed/refractory DLBCL after ≥3 prior lines of therapy
+                    </div>
+
+                    <p><strong>Mechanism:</strong> CD20 (B-cell) × CD3 (T-cell) bispecific antibody</p>
+
+                    <table>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Dose</th>
+                            <th>Schedule</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Priming Doses (Cycle 1)</strong></td>
+                            <td>0.16 mg → 0.8 mg SQ</td>
+                            <td>Days 1 and 8</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Full Dose</strong></td>
+                            <td>48 mg SQ</td>
+                            <td>Day 15, then weekly × 9 doses, then q2 weeks × 9 doses, then q4 weeks</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <h4>⚠️ CRS Risk with Bispecific Antibodies</h4>
+                        <p><strong>Highest risk:</strong> After first full dose (Day 15 of Cycle 1)</p>
+                        <p><strong>Management:</strong></p>
+                        <ul>
+                            <li>Hospitalize for first full dose (48h observation)</li>
+                            <li>Pre-medications: Dexamethasone, acetaminophen, diphenhydramine</li>
+                            <li>Have tocilizumab readily available</li>
+                            <li>Monitor vitals q4h × 24h after dose</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GLOSSARY -->
+            <section id="glossary" class="glossary">
+                <h3>📚 Abbreviations & Glossary</h3>
+                
+                <div class="abbrev">
+                    <span class="abbrev-term">DLBCL</span>
+                    <span>Diffuse Large B-Cell Lymphoma</span>
+                    
+                    <span class="abbrev-term">HGBCL</span>
+                    <span>High-Grade B-Cell Lymphoma</span>
+                    
+                    <span class="abbrev-term">IPI</span>
+                    <span>International Prognostic Index</span>
+                    
+                    <span class="abbrev-term">GCB</span>
+                    <span>Germinal Center B-cell type</span>
+                    
+                    <span class="abbrev-term">CNS-IPI</span>
+                    <span>CNS International Prognostic Index</span>
+                    
+                    <span class="abbrev-term">DA-EPOCH-R</span>
+                    <span>Dose-Adjusted Etoposide, Prednisone, Vincristine, Cyclophosphamide, Doxorubicin, Rituximab</span>
+                    
+                    <span class="abbrev-term">R-CHOP</span>
+                    <span>Rituximab, Cyclophosphamide, Doxorubicin, Vincristine, Prednisone</span>
+                    
+                    <span class="abbrev-term">R-ICE</span>
+                    <span>Rituximab, Ifosfamide, Carboplatin, Etoposide</span>
+                    
+                    <span class="abbrev-term">IT</span>
+                    <span>Intrathecal</span>
+                    
+                    <span class="abbrev-term">MTX</span>
+                    <span>Methotrexate</span>
+                    
+                    <span class="abbrev-term">CRS</span>
+                    <span>Cytokine Release Syndrome</span>
+                    
+                    <span class="abbrev-term">ICANS</span>
+                    <span>Immune Effector Cell-Associated Neurotoxicity Syndrome</span>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</body>
+</html>

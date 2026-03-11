@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antimicrobial Prophylaxis Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #f6ad55;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #f6ad55;
+        }
+        
+        .nav-btn:hover {
+            background: #f6ad55;
+            color: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #f6ad55;
+            padding-left: 20px;
+        }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+        
+        h4 {
+            color: #2d3748;
+            font-size: 1.1em;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .warning-box h4 {
+            color: #c53030;
+            margin-bottom: 8px;
+        }
+        
+        .key-points {
+            background: #fef5e7;
+            border-left: 4px solid #f6ad55;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .key-points h4 {
+            color: #c05621;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border: 2px solid #e2e8f0;
+        }
+        
+        th {
+            background: #f6ad55;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #ed8936;
+        }
+        
+        td {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+        
+        tr:hover {
+            background: #fef5e7;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .glossary {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .glossary h3 {
+            background: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        
+        .abbrev {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .abbrev-term {
+            font-weight: 600;
+            color: #f6ad55;
+        }
+
+        .risk-box {
+            background: white;
+            border: 2px solid #f6ad55;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .risk-box h4 {
+            color: #c05621;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            table { font-size: 0.85em; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💊 Antimicrobial Prophylaxis Guide</h1>
+            <p class="header-subtitle">Comprehensive reference for antibacterial, antifungal, antiviral, and PJP prophylaxis by disease and regimen</p>
+        </header>
+        
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('overview')">Overview</button>
+            <button class="nav-btn" onclick="scrollToSection('by-disease')">By Disease</button>
+            <button class="nav-btn" onclick="scrollToSection('medications')">Medications</button>
+            <button class="nav-btn" onclick="scrollToSection('special')">Special Considerations</button>
+            <button class="nav-btn" onclick="scrollToSection('glossary')">Glossary</button>
+        </nav>
+        
+        <div class="content">
+            <!-- OVERVIEW -->
+            <section id="overview" class="section">
+                <h2>Overview</h2>
+                
+                <div class="info-box">
+                    <p><strong>General principle:</strong> Need for antimicrobial prophylaxis is based on duration and depth of neutropenia</p>
+                </div>
+
+                <div class="risk-box">
+                    <h4>Risk-Based Approach</h4>
+                    <ul>
+                        <li><strong>Low Risk:</strong> Neutropenia <7 days → <strong>No prophylaxis needed</strong></li>
+                        <li><strong>Intermediate/High Risk:</strong> Neutropenia >7 days → <strong>Prophylaxis indicated</strong></li>
+                    </ul>
+                </div>
+
+                <h3>Standard Antimicrobial Prophylaxis Categories</h3>
+
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Standard Agent</th>
+                        <th>Dose</th>
+                        <th>When to Use</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Antibacterial</strong></td>
+                        <td>Levofloxacin</td>
+                        <td>500 mg PO daily</td>
+                        <td>During induction and when ANC <500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Antifungal</strong></td>
+                        <td>Posaconazole<br>(or Fluconazole)</td>
+                        <td>300 mg PO daily (after 300mg q12h × 2 doses loading)<br>400 mg PO daily</td>
+                        <td>During induction and when ANC <500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Antiviral</strong></td>
+                        <td>Acyclovir<br>(or Valacyclovir)</td>
+                        <td>400 mg PO q12h<br>500 mg PO daily</td>
+                        <td>During all chemotherapy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PJP (PCP)</strong></td>
+                        <td>Bactrim DS<br>(or Atovaquone)</td>
+                        <td>1 tab PO M/W/F or daily<br>1500 mg PO daily</td>
+                        <td>When on steroids or lymphodepleting agents</td>
+                    </tr>
+                </table>
+
+                <h3>Malignancy-Specific Considerations</h3>
+
+                <div class="key-points">
+                    <h4>🔑 Key Concept</h4>
+                    <p><strong>Myeloid malignancies (AML, MDS):</strong> More likely to have side effects related to myeloid cells (neutrophils). Think fungal/bacterial infections that are normally killed by myeloid cells.</p>
+                    <p style="margin-top:10px;"><strong>Lymphoid malignancies (lymphoma, ALL, CLL):</strong> Treatments cause low lymphocytes. Think higher risk for viral infections and opportunistic infections (PJP, fungal).</p>
+                </div>
+            </section>
+
+            <!-- BY DISEASE TABLE -->
+            <section id="by-disease" class="section">
+                <h2>Prophylaxis by Disease & Treatment</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 12%;">Diagnosis</th>
+                            <th style="width: 22%;">Antibacterial</th>
+                            <th style="width: 22%;">Antifungal</th>
+                            <th style="width: 22%;">Anti-PCP</th>
+                            <th style="width: 22%;">Antiviral</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AML</strong></td>
+                            <td>Levofloxacin during induction and when ANC <500</td>
+                            <td>Posaconazole during induction and when ANC <500</td>
+                            <td>Bactrim DS M/W/F if on purine analogs (ex: FLAG)</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MDS</strong></td>
+                            <td>Levofloxacin during induction and when ANC <500</td>
+                            <td>Posaconazole during induction and when ANC <500</td>
+                            <td>None</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>APML</strong></td>
+                            <td>Levofloxacin during induction and when ANC <500</td>
+                            <td>With prolonged neutropenia or anthracycline → Isovuconazole until resolution of neutropenia</td>
+                            <td>Bactrim DS M/W/F if on steroids for >4 weeks (differentiation syndrome)</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ALL</strong></td>
+                            <td>Levofloxacin during induction and when ANC <500</td>
+                            <td><strong>Induction:</strong> Posaconazole<br><strong>Consolidation:</strong> Fluconazole when ANC <500<br><strong>If getting vincristine:</strong> Add micafungin</td>
+                            <td>Bactrim DS M/W/F</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lymphoma</strong></td>
+                            <td>Levofloxacin when ANC <500 for 7 days</td>
+                            <td>Fluconazole when ANC <500 for 7 days</td>
+                            <td>Bactrim DS M/W/F if on DA-EPOCH</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Multiple Myeloma</strong></td>
+                            <td>Levofloxacin when ANC <500 for 7 days</td>
+                            <td>Fluconazole when ANC <500 for 7 days</td>
+                            <td>None</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Solid Tumors</strong></td>
+                            <td>Levofloxacin when ANC <500 for 7 days</td>
+                            <td>Fluconazole when ANC <500 for 7 days</td>
+                            <td>None</td>
+                            <td>Acyclovir only if prior HSV episode</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BiTE<br>(Immune-targeted)</strong></td>
+                            <td>None</td>
+                            <td>None</td>
+                            <td>Bactrim DS M/W/F for ~6 months until CD4 recovery</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CAR-T</strong></td>
+                            <td>Only if prolonged neutropenia</td>
+                            <td>Only if prolonged neutropenia</td>
+                            <td>Bactrim DS M/W/F for ~6 months until CD4 recovery</td>
+                            <td>Acyclovir</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- MEDICATIONS DETAIL -->
+            <section id="medications" class="section">
+                <h2>Antimicrobial Medications - Details</h2>
+
+                <h3>Antibacterial Prophylaxis</h3>
+
+                <div class="info-box">
+                    <h4>Levofloxacin 500 mg PO daily</h4>
+                    <ul>
+                        <li><strong>Coverage:</strong> Broad-spectrum fluoroquinolone (Gram-positive and Gram-negative)</li>
+                        <li><strong>When to start:</strong> Beginning of chemotherapy or when ANC <500</li>
+                        <li><strong>When to stop:</strong> ANC >500 × 2 consecutive days OR end of chemotherapy</li>
+                        <li><strong>Considerations:</strong> Risk of C. difficile, resistance patterns, QTc prolongation</li>
+                    </ul>
+                </div>
+
+                <h3>Antifungal Prophylaxis</h3>
+
+                <div class="info-box">
+                    <h4>Posaconazole (Noxafil) 300 mg PO daily</h4>
+                    <ul>
+                        <li><strong>Loading:</strong> 300 mg PO q12h × 2 doses (Day 1), then 300 mg daily</li>
+                        <li><strong>Coverage:</strong> Broad mold coverage including Aspergillus, Mucor</li>
+                        <li><strong>When to use:</strong> High-risk patients (AML, MDS, ALL induction)</li>
+                        <li><strong>Must take with food</strong> for absorption</li>
+                        <li><strong>Drug interaction:</strong> CYP3A4 inhibitor - reduces venetoclax dose to 100 mg</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Posaconazole/Voriconazole + Venetoclax Interaction</h4>
+                    <p><strong>CRITICAL:</strong> If patient is on venetoclax:</p>
+                    <ul>
+                        <li><strong>Posaconazole or voriconazole:</strong> Reduce venetoclax to <strong>100 mg daily</strong> (75% reduction)</li>
+                        <li><strong>Fluconazole:</strong> Reduce venetoclax to <strong>200 mg daily</strong> (50% reduction)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Isovuconazole (Cresemba)</h4>
+                    <ul>
+                        <li><strong>Loading:</strong> 372 mg q8h × 6 doses (48h), then 372 mg daily</li>
+                        <li><strong>Coverage:</strong> Broad mold coverage, similar to posaconazole</li>
+                        <li><strong>When to use:</strong> APL with prolonged neutropenia or anthracycline therapy</li>
+                        <li><strong>Advantage:</strong> Can be given IV or PO, less drug interactions than posaconazole</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Fluconazole 400 mg PO daily</h4>
+                    <ul>
+                        <li><strong>Coverage:</strong> Candida species (NO mold coverage)</li>
+                        <li><strong>When to use:</strong> Lower-risk patients, lymphoma, myeloma, consolidation ALL</li>
+                        <li><strong>Advantage:</strong> Well-tolerated, fewer drug interactions than posaconazole</li>
+                        <li><strong>Drug interaction:</strong> Moderate CYP3A4 inhibitor - reduces venetoclax to 200 mg</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Micafungin (Mycamine)</h4>
+                    <ul>
+                        <li><strong>Dose:</strong> 50 mg IV daily</li>
+                        <li><strong>When to use:</strong> ALL patients receiving vincristine (risk of invasive candidiasis)</li>
+                        <li><strong>Coverage:</strong> Candida species, some Aspergillus</li>
+                        <li><strong>Advantage:</strong> No drug interactions, can use with azoles</li>
+                    </ul>
+                </div>
+
+                <h3>Antiviral Prophylaxis</h3>
+
+                <div class="info-box">
+                    <h4>Acyclovir 400 mg PO q12h (or 400 mg PO TID)</h4>
+                    <ul>
+                        <li><strong>Coverage:</strong> HSV-1, HSV-2, VZV</li>
+                        <li><strong>When to use:</strong> All patients receiving chemotherapy</li>
+                        <li><strong>Duration:</strong> Throughout treatment and 6-12 months post-transplant/CAR-T</li>
+                        <li><strong>Alternative:</strong> Valacyclovir 500 mg PO daily</li>
+                    </ul>
+                </div>
+
+                <h3>PJP (Pneumocystis) Prophylaxis</h3>
+
+                <div class="info-box">
+                    <h4>Bactrim DS (TMP-SMX) M/W/F or Daily</h4>
+                    <ul>
+                        <li><strong>Dose:</strong> 1 double-strength tablet (160/800 mg) PO</li>
+                        <li><strong>Frequency:</strong> Monday/Wednesday/Friday OR daily</li>
+                        <li><strong>When to use:</strong> Lymphodepleting therapy, steroids >20 mg prednisone × 1 month, ALL, BiTE, CAR-T</li>
+                        <li><strong>Duration:</strong> Continue until CD4 count >200 for 3-6 months (BiTE/CAR-T)</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Bactrim Contraindications</h4>
+                    <ul>
+                        <li><strong>G6PD deficiency:</strong> Risk of hemolysis - use atovaquone instead</li>
+                        <li><strong>Methotrexate:</strong> Avoid Bactrim (interferes with MTX clearance) - use atovaquone</li>
+                        <li><strong>Sulfa allergy:</strong> Use atovaquone or dapsone</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Atovaquone (Mepron) 1500 mg PO daily</h4>
+                    <ul>
+                        <li><strong>When to use:</strong> Alternative to Bactrim (sulfa allergy, G6PD deficiency, on MTX)</li>
+                        <li><strong>Must take with fatty food</strong> for absorption</li>
+                        <li><strong>Expensive</strong> - insurance may require prior authorization</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Inhaled Pentamidine 300 mg monthly</h4>
+                    <ul>
+                        <li><strong>When to use:</strong> Cannot tolerate oral medications</li>
+                        <li><strong>Administration:</strong> Nebulized monthly in clinic</li>
+                        <li><strong>Side effect:</strong> Bronchospasm (pre-treat with bronchodilator)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SPECIAL CONSIDERATIONS -->
+            <section id="special" class="section">
+                <h2>Special Considerations</h2>
+
+                <h3>PJP Prophylaxis - Specific Indications</h3>
+
+                <div class="key-points">
+                    <h4>When to Give PJP Prophylaxis</h4>
+                    <ul>
+                        <li><strong>ALL</strong> patients</li>
+                        <li><strong>HCT</strong> (hematopoietic cell transplant) - continue until off immunosuppression</li>
+                        <li><strong>Solid transplant</strong> while on immunosuppressive therapy</li>
+                        <li><strong>CAR-T</strong> - for ~6 months until CD4 recovery</li>
+                        <li><strong>Steroids ≥20 mg prednisone for ≥1 month</strong></li>
+                        <li><strong>Specific medications:</strong> Alemtuzumab, polatuzumab, ibrutinib, BiTE therapies</li>
+                    </ul>
+                </div>
+
+                <h3>Drug Interactions - Must Know</h3>
+
+                <div class="warning-box">
+                    <h4>⚠️ If on Methotrexate (High-Dose)</h4>
+                    <ul>
+                        <li><strong>AVOID Bactrim</strong> - interferes with MTX clearance</li>
+                        <li><strong>AVOID Dapsone</strong> - also interferes</li>
+                        <li><strong>USE:</strong> Atovaquone or inhaled pentamidine for PJP prophylaxis</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ If G6PD Deficient</h4>
+                    <ul>
+                        <li><strong>AVOID Bactrim</strong> - risk of hemolysis</li>
+                        <li><strong>AVOID Dapsone</strong> - risk of hemolysis</li>
+                        <li><strong>USE:</strong> Atovaquone or inhaled pentamidine</li>
+                    </ul>
+                </div>
+
+                <h3>When to Give IVIG</h3>
+
+                <div class="info-box">
+                    <h4>IVIG Replacement Indications</h4>
+                    <p><strong>After CAR-T:</strong></p>
+                    <ul>
+                        <li>Check IgG levels monthly</li>
+                        <li>If IgG <400 mg/dL with recurrent infections → start IVIG</li>
+                        <li>If IgG <600 mg/dL (alternative threshold at some institutions)</li>
+                    </ul>
+                    
+                    <p style="margin-top:10px;"><strong>After BiTE:</strong></p>
+                    <ul>
+                        <li>If IgG levels <400 mg/dL with recurrent infections</li>
+                    </ul>
+
+                    <p style="margin-top:10px;"><strong>Dose:</strong> 400-600 mg/kg IV every 3-4 weeks</p>
+                </div>
+
+                <h3>Duration of Prophylaxis</h3>
+
+                <table>
+                    <tr>
+                        <th>Clinical Scenario</th>
+                        <th>Stop Antibacterial</th>
+                        <th>Stop Antifungal</th>
+                        <th>Stop PJP Prophylaxis</th>
+                    </tr>
+                    <tr>
+                        <td>Intensive chemotherapy (AML, ALL induction)</td>
+                        <td>ANC >500 × 2 days</td>
+                        <td>ANC >500 × 2 days</td>
+                        <td>Continue through consolidation</td>
+                    </tr>
+                    <tr>
+                        <td>Lymphoma chemotherapy</td>
+                        <td>ANC >500 × 2 days OR after 7 days</td>
+                        <td>ANC >500 × 2 days OR after 7 days</td>
+                        <td>1 month after last chemo (if was on steroids)</td>
+                    </tr>
+                    <tr>
+                        <td>CAR-T or BiTE</td>
+                        <td>Only if prolonged neutropenia</td>
+                        <td>Only if prolonged neutropenia</td>
+                        <td>6 months OR until CD4 >200 × 3 months</td>
+                    </tr>
+                    <tr>
+                        <td>High-dose steroids</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>Continue until off steroids + 4-6 weeks</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- GLOSSARY -->
+            <section id="glossary" class="glossary">
+                <h3>📚 Abbreviations & Glossary</h3>
+                
+                <div class="abbrev">
+                    <span class="abbrev-term">ANC</span>
+                    <span>Absolute Neutrophil Count</span>
+                    
+                    <span class="abbrev-term">BiTE</span>
+                    <span>Bispecific T-cell Engager</span>
+                    
+                    <span class="abbrev-term">CAR-T</span>
+                    <span>Chimeric Antigen Receptor T-cell therapy</span>
+                    
+                    <span class="abbrev-term">G6PD</span>
+                    <span>Glucose-6-Phosphate Dehydrogenase</span>
+                    
+                    <span class="abbrev-term">HCT</span>
+                    <span>Hematopoietic Cell Transplant</span>
+                    
+                    <span class="abbrev-term">HSV</span>
+                    <span>Herpes Simplex Virus</span>
+                    
+                    <span class="abbrev-term">IVIG</span>
+                    <span>Intravenous Immunoglobulin</span>
+                    
+                    <span class="abbrev-term">MTX</span>
+                    <span>Methotrexate</span>
+                    
+                    <span class="abbrev-term">PJP (PCP)</span>
+                    <span>Pneumocystis jirovecii Pneumonia (formerly Pneumocystis carinii)</span>
+                    
+                    <span class="abbrev-term">PPX</span>
+                    <span>Prophylaxis</span>
+                    
+                    <span class="abbrev-term">TMP-SMX</span>
+                    <span>Trimethoprim-Sulfamethoxazole (Bactrim)</span>
+                    
+                    <span class="abbrev-term">VZV</span>
+                    <span>Varicella Zoster Virus</span>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</body>
+</html>

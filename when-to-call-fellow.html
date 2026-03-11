@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When to Call the Fellow</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: white; }
+
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .header-subtitle { opacity: 0.9; font-size: 0.95em; }
+
+        .content { padding: 30px; }
+
+        .golden-rule {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .golden-icon { font-size: 2.8em; flex-shrink: 0; }
+        .golden-text strong { display: block; font-size: 1.15em; margin-bottom: 4px; }
+        .golden-text span { opacity: 0.92; font-size: 0.97em; }
+
+        .cards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .call-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 20px;
+            transition: all 0.25s;
+        }
+        .call-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+            transform: translateX(4px);
+        }
+
+        .call-card.red    { border-left: 5px solid #f56565; }
+        .call-card.orange { border-left: 5px solid #ed8936; }
+        .call-card.purple { border-left: 5px solid #9f7aea; }
+        .call-card.blue   { border-left: 5px solid #4299e1; }
+        .call-card.teal   { border-left: 5px solid #38b2ac; }
+
+        .call-icon { font-size: 1.8em; flex-shrink: 0; margin-top: 2px; }
+
+        .call-body { flex: 1; }
+        .call-title { font-weight: 700; font-size: 1.05em; color: #1a202c; margin-bottom: 4px; }
+        .call-detail { font-size: 0.92em; color: #4a5568; line-height: 1.5; }
+
+        .also-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #edf2f7;
+            color: #4a5568;
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-top: 6px;
+        }
+
+        .section-label {
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #718096;
+            margin-bottom: 12px;
+            margin-top: 28px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .unsure-box {
+            background: #f0fff4;
+            border: 2px solid #48bb78;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .unsure-icon { font-size: 1.8em; flex-shrink: 0; }
+        .unsure-text strong { display: block; color: #276749; margin-bottom: 2px; }
+        .unsure-text span { font-size: 0.93em; color: #2f855a; }
+
+        @media (max-width: 600px) {
+            .golden-rule { flex-direction: column; gap: 10px; }
+            .content { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>📞 When to Call the Fellow</h1>
+            <p class="header-subtitle">Escalation guide for overnight and on-call residents in hematology-oncology</p>
+        </header>
+
+        <div class="content">
+
+            <div class="golden-rule">
+                <span class="golden-icon">💡</span>
+                <div class="golden-text">
+                    <strong>Golden Rule: When in doubt, call.</strong>
+                    <span>Whenever you're feeling unsure about a clinical decision or have a major patient update — call the fellow. There is no penalty for reaching out early.</span>
+                </div>
+            </div>
+
+            <div class="section-label">Specific Situations That Require a Call</div>
+
+            <div class="cards-list">
+
+                <div class="call-card red">
+                    <span class="call-icon">🔬</span>
+                    <div class="call-body">
+                        <div class="call-title">Concern for New Leukemia</div>
+                        <div class="call-detail">New severe leukocytosis, blasts on smear, unexplained cytopenias, or any clinical picture suspicious for a new hematologic malignancy.</div>
+                    </div>
+                </div>
+
+                <div class="call-card red">
+                    <span class="call-icon">📋</span>
+                    <div class="call-body">
+                        <div class="call-title">New Leukemia Diagnosis</div>
+                        <div class="call-detail">Confirmed new diagnosis — including transfers from an outside hospital presenting with a new leukemia diagnosis. Fellow needs to be aware for workup coordination and urgent treatment decisions.</div>
+                    </div>
+                </div>
+
+                <div class="call-card purple">
+                    <span class="call-icon">🧠</span>
+                    <div class="call-body">
+                        <div class="call-title">Any CRS or ICANS</div>
+                        <div class="call-detail">Not just new presentations — call for any active or evolving CRS/ICANS unless a predefined management plan is already in place.</div>
+                    </div>
+                </div>
+
+                <div class="call-card purple">
+                    <span class="call-icon">💉</span>
+                    <div class="call-body">
+                        <div class="call-title">Consideration of Giving Tocilizumab</div>
+                        <div class="call-detail">Before administering tocilizumab for CRS or ICANS — always confirm with the fellow first regardless of grade.</div>
+                    </div>
+                </div>
+
+                <div class="call-card orange">
+                    <span class="call-icon">⚡</span>
+                    <div class="call-body">
+                        <div class="call-title">TLS with Uric Acid &gt;8 — Consideration of Rasburicase</div>
+                        <div class="call-detail">Rasburicase carries significant risks including hemolysis in G6PD deficiency. Always reach out to the fellow before ordering.</div>
+                    </div>
+                </div>
+
+                <div class="call-card blue">
+                    <span class="call-icon">🧪</span>
+                    <div class="call-body">
+                        <div class="call-title">Chemotherapy Infusion Reactions</div>
+                        <div class="call-detail">Any reaction during a chemotherapy infusion — stop the infusion, stabilize the patient, and call the fellow.<br>
+                        <span class="also-tag">💊 Pharmacy is also helpful in this case</span></div>
+                    </div>
+                </div>
+
+                <div class="call-card teal">
+                    <span class="call-icon">🩸</span>
+                    <div class="call-body">
+                        <div class="call-title">Blood Product Infusion Reactions</div>
+                        <div class="call-detail">Any reaction to a blood product transfusion — stop the transfusion, send the appropriate reaction workup, and notify the fellow.<br>
+                        <span class="also-tag">🏥 Blood bank is also helpful in this case</span></div>
+                    </div>
+                </div>
+
+                <div class="call-card orange">
+                    <span class="call-icon">⚠️</span>
+                    <div class="call-body">
+                        <div class="call-title">Any Chemotherapy Delays or Issues</div>
+                        <div class="call-detail">If a scheduled chemotherapy dose needs to be held, delayed, or modified for any reason — labs out of range, access issues, patient refusal, or clinical concerns.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="unsure-box">
+                <span class="unsure-icon">☎️</span>
+                <div class="unsure-text">
+                    <strong>Still unsure? Just call.</strong>
+                    <span>It is always better to call and not need to than to not call and wish you had. The fellow is there to support you.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neutropenic Fever</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+        
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .section.fever { border-left-color: #f56565; }
+        .section.neutropenia { border-left-color: #ed8936; }
+        .section.fungal { border-left-color: #9f7aea; }
+        .section.prophylaxis { border-left-color: #48bb78; }
+        .section.algorithm { border-left-color: #4299e1; }
+        .section.additional { border-left-color: #667eea; }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+
+        h4 {
+            font-size: 1.05em;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge.urgent { background: #f56565; color: white; }
+        .badge.standard { background: #48bb78; color: white; }
+        .badge.caution { background: #ed8936; color: white; }
+        .badge.info { background: #4299e1; color: white; }
+        .badge.prophylaxis { background: #9f7aea; color: white; }
+        
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .warning-box h4 {
+            color: #c53030;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box h4 {
+            color: #276749;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .purple-box {
+            background: #faf5ff;
+            border-left: 4px solid #9f7aea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .purple-box h4 {
+            color: #553c9a;
+            margin-bottom: 8px;
+        }
+
+        .orange-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .orange-box h4 {
+            color: #9c4221;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .regimen-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .drug-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            border: 1px solid #81e6d9;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .indication {
+            background: #fef5e7;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-style: italic;
+            border-left: 3px solid #f6ad55;
+        }
+
+        /* Algorithm diagram */
+        .algorithm-container {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .algo-title {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #2d3748;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .algo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .algo-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .algo-node {
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            position: relative;
+        }
+
+        .algo-node.root {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .algo-node.category {
+            background: #bee3f8;
+            color: #1a365d;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .algo-node.empiric {
+            background: #c6f6d5;
+            color: #1c4532;
+            font-weight: 500;
+        }
+
+        .algo-node.escalation {
+            background: #fefcbf;
+            color: #744210;
+        }
+
+        .algo-node.treatment {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .algo-node.special {
+            background: #e9d8fd;
+            color: #44337a;
+        }
+
+        .algo-arrow {
+            text-align: center;
+            color: #4299e1;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin: 2px 0;
+        }
+
+        .algo-label {
+            font-size: 0.78em;
+            color: #718096;
+            font-style: italic;
+            text-align: center;
+            margin: 2px 0;
+        }
+
+        .algo-top {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 8px 0 8px 28px;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 6px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        .highlight-row {
+            background: #ebf8ff !important;
+            font-weight: 500;
+        }
+
+        .highlight-row-green {
+            background: #f0fff4 !important;
+        }
+
+        .highlight-row-yellow {
+            background: #fffff0 !important;
+        }
+
+        .divider {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 30px 0;
+        }
+
+        .tylenol-box {
+            background: #f0fff4;
+            border: 2px solid #48bb78;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .tylenol-icon {
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .two-col { grid-template-columns: 1fr; }
+            .algo-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.9em; }
+            .content { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>🌡️ Neutropenic Fever</h1>
+            <p class="header-subtitle">Evidence-based workup, empiric antibiotic selection, fungal coverage, and antimicrobial prophylaxis in hematologic malignancies</p>
+        </header>
+        
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('overnight')">Overnight Recs</button>
+            <button class="nav-btn" onclick="scrollToSection('neutropenia')">Neutropenia</button>
+            <button class="nav-btn" onclick="scrollToSection('algorithm')">Algorithm</button>
+            <button class="nav-btn" onclick="scrollToSection('fungal')">Fungal Infections</button>
+            <button class="nav-btn" onclick="scrollToSection('prophylaxis')">Prophylaxis</button>
+            <button class="nav-btn" onclick="scrollToSection('additional')">Additional Workup</button>
+        </nav>
+        
+        <div class="content">
+
+            <!-- OVERNIGHT RECOMMENDATIONS -->
+            <section id="overnight" class="section fever">
+                <h2>🚨 Overnight Recommendations</h2>
+
+                <div class="warning-box">
+                    <h4>⚠️ Suspected Neutropenic Fever — Act Immediately</h4>
+                    <ol style="padding-left:18px; margin-top:8px;">
+                        <li style="margin-bottom:6px;">Send <strong>infectious workup</strong>: blood cultures (×2), CXR, urinalysis ± urine culture</li>
+                        <li style="margin-bottom:6px;">Assess patient for localizing infectious symptoms</li>
+                        <li>Start <strong>Cefepime</strong> empirically — do not delay antibiotics for workup</li>
+                    </ol>
+                </div>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">When to Add Vancomycin to Cefepime</span>
+                        <span class="badge urgent">Escalate</span>
+                    </div>
+                    <p style="margin-bottom: 12px;">Add vancomycin if <strong>any</strong> of the following are present:</p>
+                    <table>
+                        <tr>
+                            <th>Indication</th>
+                            <th>Rationale</th>
+                        </tr>
+                        <tr>
+                            <td>Skin involvement / oral ulcers</td>
+                            <td>Gram+ skin flora / mucositis</td>
+                        </tr>
+                        <tr>
+                            <td>Concern for line infection (CVC)</td>
+                            <td>Gram+ bacteremia (Staph, Strep)</td>
+                        </tr>
+                        <tr>
+                            <td>Pneumonia (PNA)</td>
+                            <td>CAP organisms including Strep pneumo</td>
+                        </tr>
+                        <tr>
+                            <td>Hemodynamic instability / severe sepsis</td>
+                            <td>Broad empiric coverage</td>
+                        </tr>
+                        <tr>
+                            <td>Blood culture with gram+ bacteria</td>
+                            <td>Targeted coverage</td>
+                        </tr>
+                        <tr>
+                            <td>Known MRSA colonization</td>
+                            <td>Empiric MRSA coverage</td>
+                        </tr>
+                    </table>
+                    <div class="info-box" style="margin-top:12px;">
+                        <strong>Note:</strong> Consider holding prophylactic antibiotics when starting a patient on broader antibiotics overnight.
+                    </div>
+                </div>
+
+                <div class="tylenol-box">
+                    <span class="tylenol-icon">💊</span>
+                    <div>
+                        <strong>When is it OK to give Tylenol?</strong><br>
+                        In a patient <em>already receiving appropriate antibiotics</em> for neutropenic fever, it is acceptable to give acetaminophen for symptomatic relief of fever. Do not use Tylenol to mask fever prior to completing the infectious workup.
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEUTROPENIA -->
+            <section id="neutropenia" class="section neutropenia">
+                <h2>🩸 Neutropenia</h2>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Definition & Thresholds</span>
+                        <span class="badge caution">Definition</span>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Category</th>
+                            <th>ANC</th>
+                            <th>Clinical Significance</th>
+                        </tr>
+                        <tr>
+                            <td>Neutropenia</td>
+                            <td>&lt;500–1000 cells/µL</td>
+                            <td>Increased infection risk</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Severe / Prolonged Neutropenia</strong></td>
+                            <td><strong>&lt;500 cells/µL for ≥7 days</strong></td>
+                            <td><strong>Antimicrobial prophylaxis indicated</strong></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="orange-box">
+                    <h4>⚠️ Prolonged Neutropenia (&lt;500 for ≥7 days): Prophylaxis Indicated</h4>
+                    <p>In patients experiencing prolonged neutropenia, antimicrobial prophylaxis covering <strong>antibacterial, antifungal, and antiviral</strong> organisms is indicated. See the <a href="#prophylaxis" style="color:#c05621; font-weight:600;">Prophylaxis section</a> below for details.</p>
+                </div>
+            </section>
+
+            <!-- ALGORITHM -->
+            <section id="algorithm" class="section algorithm">
+                <h2>🗺️ Antimicrobial Selection Algorithm</h2>
+
+                <div class="algorithm-container">
+                    <div class="algo-title">Figure: Antimicrobial Selection Algorithm</div>
+
+                    <!-- Top root node -->
+                    <div style="text-align:center; margin-bottom: 12px;">
+                        <div class="algo-node root" style="display:inline-block; padding: 10px 40px;">Antimicrobial Coverage</div>
+                    </div>
+                    <div class="algo-arrow">↙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘</div>
+
+                    <div class="algo-grid">
+                        <!-- FUNGAL COLUMN -->
+                        <div class="algo-column">
+                            <div class="algo-node category" style="background:#e9d8fd; color:#44337a;">🍄 Fungal</div>
+                            <div class="algo-arrow">↓</div>
+                            <div class="algo-node empiric">
+                                <strong>Empiric:</strong> Coverage of Candida &amp; Aspergillus with <strong>Posaconazole</strong>
+                            </div>
+                            <div class="algo-arrow" style="text-align:left; padding-left: 20px;">↙&nbsp;&nbsp;↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘</div>
+
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                                <div>
+                                    <div class="algo-label">+AMS, neck stiffness</div>
+                                    <div class="algo-node treatment" style="font-size:0.82em;">Cryptococcus: <strong>Liposomal AmB + Flucytosine</strong></div>
+                                </div>
+                                <div>
+                                    <div class="algo-label">+Sinus pain</div>
+                                    <div class="algo-node treatment" style="font-size:0.82em;">Mucormycosis: <strong>Amphotericin + Debridement</strong></div>
+                                </div>
+                            </div>
+
+                            <div class="algo-label" style="margin-top:8px;">+Imaging findings concerning for PJP</div>
+                            <div class="algo-node treatment" style="font-size:0.82em;">PJP: <strong>Treatment-dose Bactrim</strong></div>
+                        </div>
+
+                        <!-- BACTERIAL COLUMN -->
+                        <div class="algo-column">
+                            <div class="algo-node category" style="background:#c6f6d5; color:#1c4532;">🦠 Bacterial</div>
+                            <div class="algo-arrow">↓</div>
+                            <div class="algo-node empiric">
+                                <strong>Empiric:</strong> Coverage of gram-negative bacteria including <em>Pseudomonas</em> with <strong>Cefepime</strong> or <strong>Piperacillin-tazobactam</strong>
+                            </div>
+                            <div class="algo-arrow">↓</div>
+                            <div class="algo-label">+Skin/oral ulcer, severe sepsis, hemodynamic instability, PNA, blood cx gram+, MRSA colonization</div>
+                            <div class="algo-node escalation">Gram+/MRSA: <strong>Add Vancomycin</strong></div>
+                            <div class="algo-arrow">↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘</div>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                                <div>
+                                    <div class="algo-label">+VRE organisms</div>
+                                    <div class="algo-node treatment" style="font-size:0.82em;">VRE: <strong>Linezolid or Daptomycin</strong></div>
+                                </div>
+                                <div>
+                                    <div class="algo-label">+ESBL producing organism</div>
+                                    <div class="algo-node treatment" style="font-size:0.82em;">ESBL: <strong>Meropenem</strong></div>
+                                </div>
+                            </div>
+                            <div class="algo-label" style="margin-top:6px;">+C. diff / diarrhea</div>
+                            <div class="algo-node treatment" style="font-size:0.82em;">C. diff: <strong>Oral Vancomycin or Fidaxomicin</strong></div>
+                        </div>
+
+                        <!-- VIRAL COLUMN -->
+                        <div class="algo-column">
+                            <div class="algo-node category" style="background:#bee3f8; color:#1a365d;">🦠 Viral</div>
+                            <div class="algo-arrow">↓</div>
+                            <div class="algo-node empiric">
+                                <strong>Empiric:</strong> Coverage of HSV, VZV with <strong>Acyclovir</strong>
+                            </div>
+                            <div class="algo-arrow">↓</div>
+                            <div class="algo-label">+Carbapenemase producing organism</div>
+                            <div class="algo-node treatment">Carbapenemase-producing bacteria: <strong>Colistin or Tigecycline</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FUNGAL INFECTIONS -->
+            <section id="fungal" class="section fungal">
+                <h2>🍄 Fungal Infections</h2>
+
+                <h3>Mold vs. Yeast — Key Distinction</h3>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Morphology</th>
+                        <th>Common Organisms</th>
+                        <th>Coverage</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Mold</strong></td>
+                        <td>Have hyphae</td>
+                        <td>Aspergillus, Mucor</td>
+                        <td><span class="drug-tag">Micafungin</span> <span class="drug-tag">Posaconazole</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Yeast</strong></td>
+                        <td>No hyphae</td>
+                        <td>Candida</td>
+                        <td><span class="drug-tag">Fluconazole</span></td>
+                    </tr>
+                </table>
+
+                <h3>Fungal Diagnostic Testing</h3>
+                <div class="two-col">
+                    <div class="purple-box">
+                        <h4>🧪 Beta-D-Glucan (Fungitell)</h4>
+                        <p>Element in fungal cell wall. Positive in:</p>
+                        <ul style="margin-top:8px;">
+                            <li>Candida</li>
+                            <li>Aspergillus</li>
+                            <li>PJP infections</li>
+                        </ul>
+                        <p style="margin-top:8px; font-style:italic; font-size:0.9em;">Broad fungal screen — not specific</p>
+                    </div>
+                    <div class="purple-box">
+                        <h4>🧪 Galactomannan</h4>
+                        <p>Specific testing to identify <strong>Aspergillus</strong> infections only.</p>
+                        <p style="margin-top:8px; font-style:italic; font-size:0.9em;">Order when Aspergillus specifically suspected</p>
+                    </div>
+                </div>
+
+                <h3>Antifungal Drug Coverage Summary</h3>
+                <table>
+                    <tr>
+                        <th>Drug</th>
+                        <th>Coverage</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr class="highlight-row-green">
+                        <td><strong>Fluconazole</strong></td>
+                        <td>Candida</td>
+                        <td>Good for thrush, esophagitis; no mold coverage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Posaconazole</strong></td>
+                        <td>Candida, Aspergillus, Mucor</td>
+                        <td>Broad prophylaxis agent of choice in prolonged neutropenia</td>
+                    </tr>
+                    <tr class="highlight-row-yellow">
+                        <td><strong>Micafungin</strong></td>
+                        <td>Candida, Aspergillus</td>
+                        <td><em>No Mucor coverage</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liposomal Amphotericin B</strong></td>
+                        <td>Candida, Aspergillus, Mucor, Cryptococcus</td>
+                        <td>Broadest coverage; used for Cryptococcus (with flucytosine) and Mucormycosis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bactrim (TMP-SMX)</strong></td>
+                        <td>PJP (Pneumocystis jirovecii)</td>
+                        <td>Treatment dose for active PJP; lower dose for prophylaxis</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>⏱ When to initiate empiric antifungal coverage:</strong> Consider fungal coverage after <strong>4+ days of fevers</strong> despite appropriate antibacterial coverage.
+                </div>
+
+                <h3>Neutropenic Enterocolitis (Typhlitis)</h3>
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Neutropenic Enterocolitis</span>
+                        <span class="badge caution">Common Cause of Neutropenic Fever</span>
+                    </div>
+                    <div class="indication">
+                        Mucosal injury → translocation of gut bacteria in neutropenic patients → sepsis
+                    </div>
+                    <div class="two-col" style="margin-top:12px;">
+                        <div>
+                            <h4>Symptoms</h4>
+                            <ul>
+                                <li>Abdominal pain</li>
+                                <li>Diarrhea</li>
+                                <li>Nausea / vomiting</li>
+                            </ul>
+                            <br>
+                            <h4>CT Findings</h4>
+                            <ul>
+                                <li>Bowel wall inflammation</li>
+                                <li>Bowel wall thickening</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Treatment</h4>
+                            <div class="drug-tag" style="display:block; margin-bottom:6px;">Piperacillin-tazobactam (Zosyn)</div>
+                            <div style="text-align:center; font-weight:600; margin: 4px 0;">OR</div>
+                            <div class="drug-tag" style="display:block; margin-bottom:6px;">Cefepime + Metronidazole (Flagyl)</div>
+                            <br>
+                            <div class="warning-box" style="margin:0;">
+                                <h4>⚠️ Also test for C. difficile</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROPHYLAXIS -->
+            <section id="prophylaxis" class="section prophylaxis">
+                <h2>💊 Antimicrobial Prophylaxis</h2>
+
+                <div class="orange-box">
+                    <h4>⚠️ Indication for Prophylaxis</h4>
+                    <p>Antimicrobial prophylaxis is indicated in patients with <strong>prolonged neutropenia</strong> (ANC &lt;500 cells/µL for ≥7 days). Coverage should include antibacterial, antifungal, and antiviral agents.</p>
+                </div>
+
+                <h3>Antibacterial Prophylaxis</h3>
+                <table>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Target</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Levofloxacin</strong></td>
+                        <td>Gram-negative organisms including <em>Pseudomonas</em></td>
+                        <td>Standard antibacterial prophylaxis during neutropenia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ciprofloxacin</strong></td>
+                        <td>Gram-negative organisms</td>
+                        <td>Alternative; less coverage of gram-positives</td>
+                    </tr>
+                </table>
+                <div class="info-box">
+                    <strong>Note:</strong> Hold prophylactic antibiotics when starting the patient on broader empiric antibiotics for neutropenic fever.
+                </div>
+
+                <h3>Antifungal Prophylaxis</h3>
+                <table>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Agent</th>
+                        <th>Coverage</th>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Prolonged neutropenia / AML induction</strong></td>
+                        <td><strong>Posaconazole</strong></td>
+                        <td>Candida, Aspergillus, Mucor</td>
+                    </tr>
+                    <tr>
+                        <td>Post-transplant (early engraftment)</td>
+                        <td>Fluconazole or Micafungin</td>
+                        <td>Candida (± Aspergillus)</td>
+                    </tr>
+                    <tr>
+                        <td>Low-risk / short neutropenia</td>
+                        <td>Fluconazole</td>
+                        <td>Candida only</td>
+                    </tr>
+                </table>
+
+                <h3>Antiviral Prophylaxis</h3>
+                <table>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Target</th>
+                        <th>Indication</th>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Acyclovir</strong></td>
+                        <td>HSV, VZV</td>
+                        <td>All patients with prolonged neutropenia; HSV/VZV seropositive patients undergoing chemotherapy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Valacyclovir</strong></td>
+                        <td>HSV, VZV</td>
+                        <td>Oral alternative to acyclovir</td>
+                    </tr>
+                </table>
+
+                <h3>PJP (Pneumocystis jirovecii) Prophylaxis</h3>
+                <table>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Dose</th>
+                        <th>Indication / Notes</th>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Bactrim (TMP-SMX)</strong></td>
+                        <td>SS or DS daily or DS 3×/week</td>
+                        <td>First-line; indicated during prolonged neutropenia, steroid use, or post-transplant</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dapsone</strong></td>
+                        <td>100mg daily</td>
+                        <td>Sulfa allergy alternative; check G6PD before use</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Atovaquone</strong></td>
+                        <td>1500mg daily</td>
+                        <td>Alternative if sulfa allergy and G6PD deficiency</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pentamidine (inhaled)</strong></td>
+                        <td>300mg monthly</td>
+                        <td>Alternative; less effective, no systemic coverage</td>
+                    </tr>
+                </table>
+
+                <h3>Disease-Specific Prophylaxis Summary</h3>
+                <table>
+                    <tr>
+                        <th>Disease / Setting</th>
+                        <th>Antibacterial</th>
+                        <th>Antifungal</th>
+                        <th>Antiviral</th>
+                        <th>PJP</th>
+                    </tr>
+                    <tr>
+                        <td><strong>AML Induction</strong></td>
+                        <td>Levofloxacin</td>
+                        <td>Posaconazole</td>
+                        <td>Acyclovir</td>
+                        <td>Bactrim</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ALL Induction</strong></td>
+                        <td>Levofloxacin</td>
+                        <td>Fluconazole or Posaconazole</td>
+                        <td>Acyclovir</td>
+                        <td>Bactrim</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lymphoma (R-CHOP)</strong></td>
+                        <td>Consider if prolonged ANC &lt;500</td>
+                        <td>As needed</td>
+                        <td>Acyclovir (if HSV+)</td>
+                        <td>Bactrim (if steroids)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multiple Myeloma</strong></td>
+                        <td>Not routine</td>
+                        <td>Not routine</td>
+                        <td>Acyclovir (VZV)</td>
+                        <td>Consider if steroids</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Post Allo-SCT</strong></td>
+                        <td>Levofloxacin</td>
+                        <td>Micafungin → Voriconazole</td>
+                        <td>Acyclovir</td>
+                        <td>Bactrim</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ADDITIONAL WORKUP -->
+            <section id="additional" class="section additional">
+                <h2>🔍 Additional Workup by Symptom</h2>
+
+                <h3>Symptom-Directed Testing</h3>
+                <table>
+                    <tr>
+                        <th>Symptom / Concern</th>
+                        <th>Recommended Workup</th>
+                        <th>Rationale</th>
+                    </tr>
+                    <tr>
+                        <td>Sinus pain or congestion</td>
+                        <td><strong>Sinus CT scan</strong></td>
+                        <td>Rule out invasive fungal sinusitis (Aspergillus, Mucor)</td>
+                    </tr>
+                    <tr>
+                        <td>Concern for intra-abdominal infection</td>
+                        <td><strong>CT abdomen/pelvis</strong></td>
+                        <td>Identify enterocolitis, abscess, source</td>
+                    </tr>
+                    <tr>
+                        <td>Diarrhea</td>
+                        <td><strong>C. difficile PCR/GDH</strong></td>
+                        <td>Common in immunocompromised patients on antibiotics</td>
+                    </tr>
+                    <tr>
+                        <td>Oral lesion</td>
+                        <td><strong>Viral culture swab</strong>; assess for thrush</td>
+                        <td>HSV vs. Candida vs. chemotherapy mucositis</td>
+                    </tr>
+                    <tr>
+                        <td>Respiratory symptoms / infiltrates</td>
+                        <td><strong>RVP</strong> (respiratory viral panel), <strong>CXR</strong>; consider CT chest</td>
+                        <td>Viral vs. bacterial vs. fungal pneumonia</td>
+                    </tr>
+                    <tr>
+                        <td>Undiagnosed pulmonary infiltrates</td>
+                        <td><strong>Bronchoscopy with BAL</strong></td>
+                        <td>Culture BAL for bacteria, fungi, mycobacteria; galactomannan on BAL</td>
+                    </tr>
+                    <tr>
+                        <td>AMS, neck stiffness, severe headache</td>
+                        <td><strong>LP</strong>; Cryptococcal antigen, fungal culture</td>
+                        <td>Rule out cryptococcal meningitis</td>
+                    </tr>
+                </table>
+
+                <h3>Standard Initial Infectious Workup Checklist</h3>
+                <div class="regimen-card">
+                    <ul class="checklist">
+                        <li><strong>Blood cultures ×2</strong> (peripheral or 1 peripheral + 1 from each CVC lumen)</li>
+                        <li><strong>Chest X-ray</strong></li>
+                        <li><strong>Urinalysis ± urine culture</strong></li>
+                        <li><strong>BMP / CMP</strong> (renal function, LFTs for antibiotic dosing)</li>
+                        <li><strong>CBC with differential</strong> (confirm ANC)</li>
+                        <li>Assess for localizing symptoms → add directed testing above</li>
+                        <li>Review <strong>recent culture data</strong> and prior organisms for resistance patterns</li>
+                    </ul>
+                </div>
+
+                <div class="success-box">
+                    <h4>✓ Bronchoscopy / BAL — When to Consider</h4>
+                    <p>Bronchoscopy with bronchoalveolar lavage (BAL) can be used to obtain specimens for culture (bacterial, fungal, mycobacterial) and galactomannan testing when the etiology of pulmonary infiltrates remains unclear despite standard workup.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Highlight active nav button
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

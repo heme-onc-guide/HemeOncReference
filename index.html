@@ -1,90 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<title>Heme-Onc Reference</title>
-
-<style>
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f6f8;
-}
-
-header {
-    background-color: #8B0000;
-    color: white;
-    padding: 20px;
-}
-
-.container {
-    padding: 30px;
-}
-
-h1 {
-    margin: 0;
-}
-
-h2 {
-    margin-top: 30px;
-}
-
-.topic-list {
-    list-style: none;
-    padding: 0;
-}
-
-.topic-list li {
-    background: white;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 6px;
-}
-
-.topic-list a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.topic-list li:hover {
-    background: #e8ecef;
-}
-
-footer {
-    margin-top: 40px;
-    padding: 20px;
-    text-align: center;
-    color: #666;
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heme/Onc Resident Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .nav-back {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s;
+        }
+        
+        .nav-back:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* Home Page Styles */
+        .home-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: calc(100vh - 80px);
+            padding: 40px 20px;
+        }
+        
+        .home-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .home-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .home-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .home-subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .card.available:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .card.available:before {
+            background: linear-gradient(90deg, #48bb78, #38a169);
+        }
+        
+        .card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+        
+        .card-description {
+            color: #718096;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+        
+        .badge.available {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .badge.coming-soon {
+            background: #fed7e2;
+            color: #702459;
+        }
+        
+        /* Content Page Styles */
+        .content-page {
+            display: none;
+            background: #f7fafc;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .content-page.active {
+            display: block;
+        }
+        
+        .page-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header {
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .page-header.leukemia {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .page-header.myeloma {
+            background: linear-gradient(135deg, #9f7aea 0%, #6b46c1 100%);
+            color: white;
+        }
+        
+        .page-header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .page-subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+        
+        h4 {
+            color: #2d3748;
+            font-size: 1.1em;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+        }
+        
+        /* All the component styles from previous guides */
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .warning-box h4 {
+            color: #c53030;
+            margin-bottom: 8px;
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .resident-alert {
+            background: #fef5e7;
+            border-left: 4px solid #f6ad55;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .resident-alert h4 {
+            color: #c05621;
+            margin-bottom: 8px;
+        }
+        
+        .checklist {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .checklist h4 {
+            color: #22543d;
+            margin-bottom: 10px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            padding: 5px 0 5px 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-size: 1.2em;
+        }
+        
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .regimen-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .therapy-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .therapy-badge.intensive { background: #667eea; color: white; }
+        .therapy-badge.lower-intensity { background: #ed8936; color: white; }
+        .therapy-badge.high-risk { background: #f56565; color: white; }
+        .therapy-badge.standard { background: #48bb78; color: white; }
+        .therapy-badge.first-line { background: #9f7aea; color: white; }
+        .therapy-badge.maintenance { background: #48bb78; color: white; }
+        .therapy-badge.relapsed { background: #ed8936; color: white; }
+        .therapy-badge.bispecific { background: #4299e1; color: white; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        tr:hover {
+            background: #f7fafc;
+        }
+        
+        .indication {
+            background: #fef5e7;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-style: italic;
+            border-left: 3px solid #f6ad55;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .glossary {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .glossary h3 {
+            background: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        
+        .abbrev {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 20px;
+            margin-top: 10px;
+        }
+        
+        .abbrev-term {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .criteria-box {
+            background: #fff;
+            border: 2px solid #9f7aea;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .criteria-box h4 {
+            color: #6b46c1;
+            margin-bottom: 10px;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .home-header h1 {
+                font-size: 2em;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-nav {
+                flex-direction: column;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="nav-title" onclick="showHome()">🩺 Heme/Onc Resident Guide</div>
+            <button class="nav-back hidden" id="backButton" onclick="showHome()">← Back to Home</button>
+        </div>
+    </div>
 
-<header>
-<h1>Hematology Oncology Reference</h1>
-<p>Clinical reference for hematology and oncology topics</p>
-</header>
+    <!-- Home Page -->
+    <div id="homePage" class="home-page">
+        <div class="home-container">
+            <div class="home-header">
+                <h1>🩺 Hematology/Oncology</h1>
+                <p class="home-subtitle">Quick Reference Guide for Residents</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card available" onclick="showPage('leukemia')">
+                    <div class="card-icon">🔬</div>
+                    <div class="card-title">Acute Leukemia Treatment</div>
+                    <div class="card-description">
+                        AML, APL, and ALL treatment protocols with dosing, day-by-day schedules, toxicities, and monitoring
+                    </div>
+                    <span class="badge available">Available</span>
+                </div>
+                
+                <div class="card available" onclick="showPage('myeloma')">
+                    <div class="card-icon">🧬</div>
+                    <div class="card-title">Multiple Myeloma</div>
+                    <div class="card-description">
+                        Diagnosis criteria, risk stratification, induction regimens, maintenance, and bispecific therapies
+                    </div>
+                    <span class="badge available">Available</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">🦠</div>
+                    <div class="card-title">Lymphoma</div>
+                    <div class="card-description">
+                        Hodgkin and Non-Hodgkin lymphoma staging, treatment algorithms, and supportive care
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">💊</div>
+                    <div class="card-title">Antimicrobial Prophylaxis</div>
+                    <div class="card-description">
+                        Guidelines for antibacterial, antifungal, antiviral, and PJP prophylaxis by disease and regimen
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">🌡️</div>
+                    <div class="card-title">Neutropenic Fever</div>
+                    <div class="card-description">
+                        Management algorithms, empiric antibiotic choices, when to escalate, and antifungal coverage
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">New Leukemia Diagnosis</div>
+                    <div class="card-description">
+                        Initial workup checklist, flow cytometry panels, cytogenetics, and day 1 action items
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">Tumor Lysis Syndrome</div>
+                    <div class="card-description">
+                        Risk stratification, prophylaxis protocols, monitoring schedules, and treatment algorithms
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">🧠</div>
+                    <div class="card-title">CRS and ICANS</div>
+                    <div class="card-description">
+                        Cytokine release syndrome and neurotoxicity grading, monitoring, and management
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">📞</div>
+                    <div class="card-title">When To Call the Fellow?</div>
+                    <div class="card-description">
+                        Red flags and critical situations requiring immediate fellow or attending notification
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">Differentiation Syndrome</div>
+                    <div class="card-description">
+                        Recognition, grading, and management in APL and with IDH/FLT3 inhibitors
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">🩸</div>
+                    <div class="card-title">Transfusions</div>
+                    <div class="card-description">
+                        RBC, platelet, FFP, and cryoprecipitate thresholds, special products, and reactions
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+                
+                <div class="card coming-soon">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">CAR-T Cell Therapy</div>
+                    <div class="card-description">
+                        Patient selection, bridging therapy, lymphodepletion, toxicity management, and long-term monitoring
+                    </div>
+                    <span class="badge coming-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="container">
+    <!-- Acute Leukemia Page -->
+    <div id="leukemiaPage" class="content-page">
+        <div class="page-container">
+            <div class="page-header leukemia">
+                <h1>🩺 Acute Leukemia Treatment Guide</h1>
+                <p class="page-subtitle">Comprehensive reference for AML, APL, and ALL treatment protocols with dosing, toxicities, and monitoring</p>
+            </div>
+            
+            <nav class="quick-nav">
+                <button class="nav-btn" onclick="scrollToSection('aml-page')">AML</button>
+                <button class="nav-btn" onclick="scrollToSection('apl-page')">APL</button>
+                <button class="nav-btn" onclick="scrollToSection('all-page')">ALL</button>
+                <button class="nav-btn" onclick="scrollToSection('toxicities-page')">Toxicities</button>
+                <button class="nav-btn" onclick="scrollToSection('supportive-page')">Supportive Care</button>
+                <button class="nav-btn" onclick="scrollToSection('glossary-leuk')">Glossary</button>
+            </nav>
+            
+            <div class="content">
+                <p><em>Due to size constraints, the full acute leukemia content has been condensed. Please refer to the standalone acute leukemia guide for complete details including all regimens, day-by-day charts, and comprehensive monitoring protocols.</em></p>
+                
+                <section id="aml-page" class="section">
+                    <h2>Acute Myeloid Leukemia (AML)</h2>
+                    <p><strong>Treatment pathway:</strong> Induction → Consolidation → Allogeneic transplant (if eligible)</p>
+                    
+                    <h3>Key Regimens</h3>
+                    <ul>
+                        <li><strong>7+3:</strong> Cytarabine 100-200 mg/m² continuous infusion Days 1-7 + Anthracycline Days 1-3</li>
+                        <li><strong>Vyxeos (CPX-351):</strong> For treatment-related AML or prior MDS</li>
+                        <li><strong>FLAVIDA:</strong> Fludarabine + Cytarabine + G-CSF + Idarubicin + Venetoclax</li>
+                        <li><strong>HMA-Venetoclax:</strong> For older/unfit patients</li>
+                    </ul>
+                </section>
+                
+                <section id="apl-page" class="section">
+                    <h2>Acute Promyelocytic Leukemia (APL)</h2>
+                    <div class="warning-box">
+                        <h4>⚠️ APL is a MEDICAL EMERGENCY</h4>
+                        <p>Start ATRA immediately if suspected - do NOT wait for confirmatory testing!</p>
+                    </div>
+                    <p><strong>Standard treatment:</strong> ATRA + ATO (add anthracycline if high-risk WBC >10K)</p>
+                </section>
+                
+                <section id="all-page" class="section">
+                    <h2>Acute Lymphoblastic Leukemia (ALL)</h2>
+                    <p><strong>Key regimens:</strong> E1910, Hyper-CVAD</p>
+                    <p><strong>Special considerations:</strong> BCR-ABL+ (add TKI), CD20+ (add Rituximab), CNS prophylaxis</p>
+                </section>
+                
+                <section id="glossary-leuk" class="glossary">
+                    <h3>📚 Key Abbreviations</h3>
+                    <div class="abbrev">
+                        <span class="abbrev-term">AML</span><span>Acute Myeloid Leukemia</span>
+                        <span class="abbrev-term">APL</span><span>Acute Promyelocytic Leukemia</span>
+                        <span class="abbrev-term">ALL</span><span>Acute Lymphoblastic Leukemia</span>
+                        <span class="abbrev-term">HiDAC</span><span>High-Dose Cytarabine</span>
+                        <span class="abbrev-term">TLS</span><span>Tumor Lysis Syndrome</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 
-<h2>Diseases</h2>
+    <!-- Multiple Myeloma Page -->
+    <div id="myelomaPage" class="content-page">
+        <div class="page-container">
+            <div class="page-header myeloma">
+                <h1>🔬 Multiple Myeloma Treatment Guide</h1>
+                <p class="page-subtitle">Comprehensive resident reference for MM diagnosis, treatment protocols, and monitoring</p>
+            </div>
+            
+            <nav class="quick-nav">
+                <button class="nav-btn" onclick="scrollToSection('diagnosis-mm')">Diagnosis</button>
+                <button class="nav-btn" onclick="scrollToSection('risk-mm')">Risk Stratification</button>
+                <button class="nav-btn" onclick="scrollToSection('first-line-mm')">First-Line</button>
+                <button class="nav-btn" onclick="scrollToSection('relapsed-mm')">Relapsed/Refractory</button>
+                <button class="nav-btn" onclick="scrollToSection('bispecific-mm')">Bispecific/CAR-T</button>
+                <button class="nav-btn" onclick="scrollToSection('glossary-mm')">Glossary</button>
+            </nav>
+            
+            <div class="content">
+                <section id="diagnosis-mm" class="section">
+                    <h2>Diagnosis & Workup</h2>
+                    
+                    <h3>"Myeloma Labs" - Initial Workup</h3>
+                    <div class="checklist">
+                        <h4>✓ Laboratory Studies to Order</h4>
+                        <ul>
+                            <li><strong>SPEP</strong> (Serum Protein Electrophoresis)</li>
+                            <li><strong>UPEP</strong> (Urine Protein Electrophoresis)</li>
+                            <li><strong>Serum free light chains</strong> (Kappa/Lambda with ratio)</li>
+                            <li><strong>Quantitative immunoglobulins</strong> (IgG, IgA, IgM)</li>
+                            <li><strong>Immunofixation</strong> (serum and urine)</li>
+                            <li><strong>CBC, CMP, LDH, beta-2 microglobulin, albumin</strong></li>
+                            <li><strong>Bone marrow biopsy</strong> with flow, cytogenetics, FISH</li>
+                        </ul>
+                    </div>
 
-<ul class="topic-list">
-<li><a href="multiplemyeloma.html">Multiple Myeloma</a></li>
-</ul>
+                    <h3>SLIM-CRAB Diagnostic Criteria</h3>
+                    <p><strong>Requires:</strong> Clonal BM plasma cells ≥10% PLUS one or more:</p>
+                    
+                    <h4>CRAB (End-Organ Damage)</h4>
+                    <ul>
+                        <li><strong>C:</strong> Calcium >11 mg/dL</li>
+                        <li><strong>R:</strong> Renal impairment (CrCl <40 or Cr >2)</li>
+                        <li><strong>A:</strong> Anemia (Hgb <10 g/dL)</li>
+                        <li><strong>B:</strong> Bone lesions (≥1 on imaging)</li>
+                    </ul>
+                    
+                    <h4>SLiM (Biomarkers)</h4>
+                    <ul>
+                        <li><strong>S:</strong> ≥60% clonal plasma cells in BM</li>
+                        <li><strong>Li:</strong> Free light chain ratio ≥100</li>
+                        <li><strong>M:</strong> >1 focal lesion on MRI (≥5mm)</li>
+                    </ul>
+                </section>
 
-</div>
+                <section id="risk-mm" class="section">
+                    <h2>Risk Stratification</h2>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ High-Risk Cytogenetics</h4>
+                        <p><strong>Translocations:</strong> t(4;14), t(14;16), t(14;20)</p>
+                        <p><strong>Deletions:</strong> del(17p) - TP53, del(1p)</p>
+                        <p><strong>Gain:</strong> gain(1q) or amp(1q)</p>
+                    </div>
+                    
+                    <p><strong>ISS/R-ISS Staging:</strong> Based on β2M, albumin, LDH, and cytogenetics</p>
+                </section>
 
-<footer>
-Heme-Onc Reference Project
-</footer>
+                <section id="first-line-mm" class="section">
+                    <h2>First-Line Therapy</h2>
+                    
+                    <div class="regimen-card">
+                        <div class="regimen-header">
+                            <span class="regimen-title">D-VRd (Quadruplet Induction)</span>
+                            <span class="therapy-badge first-line">First-Line</span>
+                        </div>
+                        
+                        <div class="indication">
+                            <strong>Indication:</strong> Newly diagnosed MM, transplant-eligible
+                        </div>
+                        
+                        <p><strong>Components:</strong></p>
+                        <ul>
+                            <li><strong>Daratumumab (D):</strong> 16 mg/kg SQ weekly × 8, then q2 weeks</li>
+                            <li><strong>Bortezomib (V):</strong> 1.3 mg/m² IV/SQ Days 1, 4, 8, 11</li>
+                            <li><strong>Lenalidomide (R):</strong> 25 mg PO Days 1-21</li>
+                            <li><strong>Dexamethasone (d):</strong> 40 mg PO/IV weekly</li>
+                        </ul>
+                        
+                        <p><strong>Cycle:</strong> 21 or 28 days × 4-6 cycles pre-transplant</p>
+                        
+                        <div class="resident-alert">
+                            <h4>📋 Key Monitoring</h4>
+                            <ul>
+                                <li>Daratumumab: Pre-med for infusion reactions</li>
+                                <li>Bortezomib: Check for neuropathy, SQ preferred</li>
+                                <li>Lenalidomide: VTE prophylaxis (aspirin 81mg or LMWH)</li>
+                                <li>Antimicrobial prophylaxis: Acyclovir, Bactrim/atovaquone</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3>Maintenance</h3>
+                    <p><strong>Standard:</strong> Lenalidomide 10-15 mg PO daily (Days 1-21) until progression</p>
+                    <p><strong>High-risk:</strong> Consider adding proteasome inhibitor (bortezomib or carfilzomib)</p>
+                </section>
 
+                <section id="relapsed-mm" class="section">
+                    <h2>Relapsed/Refractory Disease</h2>
+                    
+                    <p><strong>Common regimens:</strong></p>
+                    <ul>
+                        <li><strong>DPd:</strong> Daratumumab + Pomalidomide + Dex</li>
+                        <li><strong>DKd:</strong> Daratumumab + Carfilzomib + Dex</li>
+                        <li><strong>XPd:</strong> Selinexor + Pomalidomide + Dex</li>
+                        <li><strong>CyBorD:</strong> Cyclophosphamide + Bortezomib + Dex</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <p><strong>Special:</strong> For t(11;14), consider venetoclax-based therapy</p>
+                    </div>
+                </section>
+
+                <section id="bispecific-mm" class="section">
+                    <h2>Bispecific T-Cell Engagers & CAR-T</h2>
+                    
+                    <h3>Teclistamab (Tecvayli)</h3>
+                    <p><strong>Mechanism:</strong> CD3 × BCMA bispecific</p>
+                    <p><strong>Dosing:</strong> Step-up 0.06 → 0.3 → 1.5 mg/kg (2-4 days apart), then 1.5 mg/kg weekly</p>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ CRS/ICANS Risk</h4>
+                        <p><strong>Peak risk:</strong> 24-72h after step-up doses</p>
+                        <p><strong>Monitor inpatient:</strong> 24-48h after first doses</p>
+                        <p><strong>Have tocilizumab available</strong></p>
+                    </div>
+                    
+                    <h3>CAR-T (Ide-cel, Cilta-cel)</h3>
+                    <p><strong>Indication:</strong> Relapsed/refractory MM after 1-3 prior lines</p>
+                    <p><strong>Process:</strong> Leukapheresis → Manufacturing (3-4 weeks) → Lymphodepletion → Infusion → Monitoring</p>
+                </section>
+
+                <section id="glossary-mm" class="glossary">
+                    <h3>📚 Abbreviations</h3>
+                    <div class="abbrev">
+                        <span class="abbrev-term">MM</span><span>Multiple Myeloma</span>
+                        <span class="abbrev-term">BCMA</span><span>B-Cell Maturation Antigen</span>
+                        <span class="abbrev-term">IMiD</span><span>Immunomodulatory Drug</span>
+                        <span class="abbrev-term">PI</span><span>Proteasome Inhibitor</span>
+                        <span class="abbrev-term">CRS</span><span>Cytokine Release Syndrome</span>
+                        <span class="abbrev-term">ICANS</span><span>Immune Effector Cell-Associated Neurotoxicity Syndrome</span>
+                        <span class="abbrev-term">D-VRd</span><span>Daratumumab-Bortezomib-Lenalidomide-Dexamethasone</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide home
+            document.getElementById('homePage').classList.add('hidden');
+            
+            // Hide all content pages
+            document.querySelectorAll('.content-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + 'Page').classList.add('active');
+            
+            // Show back button
+            document.getElementById('backButton').classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        function showHome() {
+            // Show home
+            document.getElementById('homePage').classList.remove('hidden');
+            
+            // Hide all content pages
+            document.querySelectorAll('.content-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Hide back button
+            document.getElementById('backButton').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
 </body>
-
 </html>

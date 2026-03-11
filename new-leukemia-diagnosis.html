@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Leukemia Diagnosis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: white; }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .section.concern  { border-left-color: #ed8936; }
+        .section.actions  { border-left-color: #667eea; }
+        .section.workup   { border-left-color: #48bb78; }
+        .section.addl     { border-left-color: #4299e1; }
+        .section.urgent   { border-left-color: #f56565; }
+        
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+
+        h4 {
+            font-size: 1.05em;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.urgent   { background: #f56565; color: white; }
+        .badge.standard { background: #48bb78; color: white; }
+        .badge.caution  { background: #ed8936; color: white; }
+        .badge.info     { background: #4299e1; color: white; }
+        .badge.purple   { background: #9f7aea; color: white; }
+        
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .warning-box h4 {
+            color: #c53030;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box h4 {
+            color: #276749;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .orange-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .orange-box h4 {
+            color: #9c4221;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .purple-box {
+            background: #faf5ff;
+            border-left: 4px solid #9f7aea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .purple-box h4 {
+            color: #553c9a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .regimen-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        tr:hover { background: #f7fafc; }
+
+        .highlight-row { background: #ebf8ff !important; font-weight: 500; }
+
+        .drug-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.88em;
+            border: 1px solid #81e6d9;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        /* Symptom grid */
+        .symptom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .symptom-card {
+            background: #fffaf0;
+            border: 1.5px solid #fbd38d;
+            border-radius: 8px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #744210;
+        }
+
+        .symptom-icon {
+            font-size: 1.4em;
+            flex-shrink: 0;
+        }
+
+        /* Workup categories */
+        .workup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        .workup-group {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .workup-group-title {
+            font-weight: 700;
+            font-size: 0.95em;
+            color: #2d3748;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .workup-item {
+            padding: 6px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 0.93em;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .workup-item:last-child { border-bottom: none; }
+
+        .workup-item::before {
+            content: '→';
+            color: #667eea;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Action steps */
+        .action-steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-steps li {
+            counter-increment: step;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .action-steps li:last-child { border-bottom: none; }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 6px; }
+
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .workup-grid, .two-col { grid-template-columns: 1fr; }
+            .symptom-grid { grid-template-columns: 1fr 1fr; }
+            table { font-size: 0.9em; }
+            .content { padding: 20px 15px; }
+        }
+
+        @media (max-width: 480px) {
+            .symptom-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>📋 New Leukemia Diagnosis</h1>
+            <p class="header-subtitle">Initial recognition, workup, and urgent overnight management for suspected or confirmed leukemia</p>
+        </header>
+        
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('concern')">When to Be Concerned</button>
+            <button class="nav-btn" onclick="scrollToSection('actions')">Immediate Actions</button>
+            <button class="nav-btn" onclick="scrollToSection('workup')">Initial Workup</button>
+            <button class="nav-btn" onclick="scrollToSection('addl')">Additional Considerations</button>
+            <button class="nav-btn" onclick="scrollToSection('urgent')">Urgent Overnight Treatment</button>
+        </nav>
+        
+        <div class="content">
+
+            <!-- WHEN TO BE CONCERNED -->
+            <section id="concern" class="section concern">
+                <h2>🔎 When to Be Concerned About Leukemia</h2>
+
+                <p style="margin-bottom: 16px; color: #4a5568;">Suspect leukemia when any of the following are present, particularly in combination:</p>
+
+                <div class="symptom-grid">
+                    <div class="symptom-card">
+                        <span class="symptom-icon">🔺</span>
+                        <span>New severe leukocytosis with no other explanation</span>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">🩸</span>
+                        <span>Abnormal bleeding or bruising</span>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">📉</span>
+                        <span>New cytopenia</span>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">🤒</span>
+                        <span>Frequent infections, fever, chills</span>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">🔴</span>
+                        <span>Petechiae</span>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">🦷</span>
+                        <span>Gingival hyperplasia</span>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">⚖️</span>
+                        <span>Weight loss</span>
+                    </div>
+                    <div class="symptom-card">
+                        <span class="symptom-icon">🫁</span>
+                        <span>Lymphadenopathy</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IMMEDIATE ACTIONS -->
+            <section id="actions" class="section actions">
+                <h2>⚡ Immediate Actions</h2>
+
+                <div class="regimen-card">
+                    <ol class="action-steps">
+                        <li>
+                            <div class="step-number">1</div>
+                            <div>
+                                <strong>Call the Fellow</strong><br>
+                                <span style="color:#4a5568; font-size:0.93em;">Notify the hematology fellow immediately for any new suspected leukemia</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-number">2</div>
+                            <div>
+                                <strong>Call the Hematology Lab for Peripheral Smear Review</strong><br>
+                                <span style="color:#4a5568; font-size:0.93em;">Request urgent manual differential and smear review to look for blasts, Auer rods, and morphologic clues</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-number">3</div>
+                            <div>
+                                <strong>Obtain Blood Consent</strong><br>
+                                <span style="color:#4a5568; font-size:0.93em;">Consent patient for blood draw, potential bone marrow biopsy, and further procedures</span>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- INITIAL WORKUP -->
+            <section id="workup" class="section workup">
+                <h2>🧪 Initial Workup to Order</h2>
+
+                <div class="workup-grid">
+                    <div class="workup-group">
+                        <div class="workup-group-title">📊 Basic Labs</div>
+                        <div class="workup-item">CBC with differential</div>
+                        <div class="workup-item">LDH</div>
+                        <div class="workup-item">Magnesium</div>
+                        <div class="workup-item">Type and Screen</div>
+                    </div>
+
+                    <div class="workup-group">
+                        <div class="workup-group-title">🩺 DIC Panel</div>
+                        <div class="workup-item">D-dimer</div>
+                        <div class="workup-item">Fibrinogen</div>
+                        <div class="workup-item">PT / INR</div>
+                        <div class="workup-item">PTT</div>
+                    </div>
+
+                    <div class="workup-group">
+                        <div class="workup-group-title">⚡ TLS Labs</div>
+                        <div class="workup-item">CMP — calcium, potassium, kidney function</div>
+                        <div class="workup-item">Phosphorus</div>
+                        <div class="workup-item">Uric acid</div>
+                        <div class="workup-item">Ionized calcium</div>
+                    </div>
+
+                    <div class="workup-group">
+                        <div class="workup-group-title">🦠 Infectious Evaluation</div>
+                        <div class="workup-item">Hepatitis B</div>
+                        <div class="workup-item">Hepatitis C</div>
+                        <div class="workup-item">HIV</div>
+                        <div class="workup-item">G6PD</div>
+                        <div class="workup-item">Pregnancy test (if applicable)</div>
+                    </div>
+                </div>
+
+                <h3>Specialized Studies</h3>
+
+                <table>
+                    <tr>
+                        <th>Study</th>
+                        <th>Details / Notes</th>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Peripheral Flow Cytometry</strong></td>
+                        <td>Order as <em>"leukemia/lymphoma flow cytometry"</em> — confirm with heme fellow if needed overnight</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ECHO</strong></td>
+                        <td>Baseline cardiac function prior to anthracycline-containing chemotherapy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bone Marrow Biopsy</strong></td>
+                        <td>Confirms diagnosis, provides cytogenetics, flow cytometry, and molecular studies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HLA Typing</strong></td>
+                        <td>Defer to BMT team — needed for potential allogeneic transplant</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ADDITIONAL CONSIDERATIONS -->
+            <section id="addl" class="section addl">
+                <h2>➕ Additional Considerations</h2>
+
+                <div class="two-col">
+                    <div class="info-box">
+                        <h4>⚡ TLS Prophylaxis</h4>
+                        <ul style="margin-top: 8px;">
+                            <li>Aggressive IV fluid hydration</li>
+                            <li>Allopurinol (or Rasburicase if high risk)</li>
+                            <li>Monitor: K, Phos, Ca, uric acid, Cr, LDH</li>
+                        </ul>
+                    </div>
+
+                    <div class="purple-box">
+                        <h4>💊 Antimicrobial Prophylaxis</h4>
+                        <ul style="margin-top: 8px;">
+                            <li><span class="drug-tag">Acyclovir</span> — antiviral (HSV/VZV)</li>
+                            <li><span class="drug-tag">Posaconazole</span> — antifungal</li>
+                            <li><span class="drug-tag">Levofloxacin</span> — antibacterial</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <h4>🔗 PICC Line Placement</h4>
+                    <p>Place PICC line for reliable IV access — essential for induction chemotherapy, blood draws, and prolonged antibiotics. Discuss timing with the fellow.</p>
+                </div>
+            </section>
+
+            <!-- URGENT OVERNIGHT TREATMENT -->
+            <section id="urgent" class="section urgent">
+                <h2>🚨 Situations Requiring Urgent Overnight Treatment</h2>
+
+                <!-- LEUKOSTASIS -->
+                <div class="regimen-card" style="border-color: #f56565;">
+                    <div class="regimen-header">
+                        <span class="regimen-title">WBC &gt;100K — Concern for Leukostasis</span>
+                        <span class="badge urgent">Emergent</span>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Leukostasis is a Medical Emergency</h4>
+                        <p>Proceed with cytoreduction <strong>while awaiting confirmation of diagnosis</strong>. Do not delay treatment for diagnostic workup to complete.</p>
+                    </div>
+
+                    <h4 style="margin-bottom: 10px;">Cytoreduction Options</h4>
+                    <table>
+                        <tr>
+                            <th>Agent</th>
+                            <th>Notes</th>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Hydroxyurea</strong></td>
+                            <td>Most common first-line option — can order a one-time emergency dose overnight (<strong>confirm with fellow</strong>)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cytarabine</strong></td>
+                            <td>Alternative cytoreduction agent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Leukapheresis</strong></td>
+                            <td>Reserve for rapid end-organ damage only; discuss with fellow</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- APL -->
+                <div class="regimen-card" style="border-color: #9f7aea; margin-top: 20px;">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Concern for APL (Acute Promyelocytic Leukemia)</span>
+                        <span class="badge purple">Do Not Delay</span>
+                    </div>
+
+                    <div class="orange-box">
+                        <h4>⚠️ APL is Life-Threatening if ATRA is Delayed</h4>
+                        <p>Start ATRA empirically if APL is suspected — do not wait for confirmatory molecular testing (PML-RARA).</p>
+                    </div>
+
+                    <h4 style="margin: 12px 0 8px;">Signs Suggesting APL</h4>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 16px;">
+                        <div class="drug-tag" style="background:#faf5ff; border-color:#9f7aea; color:#44337a;">CD34 negative on flow</div>
+                        <div class="drug-tag" style="background:#faf5ff; border-color:#9f7aea; color:#44337a;">Auer rods on peripheral smear</div>
+                        <div class="drug-tag" style="background:#faf5ff; border-color:#9f7aea; color:#44337a;">DIC / bleeding diathesis</div>
+                        <div class="drug-tag" style="background:#faf5ff; border-color:#9f7aea; color:#44337a;">Low WBC with severe coagulopathy</div>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Order As</th>
+                            <th>Dose</th>
+                            <th>Notes</th>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>ATRA (Tretinoin)</strong></td>
+                            <td>Search <em>"tretinoin"</em> in order system</td>
+                            <td><strong>22.5 mg/m²</strong> — one-time dose</td>
+                            <td>Confirm with fellow before ordering overnight</td>
+                        </tr>
+                    </table>
+
+                    <div class="info-box" style="margin-top: 12px;">
+                        <strong>After ATRA:</strong> Monitor for Differentiation Syndrome — fever, dyspnea, pulmonary infiltrates, fluid overload. Treat with dexamethasone 10mg IV BID if suspected.
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

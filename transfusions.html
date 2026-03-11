@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfusions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: white; }
+
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .header-subtitle { opacity: 0.9; font-size: 0.95em; }
+
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        .nav-btn:hover, .nav-btn.active { background: #667eea; color: white; }
+
+        .content { padding: 30px; }
+
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        .section.thresholds  { border-left-color: #f56565; }
+        .section.irradiated  { border-left-color: #ed8936; }
+        .section.pathogen    { border-left-color: #9f7aea; }
+
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+
+        h4 { font-size: 1.05em; color: #2d3748; margin-bottom: 8px; }
+
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .warning-box h4 { color: #c53030; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .success-box h4 { color: #276749; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .purple-box {
+            background: #faf5ff;
+            border-left: 4px solid #9f7aea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .purple-box h4 { color: #553c9a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .orange-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .orange-box h4 { color: #9c4221; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+        }
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .regimen-title { font-size: 1.2em; font-weight: 600; color: #2d3748; }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge.urgent   { background: #f56565; color: white; }
+        .badge.caution  { background: #ed8936; color: white; }
+        .badge.standard { background: #48bb78; color: white; }
+        .badge.info     { background: #4299e1; color: white; }
+        .badge.always   { background: #c53030; color: white; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        tr:hover { background: #f7fafc; }
+
+        /* Threshold cards */
+        .threshold-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        .threshold-card {
+            border-radius: 10px;
+            border: 2px solid;
+            padding: 20px;
+        }
+        .threshold-card.rbc  { background: #fff5f5; border-color: #fc8181; }
+        .threshold-card.plt  { background: #fffaf0; border-color: #f6ad55; }
+
+        .threshold-icon { font-size: 2.2em; margin-bottom: 10px; display: block; }
+
+        .threshold-title {
+            font-weight: 700;
+            font-size: 1.05em;
+            margin-bottom: 12px;
+        }
+        .threshold-card.rbc .threshold-title { color: #c53030; }
+        .threshold-card.plt .threshold-title { color: #9c4221; }
+
+        .threshold-value {
+            font-size: 2em;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .threshold-card.rbc .threshold-value { color: #f56565; }
+        .threshold-card.plt .threshold-value { color: #ed8936; }
+
+        .threshold-label { font-size: 0.85em; color: #4a5568; margin-bottom: 12px; }
+
+        .threshold-modifiers {
+            border-top: 1.5px solid rgba(0,0,0,0.08);
+            padding-top: 10px;
+            margin-top: 4px;
+        }
+        .threshold-modifiers p {
+            font-size: 0.88em;
+            color: #4a5568;
+            padding: 4px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.07);
+        }
+        .threshold-modifiers p:last-child { border-bottom: none; }
+        .threshold-modifiers strong { color: #2d3748; }
+
+        /* Order steps */
+        .order-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .order-step:last-child { border-bottom: none; }
+
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+        .step-dot.orange { background: #ed8936; }
+        .step-dot.purple { background: #9f7aea; }
+
+        .order-step-body { flex: 1; }
+        .order-step-title { font-weight: 700; font-size: 0.97em; color: #1a202c; margin-bottom: 3px; }
+        .order-step-detail { font-size: 0.91em; color: #4a5568; line-height: 1.5; }
+
+        /* Order pill */
+        .order-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            border: 2px solid #ed8936;
+            color: #9c4221;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+
+        .comment-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            border: 2px solid #9f7aea;
+            color: #553c9a;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 6px; }
+
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .threshold-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.9em; }
+            .content { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>🩸 Transfusions</h1>
+            <p class="header-subtitle">Transfusion thresholds and special product requirements for hematology-oncology patients</p>
+        </header>
+
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('thresholds')">Thresholds</button>
+            <button class="nav-btn" onclick="scrollToSection('irradiated')">Irradiated Products</button>
+            <button class="nav-btn" onclick="scrollToSection('pathogen')">Pathogen Reduced Platelets</button>
+        </nav>
+
+        <div class="content">
+
+            <!-- THRESHOLDS -->
+            <section id="thresholds" class="section thresholds">
+                <h2>📊 Transfusion Thresholds</h2>
+
+                <div class="threshold-grid">
+                    <div class="threshold-card rbc">
+                        <span class="threshold-icon">🔴</span>
+                        <div class="threshold-title">Red Blood Cells (pRBC)</div>
+                        <span class="threshold-value">Hgb &lt;7</span>
+                        <div class="threshold-label">g/dL — standard threshold</div>
+                        <div class="threshold-modifiers">
+                            <p><strong>Symptomatic anemia</strong> — may transfuse at higher Hgb if clinically indicated</p>
+                        </div>
+                    </div>
+
+                    <div class="threshold-card plt">
+                        <span class="threshold-icon">🟡</span>
+                        <div class="threshold-title">Platelets</div>
+                        <span class="threshold-value">&lt;10K</span>
+                        <div class="threshold-label">cells/µL — standard threshold</div>
+                        <div class="threshold-modifiers">
+                            <p><strong>Fever present:</strong> transfuse if &lt;20K</p>
+                            <p><strong>Active bleeding:</strong> transfuse if &lt;50K</p>
+                        </div>
+                    </div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Standard Threshold</th>
+                        <th>Modified Threshold</th>
+                    </tr>
+                    <tr>
+                        <td><strong>pRBC</strong></td>
+                        <td>Hgb &lt;7 g/dL</td>
+                        <td>Higher if symptomatic (chest pain, dyspnea, hemodynamic instability)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>Platelets</strong></td>
+                        <td>&lt;10,000 /µL</td>
+                        <td>Stable, afebrile patient</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;20,000 /µL</td>
+                        <td>If fever present</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;50,000 /µL</td>
+                        <td>If active bleeding</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- IRRADIATED -->
+            <section id="irradiated" class="section irradiated">
+                <h2>☢️ Irradiated Products</h2>
+
+                <div class="warning-box">
+                    <h4>⚠️ Always Required for Heme Malignancy Patients</h4>
+                    <p>All blood and platelet transfusions for hematology-oncology patients must be irradiated to prevent transfusion-associated graft-versus-host disease (TA-GvHD).</p>
+                </div>
+
+                <div class="regimen-card" style="border-color: #ed8936;">
+                    <div class="regimen-header">
+                        <span class="regimen-title">How to Order</span>
+                        <span class="badge always">Always Do This</span>
+                    </div>
+                    <div class="order-step">
+                        <div class="step-dot orange"></div>
+                        <div class="order-step-body">
+                            <div class="order-step-title">Select "Heme Malignancy" in the Irradiated Products Dropdown</div>
+                            <div class="order-step-detail">
+                                When ordering any blood product (pRBC or platelets), find the <strong>irradiated products dropdown</strong> in the order and select <strong>"Heme Malignancy"</strong>.
+                                <br>
+                                <div class="order-pill">☢️ Irradiated Products → "Heme Malignancy"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Why irradiate?</strong> Irradiation inactivates donor T-lymphocytes in the blood product, preventing them from engrafting and attacking the immunocompromised host's tissues (TA-GvHD). This is particularly dangerous and often fatal in hematology patients.
+                </div>
+            </section>
+
+            <!-- PATHOGEN REDUCED -->
+            <section id="pathogen" class="section pathogen">
+                <h2>🧬 Pathogen Reduced Platelets</h2>
+
+                <div class="purple-box">
+                    <h4>🧬 What Is Pathogen Reduction?</h4>
+                    <p>Pathogen reduction (PR) is a process applied to platelets to inactivate potential pathogens. However, this process can make the platelets themselves <strong>less functionally effective</strong>, leading to a suboptimal platelet increment after transfusion.</p>
+                </div>
+
+                <div class="regimen-card" style="border-color: #9f7aea;">
+                    <div class="regimen-header">
+                        <span class="regimen-title">How to Order Non-Pathogen Reduced Platelets</span>
+                        <span class="badge always">Always Do This</span>
+                    </div>
+                    <div class="order-step">
+                        <div class="step-dot purple"></div>
+                        <div class="order-step-body">
+                            <div class="order-step-title">Write "Non-Pathogen Reduced" in the Comments Section</div>
+                            <div class="order-step-detail">
+                                Every time you order platelets, add this note in the <strong>comments/special instructions</strong> section of the order.
+                                <br>
+                                <div class="comment-pill">💬 Comments: "non-pathogen reduced"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Patient Not Responding to Platelet Transfusions?</h4>
+                    <p>If a patient is not having the expected platelet increment after transfusions, consider that the blood bank may be issuing <strong>"PR PLATELETS"</strong> (pathogen reduced) by default.</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Call the blood bank directly</li>
+                        <li>Ask them to add a note to the patient's chart to issue <strong>non-pathogen reduced platelets only</strong></li>
+                        <li>This can make a significant clinical difference in platelet-refractory patients</li>
+                    </ul>
+                </div>
+
+                <h3>Quick Reference Summary</h3>
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Required Modification</th>
+                        <th>Where to Specify</th>
+                    </tr>
+                    <tr>
+                        <td><strong>pRBC</strong></td>
+                        <td>Irradiated (Heme Malignancy)</td>
+                        <td>Irradiated products dropdown → "Heme Malignancy"</td>
+                    </tr>
+                    <tr style="background: #faf5ff;">
+                        <td><strong>Platelets</strong></td>
+                        <td>Irradiated (Heme Malignancy) <em>and</em> Non-Pathogen Reduced</td>
+                        <td>Irradiated dropdown + Comments: "non-pathogen reduced"</td>
+                    </tr>
+                </table>
+
+                <div class="success-box">
+                    <h4>✓ Checklist — Every Transfusion Order</h4>
+                    <ul style="margin-top: 8px;">
+                        <li>pRBC: Irradiated products → <strong>"Heme Malignancy"</strong> selected</li>
+                        <li>Platelets: Irradiated products → <strong>"Heme Malignancy"</strong> selected</li>
+                        <li>Platelets: Comments → <strong>"non-pathogen reduced"</strong> written</li>
+                        <li>Platelet refractoriness: call blood bank to flag chart for non-PR platelets</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

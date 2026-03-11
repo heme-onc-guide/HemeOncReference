@@ -134,7 +134,8 @@
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            display: block;
+            display: flex;
+            flex-direction: column;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
@@ -173,6 +174,7 @@
             font-size: 0.95em;
             line-height: 1.6;
             margin-bottom: 1.25rem;
+            flex: 1;
         }
         
         .badge {
@@ -187,8 +189,9 @@
             letter-spacing: 0.025em;
             background: #d1fae5;
             color: #065f46;
+            align-self: flex-start;
         }
-        .badge::before { content: '✓'; font-size: 1.1em; }
+        .badge::before { content: '▶'; font-size: 0.85em; }
         
         footer {
             text-align: center;
@@ -228,8 +231,6 @@
                 <span>HemeOnc Clinical Reference</span>
             </div>
             <div class="nav-links">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#guides" class="nav-link">Clinical Guides</a>
                 <span class="badge-beta">Beta</span>
             </div>
         </div>
@@ -247,84 +248,96 @@
                 <span class="card-icon">🔬</span>
                 <div class="card-title">Acute Leukemia Treatment</div>
                 <div class="card-description">Comprehensive AML, APL, and ALL treatment protocols including induction regimens, consolidation therapy, day-by-day dosing schedules, toxicity management, and monitoring guidelines</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="multiple-myeloma.html" class="card">
                 <span class="card-icon">🧬</span>
                 <div class="card-title">Multiple Myeloma</div>
                 <div class="card-description">SLIM-CRAB diagnostic criteria, ISS/R-ISS risk stratification, quadruplet induction regimens, maintenance strategies, relapsed/refractory options, and bispecific antibodies</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="lymphoma.html" class="card">
                 <span class="card-icon">🦠</span>
                 <div class="card-title">Lymphoma Management</div>
                 <div class="card-description">IPI scoring, Hans algorithm, aggressive lymphoma treatment (R-CHOP, DA-EPOCH-R, R-ICE), CNS prophylaxis protocols, high-dose methotrexate management, and CAR-T therapy</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="antimicrobial-prophylaxis.html" class="card">
                 <span class="card-icon">💊</span>
                 <div class="card-title">Antimicrobial Prophylaxis</div>
                 <div class="card-description">Disease-specific prophylaxis guidelines for antibacterial, antifungal, antiviral, and PJP coverage. Includes drug interactions, dosing adjustments, and duration recommendations</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="new-leukemia-diagnosis.html" class="card">
                 <span class="card-icon">📋</span>
                 <div class="card-title">New Leukemia Diagnosis</div>
                 <div class="card-description">Complete initial workup checklist, flow cytometry ordering, bone marrow biopsy protocols, emergency management for hyperleukocytosis and APL, and Day 1 action items</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="neutropenic-fever.html" class="card">
                 <span class="card-icon">🌡️</span>
                 <div class="card-title">Neutropenic Fever</div>
                 <div class="card-description">Evidence-based management algorithms, empiric antibiotic selection, escalation criteria, antifungal coverage timing, antimicrobial prophylaxis, and source control strategies</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="tumor-lysis-syndrome.html" class="card">
                 <span class="card-icon">⚡</span>
                 <div class="card-title">Tumor Lysis Syndrome</div>
                 <div class="card-description">Cairo-Bishop criteria, risk stratification tools, prophylaxis protocols (allopurinol vs rasburicase), monitoring schedules, electrolyte management, and treatment algorithms for established TLS</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="crs-icans.html" class="card">
                 <span class="card-icon">🧠</span>
                 <div class="card-title">CRS and ICANS</div>
                 <div class="card-description">ASTCT consensus grading, bedside assessment tools (ICE score), cytokine release syndrome management, neurotoxicity protocols, and tocilizumab/steroid algorithms</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="when-to-call-fellow.html" class="card">
                 <span class="card-icon">📞</span>
                 <div class="card-title">When to Call the Fellow</div>
                 <div class="card-description">Critical clinical scenarios requiring immediate escalation, red flag symptoms, laboratory thresholds, and guidance for urgent overnight situations</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="differentiation-syndrome.html" class="card">
                 <span class="card-icon">🔄</span>
                 <div class="card-title">Differentiation Syndrome</div>
                 <div class="card-description">Recognition criteria in APL and with IDH inhibitors, severity grading, biphasic risk timeline, dexamethasone dosing, and when to hold ATRA/ATO therapy</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="transfusions.html" class="card">
                 <span class="card-icon">🩸</span>
                 <div class="card-title">Transfusion Medicine</div>
                 <div class="card-description">RBC and platelet transfusion thresholds by clinical scenario, irradiated product ordering, pathogen-reduced platelet guidance, and troubleshooting platelet refractoriness</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
             <a href="car-t.html" class="card">
                 <span class="card-icon">🎯</span>
                 <div class="card-title">CAR-T Cell Therapy</div>
                 <div class="card-description">Lymphodepletion regimens, CAR-T product types by indication, prophylactic dexamethasone protocol, CRS/ICANS risk windows, cytopenias, and infection prophylaxis</div>
-                <span class="badge">Available Now</span>
+                <span class="badge">View Guide</span>
+            
             </a>
 
         </div>
@@ -335,11 +348,7 @@
                 <p class="footer-text">
                     This clinical reference guide is designed as an educational resource for hematology-oncology residents, fellows, and healthcare professionals. Content is regularly updated to reflect current evidence-based practices and treatment guidelines.
                 </p>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Disclaimer</a>
-                    <a href="#" class="footer-link">Contact</a>
-                    <a href="#" class="footer-link">Feedback</a>
-                </div>
+
             </div>
         </footer>
     </div>

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRS and ICANS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: white; }
+
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .header-subtitle { opacity: 0.9; font-size: 0.95em; }
+
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        .nav-btn:hover, .nav-btn.active { background: #667eea; color: white; }
+
+        .content { padding: 30px; }
+
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        .section.overview    { border-left-color: #667eea; }
+        .section.diagnosis   { border-left-color: #4299e1; }
+        .section.grading     { border-left-color: #ed8936; }
+        .section.crs         { border-left-color: #f56565; }
+        .section.icans       { border-left-color: #9f7aea; }
+
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+
+        h4 { font-size: 1.05em; color: #2d3748; margin-bottom: 8px; }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge.urgent  { background: #f56565; color: white; }
+        .badge.g1      { background: #68d391; color: #1c4532; }
+        .badge.g2      { background: #f6ad55; color: #7b341e; }
+        .badge.g3      { background: #fc8181; color: #7b341e; }
+        .badge.g4      { background: #c53030; color: white; }
+        .badge.info    { background: #4299e1; color: white; }
+        .badge.purple  { background: #9f7aea; color: white; }
+
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .warning-box h4 { color: #c53030; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .success-box h4 { color: #276749; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .purple-box {
+            background: #faf5ff;
+            border-left: 4px solid #9f7aea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .purple-box h4 { color: #553c9a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .orange-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .orange-box h4 { color: #9c4221; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+        }
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .regimen-title { font-size: 1.2em; font-weight: 600; color: #2d3748; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+            font-size: 0.95em;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+            font-size: 0.93em;
+        }
+        tr:hover { background: #f7fafc; }
+
+        /* Grade color rows */
+        .g1-row { background: #f0fff4 !important; }
+        .g2-row { background: #fffff0 !important; }
+        .g3-row { background: #fff8f0 !important; }
+        .g4-row { background: #fff5f5 !important; }
+
+        .drug-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.88em;
+            border: 1px solid #81e6d9;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        /* Grade treatment cards */
+        .grade-card {
+            border-radius: 10px;
+            border: 2px solid;
+            padding: 18px;
+            margin: 12px 0;
+        }
+        .grade-card.g1 { border-color: #68d391; background: #f0fff4; }
+        .grade-card.g2 { border-color: #f6ad55; background: #fffff0; }
+        .grade-card.g3 { border-color: #fc8181; background: #fff8f0; }
+        .grade-card.g4 { border-color: #c53030; background: #fff5f5; }
+
+        .grade-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .grade-card-title {
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+        .grade-card.g1 .grade-card-title { color: #276749; }
+        .grade-card.g2 .grade-card-title { color: #9c4221; }
+        .grade-card.g3 .grade-card-title { color: #c53030; }
+        .grade-card.g4 .grade-card-title { color: #9b2c2c; }
+
+        .grade-criteria {
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 12px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.6);
+        }
+
+        .treatment-list {
+            list-style: none;
+            padding: 0;
+        }
+        .treatment-list li {
+            padding: 5px 0 5px 22px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: relative;
+            font-size: 0.93em;
+        }
+        .treatment-list li:last-child { border-bottom: none; }
+        .treatment-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        /* Timeframe chips */
+        .timeframe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .timeframe-chip {
+            border-radius: 8px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .timeframe-chip.crs   { background: #fff5f5; border: 1.5px solid #fc8181; }
+        .timeframe-chip.icans { background: #faf5ff; border: 1.5px solid #b794f4; }
+
+        .timeframe-icon { font-size: 1.5em; flex-shrink: 0; }
+        .timeframe-label { font-weight: 700; font-size: 0.9em; margin-bottom: 2px; }
+        .timeframe-chip.crs   .timeframe-label { color: #c53030; }
+        .timeframe-chip.icans .timeframe-label { color: #553c9a; }
+        .timeframe-detail { font-size: 0.88em; color: #4a5568; }
+
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4299e1;
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 8px 14px;
+            border: 1.5px solid #4299e1;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        .source-link:hover { background: #ebf8ff; }
+
+        .app-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #ebf8ff;
+            border: 2px solid #bee3f8;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 15px 0;
+        }
+        .app-icon { font-size: 2em; flex-shrink: 0; }
+        .app-text strong { display: block; margin-bottom: 2px; }
+        .app-text span { font-size: 0.9em; color: #4a5568; }
+
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 6px; }
+
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .two-col, .timeframe-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.85em; }
+            .content { padding: 20px 15px; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>🧠 CRS and ICANS</h1>
+            <p class="header-subtitle">Cytokine Release Syndrome and Immune Effector Cell–Associated Neurotoxicity Syndrome — grading, diagnosis, and management</p>
+        </header>
+
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('overview')">Overview</button>
+            <button class="nav-btn" onclick="scrollToSection('diagnosis')">Diagnosis & Workup</button>
+            <button class="nav-btn" onclick="scrollToSection('grading')">Grading Tables</button>
+            <button class="nav-btn" onclick="scrollToSection('crs')">CRS Treatment</button>
+            <button class="nav-btn" onclick="scrollToSection('icans')">ICANS Treatment</button>
+        </nav>
+
+        <div class="content">
+
+            <!-- OVERVIEW -->
+            <section id="overview" class="section overview">
+                <h2>📋 Overview</h2>
+
+                <div class="app-card">
+                    <span class="app-icon">📱</span>
+                    <div class="app-text">
+                        <strong>CARTOX App</strong>
+                        <span>Helpful clinical tool for CRS/ICANS grading and management at the bedside. Also see dot phrase <strong>.ofwcrsicans</strong> for a full treatment outline for notes.</span>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Any Suspicion of CRS → Call the Attending / Fellow Immediately</h4>
+                    <p>Do not manage CRS or ICANS overnight without notifying the team. Early escalation is critical.</p>
+                </div>
+
+                <h3>Risk Timeframes</h3>
+                <div class="timeframe-grid">
+                    <div class="timeframe-chip crs">
+                        <span class="timeframe-icon">🔥</span>
+                        <div>
+                            <div class="timeframe-label">CRS Risk Window</div>
+                            <div class="timeframe-detail">Highest risk Days 2–7<br>Median onset Day 2</div>
+                        </div>
+                    </div>
+                    <div class="timeframe-chip icans">
+                        <span class="timeframe-icon">🧠</span>
+                        <div>
+                            <div class="timeframe-label">ICANS Risk Window</div>
+                            <div class="timeframe-detail">Highest risk Days 4–6<br>Can follow or overlap CRS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Treatments That Can Cause CRS / ICANS</h3>
+                <div class="two-col">
+                    <div class="regimen-card" style="margin:0;">
+                        <div style="font-weight:700; margin-bottom:8px; color:#c53030;">🔬 CAR-T Cell Therapy</div>
+                        <p style="font-size:0.93em; color:#4a5568;">Chimeric antigen receptor T-cell therapy — highest risk for both CRS and ICANS</p>
+                    </div>
+                    <div class="regimen-card" style="margin:0;">
+                        <div style="font-weight:700; margin-bottom:8px; color:#553c9a;">💉 Bispecific T-Cell Engagers (BiTE)</div>
+                        <ul style="font-size:0.93em; color:#4a5568; margin-top:4px;">
+                            <li><strong>Talquetamab</strong> — for multiple myeloma</li>
+                            <li><strong>Epcoritamab</strong> — for lymphoma</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DIAGNOSIS & WORKUP -->
+            <section id="diagnosis" class="section diagnosis">
+                <h2>🧪 Diagnosis & Initial Workup</h2>
+
+                <h3>Labs to Order</h3>
+                <div class="regimen-card">
+                    <table style="margin:0;">
+                        <tr>
+                            <th>Category</th>
+                            <th>Labs</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard Panel</strong></td>
+                            <td>CBC, CMP, Magnesium, Phosphorus</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Inflammatory Markers</strong></td>
+                            <td>CRP, LDH, Ferritin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coagulation / Other</strong></td>
+                            <td>Fibrinogen, PT/PTT, Uric acid</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infectious (if fever)</strong></td>
+                            <td>Blood cultures ×2, urine culture, CXR</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Monitoring</h3>
+                <div class="success-box">
+                    <h4>✓ Continuous Monitoring Requirements</h4>
+                    <ul style="margin-top:8px;">
+                        <li>Telemetry</li>
+                        <li>Continuous pulse oximetry</li>
+                    </ul>
+                </div>
+
+                <h3>Additional Workup for ICANS</h3>
+                <div class="purple-box">
+                    <h4>🧠 ICANS-Specific Workup</h4>
+                    <ul style="margin-top:8px;">
+                        <li><strong>MRI Brain</strong> — evaluate for cerebral edema</li>
+                        <li><strong>EEG</strong> — evaluate for subclinical seizures</li>
+                        <li><strong>Diagnostic LP</strong> — rule out infectious/inflammatory CNS process</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- GRADING TABLES -->
+            <section id="grading" class="section grading">
+                <h2>📊 ASTCT Consensus Grading Tables</h2>
+
+                <h3>CRS Grading (ASTCT)</h3>
+                <div style="overflow-x:auto;">
+                    <table>
+                        <tr>
+                            <th style="min-width:120px;">CRS Parameter</th>
+                            <th><span class="badge g1">Grade 1</span></th>
+                            <th><span class="badge g2">Grade 2</span></th>
+                            <th><span class="badge g3">Grade 3</span></th>
+                            <th><span class="badge g4">Grade 4</span></th>
+                        </tr>
+                        <tr>
+                            <td><strong>Fever</strong></td>
+                            <td colspan="4" style="text-align:center; background:#fef9f0; font-style:italic;">Temperature ≥38°C (required for all grades)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="4" style="text-align:center; background:#f7fafc; font-size:0.85em; color:#718096; font-style:italic;">Plus (With):</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hypotension</strong></td>
+                            <td class="g1-row">None</td>
+                            <td class="g2-row">Not requiring vasopressors</td>
+                            <td class="g3-row">Requiring a vasopressor with or without vasopressin</td>
+                            <td class="g4-row">Requiring multiple vasopressors (excluding vasopressin)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="4" style="text-align:center; background:#f7fafc; font-size:0.85em; color:#718096; font-style:italic;">And/or:</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hypoxia</strong></td>
+                            <td class="g1-row">None</td>
+                            <td class="g2-row">Requiring low-flow nasal cannula or blow-by</td>
+                            <td class="g3-row">Requiring high-flow nasal cannula, facemask, nonrebreather mask, or Venturi mask</td>
+                            <td class="g4-row">Requiring positive pressure (CPAP, BiPAP, intubation, mechanical ventilation)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>ICANS Grading — Adults (ASTCT)</h3>
+                <div style="overflow-x:auto;">
+                    <table>
+                        <tr>
+                            <th style="min-width:140px;">Neurotoxicity Domain</th>
+                            <th><span class="badge g1">Grade 1</span></th>
+                            <th><span class="badge g2">Grade 2</span></th>
+                            <th><span class="badge g3">Grade 3</span></th>
+                            <th><span class="badge g4">Grade 4</span></th>
+                        </tr>
+                        <tr>
+                            <td><strong>ICE Score</strong></td>
+                            <td class="g1-row">7–9</td>
+                            <td class="g2-row">3–6</td>
+                            <td class="g3-row">0–2</td>
+                            <td class="g4-row">0 (patient unarousable, unable to perform ICE)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Level of Consciousness</strong></td>
+                            <td class="g1-row">Awakens spontaneously</td>
+                            <td class="g2-row">Awakens to voice</td>
+                            <td class="g3-row">Awakens only to tactile stimulus</td>
+                            <td class="g4-row">Unarousable or requires vigorous/repetitive tactile stimuli. Stupor or coma</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seizure</strong></td>
+                            <td class="g1-row">N/A</td>
+                            <td class="g2-row">N/A</td>
+                            <td class="g3-row">Any focal or generalized seizure resolving rapidly, or nonconvulsive seizures on EEG resolving with intervention</td>
+                            <td class="g4-row">Life-threatening prolonged seizure (&gt;5 min); or repetitive clinical or electrical seizures without return to baseline</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Motor Findings</strong></td>
+                            <td class="g1-row">N/A</td>
+                            <td class="g2-row">N/A</td>
+                            <td class="g3-row">N/A</td>
+                            <td class="g4-row">Deep focal motor weakness such as hemiparesis or paraparesis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Elevated ICP / Cerebral Edema</strong></td>
+                            <td class="g1-row">N/A</td>
+                            <td class="g2-row">N/A</td>
+                            <td class="g3-row">Focal/local edema on neuroimaging</td>
+                            <td class="g4-row">Diffuse cerebral edema on neuroimaging; decerebrate or decorticate posturing; cranial nerve VI palsy; papilledema; or Cushing's triad</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="info-box">
+                    <strong>ICE Score</strong> (Immune effector Cell-associated Encephalopathy) — 10-point bedside assessment: orientation to year/month/city/hospital (4 pts), naming 3 objects (3 pts), following commands (1 pt), writing a sentence (1 pt), counting backward from 100 by 10 (1 pt).
+                </div>
+            </section>
+
+            <!-- CRS TREATMENT -->
+            <section id="crs" class="section crs">
+                <h2>🔥 CRS Treatment</h2>
+
+                <div class="warning-box">
+                    <h4>⚠️ Any Suspicion of CRS → Call Attending / Fellow First</h4>
+                    <p>Do not manage CRS independently overnight. Always escalate before initiating tocilizumab or steroids.</p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Reference:</strong> Management of Immune-Related Adverse Events in Patients Treated With CAR-T Cell Therapy: ASCO Guideline
+                    <br><a href="https://ascopubs.org/doi/10.1200/JCO.21.01992" target="_blank" class="source-link" style="margin-top:8px;">📖 ASCO Guideline: JCO.21.01992</a>
+                </div>
+
+                <div class="grade-card g1">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title">Grade 1</div>
+                        <span class="badge g1">Grade 1</span>
+                    </div>
+                    <div class="grade-criteria">Fever only — no hypotension, no hypoxia</div>
+                    <ul class="treatment-list">
+                        <li>Supportive care: Tylenol, IV fluids</li>
+                        <li>Antibiotics if neutropenic fever</li>
+                    </ul>
+                </div>
+
+                <div class="grade-card g2">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title">Grade 2</div>
+                        <span class="badge g2">Grade 2</span>
+                    </div>
+                    <div class="grade-criteria">Fever + hypotension not requiring vasopressor, or hypoxia requiring nasal cannula only</div>
+                    <ul class="treatment-list">
+                        <li>Supportive care: Tylenol, IV fluids</li>
+                        <li><strong>Tocilizumab 8 mg/kg IV</strong> — repeat every 8h up to 3 doses in 24h (4 doses total)</li>
+                        <li>If hypotension refractory to fluids + tocilizumab → add <strong>Dexamethasone 10mg IV q12h</strong></li>
+                    </ul>
+                </div>
+
+                <div class="grade-card g3">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title">Grade 3</div>
+                        <span class="badge g3">Grade 3</span>
+                    </div>
+                    <div class="grade-criteria">Fever + hypotension requiring vasopressor, or hypoxia requiring NRB or high-flow O₂</div>
+                    <ul class="treatment-list">
+                        <li>Supportive care</li>
+                        <li><strong>ICU admission</strong> for vasopressor management</li>
+                        <li>ECHO</li>
+                        <li><strong>Tocilizumab 8 mg/kg IV</strong> — repeat every 8h up to 3 doses in 24h (4 doses total)</li>
+                        <li><strong>Dexamethasone 10mg IV q6h</strong></li>
+                    </ul>
+                </div>
+
+                <div class="grade-card g4">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title">Grade 4</div>
+                        <span class="badge g4">Grade 4</span>
+                    </div>
+                    <div class="grade-criteria">Fever + hypotension requiring multiple vasopressors, or hypoxia requiring BiPAP or mechanical ventilation</div>
+                    <ul class="treatment-list">
+                        <li>Supportive care</li>
+                        <li><strong>ICU admission</strong> for vasopressors / mechanical ventilation</li>
+                        <li><strong>Tocilizumab 8 mg/kg IV</strong> — repeat every 8h up to 3 doses in 24h (4 doses total)</li>
+                        <li><strong>Methylprednisolone 500mg IV q12h</strong></li>
+                    </ul>
+                </div>
+
+                <h3>Tocilizumab Quick Reference</h3>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Dose</strong></td>
+                        <td>8 mg/kg IV</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Repeat dosing</strong></td>
+                        <td>Every 8 hours — up to 3 doses in 24 hours</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maximum total doses</strong></td>
+                        <td>4 doses total</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Escalation</strong></td>
+                        <td>If refractory: add dexamethasone (Grade 2) or methylprednisolone (Grade 4)</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ICANS TREATMENT -->
+            <section id="icans" class="section icans">
+                <h2>🧠 ICANS Treatment</h2>
+
+                <div class="purple-box">
+                    <h4>🧠 ICANS Key Principles</h4>
+                    <ul style="margin-top:8px;">
+                        <li>Always assess for concurrent CRS — this changes management significantly</li>
+                        <li>Aspiration precautions in all ICANS grades</li>
+                        <li>Tocilizumab is used for concurrent CRS; dexamethasone/methylprednisolone target ICANS directly</li>
+                    </ul>
+                </div>
+
+                <div class="grade-card g1" style="border-color:#b794f4; background:#faf5ff;">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title" style="color:#553c9a;">Grade 1</div>
+                        <span class="badge purple">ICE 7–9</span>
+                    </div>
+                    <div class="grade-criteria" style="color:#553c9a;">Fatigued but awakens spontaneously</div>
+                    <div class="two-col" style="margin:0; gap:10px;">
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">No Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li>Supportive care, IV fluids</li>
+                                <li>Aspiration precautions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li>Tocilizumab (per CRS grade)</li>
+                                <li>Consider IV Dex after first tocilizumab dose</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grade-card g2" style="border-color:#b794f4; background:#faf5ff;">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title" style="color:#553c9a;">Grade 2</div>
+                        <span class="badge purple">ICE 3–6</span>
+                    </div>
+                    <div class="grade-criteria" style="color:#553c9a;">Awakens to voice</div>
+                    <div class="two-col" style="margin:0; gap:10px;">
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">No Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li><strong>Dexamethasone 10mg IV q6–12h</strong> until resolution</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li>Tocilizumab (per CRS grade)</li>
+                                <li>Consider ICU admission</li>
+                                <li>Consider IV Dex after first tocilizumab dose</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grade-card g3" style="border-color:#b794f4; background:#faf5ff;">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title" style="color:#553c9a;">Grade 3</div>
+                        <span class="badge purple">ICE 0–2</span>
+                    </div>
+                    <div class="grade-criteria" style="color:#553c9a;">Awakens only to tactile stimulus; mild/subclinical seizure; focal cerebral edema</div>
+                    <ul class="treatment-list" style="margin-bottom:10px;">
+                        <li><strong>ICU admission</strong></li>
+                    </ul>
+                    <div class="two-col" style="margin:0; gap:10px;">
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">No Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li><strong>Dexamethasone 10mg IV q6–12h</strong> until resolution</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li>Tocilizumab (per CRS grade)</li>
+                                <li>Consider IV Dex after first tocilizumab dose</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grade-card g4" style="border-color:#553c9a; background:#faf5ff;">
+                    <div class="grade-card-header">
+                        <div class="grade-card-title" style="color:#553c9a;">Grade 4</div>
+                        <span class="badge purple">ICE 0</span>
+                    </div>
+                    <div class="grade-criteria" style="color:#553c9a;">Unarousable; severe/prolonged seizure; diffuse cerebral edema</div>
+                    <ul class="treatment-list" style="margin-bottom:10px;">
+                        <li><strong>ICU admission</strong></li>
+                    </ul>
+                    <div class="two-col" style="margin:0; gap:10px;">
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">No Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li><strong>Methylprednisolone 1g IV</strong> 1–2× daily for 3 days</li>
+                                <li>Can increase frequency if refractory</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="font-size:0.9em; color:#553c9a;">Concurrent CRS:</strong>
+                            <ul class="treatment-list" style="margin-top:6px;">
+                                <li>Tocilizumab (per CRS grade)</li>
+                                <li><strong>Methylprednisolone 1g IV</strong> 1–2× daily for 3 days</li>
+                                <li>Can increase frequency if refractory</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <a href="https://ascopubs.org/doi/10.1200/JCO.21.01992" target="_blank" class="source-link">
+                        📖 ASCO Guideline: CAR-T Immune-Related Adverse Events Management (JCO.21.01992)
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

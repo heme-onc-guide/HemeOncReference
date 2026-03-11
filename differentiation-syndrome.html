@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Differentiation Syndrome</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: white; }
+
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .header-subtitle { opacity: 0.9; font-size: 0.95em; }
+
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        .nav-btn:hover, .nav-btn.active { background: #667eea; color: white; }
+
+        .content { padding: 30px; }
+
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        .section.overview   { border-left-color: #667eea; }
+        .section.symptoms   { border-left-color: #ed8936; }
+        .section.severity   { border-left-color: #f56565; }
+        .section.timing     { border-left-color: #4299e1; }
+        .section.treatment  { border-left-color: #48bb78; }
+
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+
+        h4 { font-size: 1.05em; color: #2d3748; margin-bottom: 8px; }
+
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .warning-box h4 { color: #c53030; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .success-box h4 { color: #276749; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .orange-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .orange-box h4 { color: #9c4221; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+        }
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .regimen-title { font-size: 1.2em; font-weight: 600; color: #2d3748; }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge.urgent   { background: #f56565; color: white; }
+        .badge.caution  { background: #ed8936; color: white; }
+        .badge.standard { background: #48bb78; color: white; }
+        .badge.info     { background: #4299e1; color: white; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        tr:hover { background: #f7fafc; }
+
+        /* Cause cards */
+        .cause-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 15px 0;
+        }
+
+        .cause-card {
+            border-radius: 8px;
+            padding: 16px 18px;
+            border: 2px solid;
+        }
+        .cause-card.primary { background: #fff5f5; border-color: #fc8181; }
+        .cause-card.secondary { background: #fffaf0; border-color: #f6ad55; }
+
+        .cause-title {
+            font-weight: 700;
+            font-size: 0.95em;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .cause-card.primary .cause-title   { color: #c53030; }
+        .cause-card.secondary .cause-title { color: #9c4221; }
+
+        .cause-card p { font-size: 0.92em; color: #4a5568; }
+
+        /* Symptom grid */
+        .symptom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .symptom-chip {
+            background: #fffaf0;
+            border: 1.5px solid #fbd38d;
+            border-radius: 8px;
+            padding: 10px 13px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 0.93em;
+            font-weight: 500;
+            color: #744210;
+        }
+        .symptom-chip-icon { font-size: 1.3em; flex-shrink: 0; }
+
+        /* Severity cards */
+        .severity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+            margin: 15px 0;
+        }
+
+        .severity-card {
+            border-radius: 10px;
+            padding: 16px 18px;
+            border: 2px solid;
+            text-align: center;
+        }
+        .severity-card.severe       { background: #fff5f5; border-color: #f56565; }
+        .severity-card.moderate     { background: #fffaf0; border-color: #ed8936; }
+        .severity-card.indeterminate{ background: #fffff0; border-color: #d69e2e; }
+
+        .severity-label {
+            font-weight: 700;
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .severity-card.severe        .severity-label { color: #c53030; }
+        .severity-card.moderate      .severity-label { color: #9c4221; }
+        .severity-card.indeterminate .severity-label { color: #744210; }
+
+        .severity-count {
+            font-size: 1.9em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .severity-card.severe        .severity-count { color: #f56565; }
+        .severity-card.moderate      .severity-count { color: #ed8936; }
+        .severity-card.indeterminate .severity-count { color: #d69e2e; }
+
+        .severity-desc { font-size: 0.85em; color: #4a5568; }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+        .timeline-item.peak::before { background: #f56565; box-shadow: 0 0 0 2px #f56565; }
+        .timeline-day {
+            font-weight: 700;
+            font-size: 0.9em;
+            color: #667eea;
+            margin-bottom: 2px;
+        }
+        .timeline-item.peak .timeline-day { color: #c53030; }
+        .timeline-text { font-size: 0.93em; color: #4a5568; }
+
+        /* Treatment steps */
+        .treatment-steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+        .treatment-steps li {
+            counter-increment: step;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .treatment-steps li:last-child { border-bottom: none; }
+        .step-num {
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.88em;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .step-num.red { background: #f56565; }
+
+        .drug-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.88em;
+            border: 1px solid #81e6d9;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4299e1;
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 8px 14px;
+            border: 1.5px solid #4299e1;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        .source-link:hover { background: #ebf8ff; }
+
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 6px; }
+
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .cause-grid, .severity-grid { grid-template-columns: 1fr; }
+            .symptom-grid { grid-template-columns: 1fr 1fr; }
+            table { font-size: 0.9em; }
+            .content { padding: 20px 15px; }
+        }
+        @media (max-width: 480px) {
+            .symptom-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>🔄 Differentiation Syndrome</h1>
+            <p class="header-subtitle">Recognition, grading, and management of differentiation syndrome in APL and AML therapy</p>
+        </header>
+
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('overview')">Overview</button>
+            <button class="nav-btn" onclick="scrollToSection('symptoms')">Symptoms</button>
+            <button class="nav-btn" onclick="scrollToSection('severity')">Severity Grading</button>
+            <button class="nav-btn" onclick="scrollToSection('timing')">Timing</button>
+            <button class="nav-btn" onclick="scrollToSection('treatment')">Treatment</button>
+        </nav>
+
+        <div class="content">
+
+            <!-- OVERVIEW -->
+            <section id="overview" class="section overview">
+                <h2>📋 Overview</h2>
+
+                <div class="warning-box">
+                    <h4>⚠️ High-Risk Period — First 28 Days of APL Induction</h4>
+                    <p>Risk is highest during induction therapy. Also consider differentiation syndrome around the time you start to see count and neutrophil recovery in a patient undergoing treatment.</p>
+                </div>
+
+                <h3>Causative Treatments</h3>
+                <div class="cause-grid">
+                    <div class="cause-card primary">
+                        <div class="cause-title">🔴 Primary — APL Induction</div>
+                        <p>Most commonly seen in <strong>acute promyelocytic leukemia (APL)</strong> treated with:</p>
+                        <ul style="margin-top:8px; font-size:0.92em;">
+                            <li><strong>ATRA</strong> (all-trans retinoic acid)</li>
+                            <li><strong>ATO</strong> (arsenic trioxide)</li>
+                            <li>Either agent alone or in combination</li>
+                        </ul>
+                    </div>
+                    <div class="cause-card secondary">
+                        <div class="cause-title">🟡 Also Consider — AML with IDH Mutations</div>
+                        <p>Differentiation syndrome can also occur with <strong>IDH inhibitors</strong> used in AML:</p>
+                        <ul style="margin-top:8px; font-size:0.92em;">
+                            <li>Ivosidenib (IDH1)</li>
+                            <li>Enasidenib (IDH2)</li>
+                            <li>Olutasidenib (IDH1)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Mechanism:</strong> Differentiation syndrome occurs when leukemic cells rapidly differentiate and release inflammatory cytokines, leading to endothelial leak, organ infiltration, and systemic inflammation.
+                </div>
+            </section>
+
+            <!-- SYMPTOMS -->
+            <section id="symptoms" class="section symptoms">
+                <h2>🩺 Symptoms</h2>
+
+                <p style="margin-bottom:14px; color:#4a5568;">Suspect differentiation syndrome when any combination of the following are present — particularly during the high-risk window:</p>
+
+                <div class="symptom-grid">
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">🌡️</span>
+                        <span>Unexplained fever</span>
+                    </div>
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">⚖️</span>
+                        <span>Weight gain</span>
+                    </div>
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">💧</span>
+                        <span>Edema</span>
+                    </div>
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">🫁</span>
+                        <span>Dyspnea with pulmonary infiltrates</span>
+                    </div>
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">🫀</span>
+                        <span>Pleuropericardial effusion</span>
+                    </div>
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">📉</span>
+                        <span>Hypotension</span>
+                    </div>
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">🫘</span>
+                        <span>Renal failure</span>
+                    </div>
+                    <div class="symptom-chip">
+                        <span class="symptom-chip-icon">🔴</span>
+                        <span>Rash (sometimes)</span>
+                    </div>
+                </div>
+
+                <div class="orange-box" style="margin-top:16px;">
+                    <h4>⚠️ Key Clinical Pearl</h4>
+                    <p>Differentiation syndrome can mimic infection (fever, hypotension, respiratory distress). Maintain a high index of suspicion in any APL or IDH-inhibitor patient with new systemic symptoms — especially around count recovery.</p>
+                </div>
+            </section>
+
+            <!-- SEVERITY -->
+            <section id="severity" class="section severity">
+                <h2>📊 Severity Grading</h2>
+
+                <p style="margin-bottom:16px; color:#4a5568;">Severity correlates directly with the number of clinical features present:</p>
+
+                <div class="severity-grid">
+                    <div class="severity-card indeterminate">
+                        <div class="severity-label">Indeterminate</div>
+                        <div class="severity-count">1–2</div>
+                        <div class="severity-desc">clinical features</div>
+                    </div>
+                    <div class="severity-card moderate">
+                        <div class="severity-label">Moderate</div>
+                        <div class="severity-count">3</div>
+                        <div class="severity-desc">clinical features</div>
+                    </div>
+                    <div class="severity-card severe">
+                        <div class="severity-label">Severe</div>
+                        <div class="severity-count">≥4</div>
+                        <div class="severity-desc">clinical features</div>
+                    </div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Features</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr style="background:#fffff0;">
+                        <td><strong>Indeterminate</strong></td>
+                        <td>1–2 clinical features</td>
+                        <td>Monitor closely; low threshold to start dexamethasone</td>
+                    </tr>
+                    <tr style="background:#fffaf0;">
+                        <td><strong>Moderate</strong></td>
+                        <td>3 clinical features</td>
+                        <td>Start dexamethasone; continue ATRA/ATO</td>
+                    </tr>
+                    <tr style="background:#fff5f5;">
+                        <td><strong>Severe</strong></td>
+                        <td>≥4 clinical features</td>
+                        <td>Start dexamethasone; hold ATRA/ATO if life-threatening</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- TIMING -->
+            <section id="timing" class="section timing">
+                <h2>🕐 Timing</h2>
+
+                <div class="info-box">
+                    <strong>Onset window:</strong> Can occur within <strong>1–31 days</strong> of starting treatment. Sometimes follows a biphasic pattern with two peaks of higher risk.
+                </div>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Risk Timeline</span>
+                        <span class="badge info">Biphasic Pattern</span>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-day">Day 1 — Treatment Start</div>
+                            <div class="timeline-text">Begin ATRA ± ATO. Risk window opens immediately.</div>
+                        </div>
+                        <div class="timeline-item peak">
+                            <div class="timeline-day">~Day 7 — First Peak</div>
+                            <div class="timeline-text">Early period of higher risk. Monitor closely for fever, edema, respiratory symptoms.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-day">Days 7–20 — Intermediate</div>
+                            <div class="timeline-text">Ongoing vigilance. Symptoms can occur at any point.</div>
+                        </div>
+                        <div class="timeline-item peak">
+                            <div class="timeline-day">~Day 21 — Second Peak</div>
+                            <div class="timeline-text">Second period of higher risk — often coincides with neutrophil / count recovery. High index of suspicion required.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-day">Day 28 — End of Induction</div>
+                            <div class="timeline-text">Risk decreases after induction completion. Bone marrow biopsy assessment.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Count Recovery = Increased Vigilance</h4>
+                    <p>The onset of neutrophil and count recovery is a key trigger for differentiation syndrome. Reassess for symptoms at this time point even if the patient was previously asymptomatic.</p>
+                </div>
+            </section>
+
+            <!-- TREATMENT -->
+            <section id="treatment" class="section treatment">
+                <h2>💊 Treatment</h2>
+
+                <div class="regimen-card" style="border-color: #48bb78;">
+                    <div class="regimen-header">
+                        <span class="regimen-title">First-Line Treatment</span>
+                        <span class="badge standard">Start Immediately</span>
+                    </div>
+                    <ol class="treatment-steps">
+                        <li>
+                            <div class="step-num">1</div>
+                            <div>
+                                <strong>Dexamethasone 10mg IV twice daily</strong><br>
+                                <span style="font-size:0.93em; color:#4a5568;">Start as soon as differentiation syndrome is suspected. Do not wait for confirmed diagnosis.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-num">2</div>
+                            <div>
+                                <strong>Continue steroids until complete symptom resolution</strong><br>
+                                <span style="font-size:0.93em; color:#4a5568;">Do not taper prematurely. Maintain dexamethasone until all clinical features have resolved.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="step-num red">3</div>
+                            <div>
+                                <strong>If no response or life-threatening complication → Hold ATRA / ATO</strong><br>
+                                <span style="font-size:0.93em; color:#4a5568;">Temporarily discontinue the differentiation agent. Resume as soon as clinically able once symptoms improve.</span>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Drug</th>
+                        <th>Dose</th>
+                        <th>Duration</th>
+                    </tr>
+                    <tr style="background:#f0fff4;">
+                        <td><strong>Dexamethasone</strong></td>
+                        <td>10 mg IV <strong>twice daily</strong></td>
+                        <td>Until complete symptom resolution</td>
+                    </tr>
+                </table>
+
+                <div class="success-box">
+                    <h4>✓ Resuming ATRA / ATO After Hold</h4>
+                    <p>ATRA and ATO should be resumed as soon as clinically feasible after symptom resolution. Completing APL induction is critical — prolonged interruption risks disease progression.</p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Do Not Delay Steroids</h4>
+                    <p>Clinical diagnosis is sufficient to begin dexamethasone. Differentiation syndrome can progress rapidly to respiratory failure and death if treatment is delayed.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <a href="https://ashpublications.org/blood/article/123/18/2777/32479/How-we-prevent-and-treat-differentiation-syndrome" target="_blank" class="source-link">
+                        📖 ASH Blood: How We Prevent and Treat Differentiation Syndrome
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

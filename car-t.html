@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR-T Cell Therapy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: white; }
+
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .header-subtitle { opacity: 0.9; font-size: 0.95em; }
+
+        .quick-nav {
+            background: #edf2f7;
+            padding: 20px 30px;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+        .nav-btn:hover, .nav-btn.active { background: #667eea; color: white; }
+
+        .content { padding: 30px; }
+
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        .section.lymphodepletion { border-left-color: #4299e1; }
+        .section.types           { border-left-color: #9f7aea; }
+        .section.dex             { border-left-color: #48bb78; }
+        .section.sideeffects     { border-left-color: #f56565; }
+        .section.prophylaxis     { border-left-color: #ed8936; }
+
+        h2 {
+            color: #1a202c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+
+        h4 { font-size: 1.05em; color: #2d3748; margin-bottom: 8px; }
+
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .warning-box h4 { color: #c53030; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .success-box h4 { color: #276749; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .purple-box {
+            background: #faf5ff;
+            border-left: 4px solid #9f7aea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .purple-box h4 { color: #553c9a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .orange-box {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        .orange-box h4 { color: #9c4221; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        .regimen-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        .regimen-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+        }
+        .regimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .regimen-title { font-size: 1.2em; font-weight: 600; color: #2d3748; }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge.urgent   { background: #f56565; color: white; }
+        .badge.caution  { background: #ed8936; color: white; }
+        .badge.standard { background: #48bb78; color: white; }
+        .badge.info     { background: #4299e1; color: white; }
+        .badge.purple   { background: #9f7aea; color: white; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        th {
+            background: #edf2f7;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #cbd5e0;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        tr:hover { background: #f7fafc; }
+
+        /* Timeline */
+        .timeline-row {
+            display: flex;
+            gap: 0;
+            margin: 20px 0;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .timeline-day {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-day::after {
+            content: '';
+            position: absolute;
+            top: 22px;
+            right: 0;
+            width: 50%;
+            height: 3px;
+            background: #cbd5e0;
+            z-index: 0;
+        }
+        .timeline-day::before {
+            content: '';
+            position: absolute;
+            top: 22px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: #cbd5e0;
+            z-index: 0;
+        }
+        .timeline-day:first-child::before { display: none; }
+        .timeline-day:last-child::after  { display: none; }
+
+        .timeline-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9em;
+            margin: 0 auto 8px;
+            position: relative;
+            z-index: 1;
+            border: 3px solid;
+        }
+
+        .timeline-dot.chemo   { background: #bee3f8; border-color: #4299e1; color: #1a365d; }
+        .timeline-dot.rest    { background: #e2e8f0; border-color: #a0aec0; color: #4a5568; }
+        .timeline-dot.infusion{ background: #c6f6d5; border-color: #48bb78; color: #1c4532; }
+
+        .timeline-day-label {
+            font-size: 0.78em;
+            font-weight: 700;
+            color: #4a5568;
+            margin-bottom: 3px;
+        }
+        .timeline-day-detail {
+            font-size: 0.75em;
+            color: #718096;
+            line-height: 1.3;
+        }
+
+        /* CAR-T type cards */
+        .cart-types-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+            margin: 15px 0;
+        }
+
+        .cart-type-card {
+            border-radius: 10px;
+            border: 2px solid;
+            padding: 16px;
+        }
+        .cart-type-card.cd19-dlbcl { background: #ebf8ff; border-color: #4299e1; }
+        .cart-type-card.cd19-mcl   { background: #f0fff4; border-color: #48bb78; }
+        .cart-type-card.bcma       { background: #faf5ff; border-color: #9f7aea; }
+
+        .cart-type-title {
+            font-weight: 700;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid;
+        }
+        .cart-type-card.cd19-dlbcl .cart-type-title { color: #1a365d; border-color: #bee3f8; }
+        .cart-type-card.cd19-mcl   .cart-type-title { color: #1c4532; border-color: #c6f6d5; }
+        .cart-type-card.bcma       .cart-type-title { color: #44337a; border-color: #e9d8fd; }
+
+        .cart-type-target {
+            display: inline-block;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .cart-type-card.cd19-dlbcl .cart-type-target { background: #bee3f8; color: #1a365d; }
+        .cart-type-card.cd19-mcl   .cart-type-target { background: #c6f6d5; color: #1c4532; }
+        .cart-type-card.bcma       .cart-type-target { background: #e9d8fd; color: #44337a; }
+
+        .cart-drug {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.88em;
+        }
+        .cart-drug:last-child { border-bottom: none; }
+        .cart-drug-brand { color: #718096; font-size: 0.9em; }
+
+        /* Risk timeframe chips */
+        .timeframe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .timeframe-chip {
+            border-radius: 8px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .timeframe-chip.crs   { background: #fff5f5; border: 1.5px solid #fc8181; }
+        .timeframe-chip.icans { background: #faf5ff; border: 1.5px solid #b794f4; }
+
+        .timeframe-icon { font-size: 1.5em; flex-shrink: 0; }
+        .timeframe-label { font-weight: 700; font-size: 0.9em; margin-bottom: 2px; }
+        .timeframe-chip.crs   .timeframe-label { color: #c53030; }
+        .timeframe-chip.icans .timeframe-label { color: #553c9a; }
+        .timeframe-detail { font-size: 0.88em; color: #4a5568; }
+
+        .drug-tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.88em;
+            border: 1px solid #81e6d9;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4299e1;
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 8px 14px;
+            border: 1.5px solid #4299e1;
+            border-radius: 6px;
+            margin: 6px 6px 0 0;
+            transition: all 0.2s;
+        }
+        .source-link:hover { background: #ebf8ff; }
+
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 6px; }
+
+        @media (max-width: 900px) {
+            .cart-types-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .quick-nav { flex-direction: column; }
+            .timeframe-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.9em; }
+            .content { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
+            <h1>🎯 CAR-T Cell Therapy</h1>
+            <p class="header-subtitle">Chimeric antigen receptor T-cell therapy — lymphodepletion, product types, prophylactic dexamethasone, and toxicity management</p>
+        </header>
+
+        <nav class="quick-nav">
+            <button class="nav-btn" onclick="scrollToSection('lymphodepletion')">Lymphodepletion</button>
+            <button class="nav-btn" onclick="scrollToSection('types')">CAR-T Products</button>
+            <button class="nav-btn" onclick="scrollToSection('dex')">Prophylactic Dex</button>
+            <button class="nav-btn" onclick="scrollToSection('sideeffects')">Side Effects</button>
+            <button class="nav-btn" onclick="scrollToSection('prophylaxis')">Antibiotic Prophylaxis</button>
+        </nav>
+
+        <div class="content">
+
+            <!-- LYMPHODEPLETION -->
+            <section id="lymphodepletion" class="section lymphodepletion">
+                <h2>💊 Lymphodepletion</h2>
+
+                <p style="margin-bottom:16px; color:#4a5568;">Lymphodepletion chemotherapy is given prior to CAR-T infusion to create space for CAR-T cell expansion and enhance engraftment.</p>
+
+                <div class="regimen-card">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Flu/Cy Lymphodepletion Schedule</span>
+                        <span class="badge info">Standard Regimen</span>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-day">
+                            <div class="timeline-dot chemo">D−5</div>
+                            <div class="timeline-day-label">Day −5</div>
+                            <div class="timeline-day-detail">Fludarabine + Cyclophosphamide IV</div>
+                        </div>
+                        <div class="timeline-day">
+                            <div class="timeline-dot chemo">D−4</div>
+                            <div class="timeline-day-label">Day −4</div>
+                            <div class="timeline-day-detail">Fludarabine + Cyclophosphamide IV</div>
+                        </div>
+                        <div class="timeline-day">
+                            <div class="timeline-dot chemo">D−3</div>
+                            <div class="timeline-day-label">Day −3</div>
+                            <div class="timeline-day-detail">Fludarabine + Cyclophosphamide IV</div>
+                        </div>
+                        <div class="timeline-day">
+                            <div class="timeline-dot rest">D−2</div>
+                            <div class="timeline-day-label">Day −2</div>
+                            <div class="timeline-day-detail">Rest — no treatment</div>
+                        </div>
+                        <div class="timeline-day">
+                            <div class="timeline-dot rest">D−1</div>
+                            <div class="timeline-day-label">Day −1</div>
+                            <div class="timeline-day-detail">Rest — no treatment</div>
+                        </div>
+                        <div class="timeline-day">
+                            <div class="timeline-dot infusion">D0</div>
+                            <div class="timeline-day-label">Day 0</div>
+                            <div class="timeline-day-detail">CAR-T cell infusion</div>
+                        </div>
+                    </div>
+
+                    <table style="margin-top:8px;">
+                        <tr>
+                            <th>Days</th>
+                            <th>Treatment</th>
+                        </tr>
+                        <tr>
+                            <td><strong>D−5, D−4, D−3</strong></td>
+                            <td><span class="drug-tag">Fludarabine IV</span> <span class="drug-tag">Cyclophosphamide IV</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>D−2, D−1</strong></td>
+                            <td>Rest — no treatment</td>
+                        </tr>
+                        <tr style="background:#f0fff4;">
+                            <td><strong>D0</strong></td>
+                            <td><strong>CAR-T cell infusion</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- CAR-T TYPES -->
+            <section id="types" class="section types">
+                <h2>🧬 Types of CAR-T Products</h2>
+
+                <div class="cart-types-grid">
+                    <div class="cart-type-card cd19-dlbcl">
+                        <div class="cart-type-title">DLBCL & B-cell Lymphomas</div>
+                        <div class="cart-type-target">CD19-targeted</div>
+                        <div class="cart-drug">
+                            <strong>Axicabtagene ciloleucel</strong>
+                            <div class="cart-drug-brand">axi-cel · Yescarta</div>
+                        </div>
+                        <div class="cart-drug">
+                            <strong>Lisocabtagene maraleucel</strong>
+                            <div class="cart-drug-brand">liso-cel · Breyanzi</div>
+                        </div>
+                        <div class="cart-drug">
+                            <strong>Tisagenlecleucel</strong>
+                            <div class="cart-drug-brand">Kymriah</div>
+                        </div>
+                    </div>
+
+                    <div class="cart-type-card cd19-mcl">
+                        <div class="cart-type-title">Mantle Cell Lymphoma</div>
+                        <div class="cart-type-target">CD19-targeted</div>
+                        <div class="cart-drug">
+                            <strong>Brexucabtagene autoleucel</strong>
+                            <div class="cart-drug-brand">Tecartus</div>
+                        </div>
+                    </div>
+
+                    <div class="cart-type-card bcma">
+                        <div class="cart-type-title">Multiple Myeloma</div>
+                        <div class="cart-type-target">BCMA-directed</div>
+                        <div class="cart-drug">
+                            <strong>Idecabtagene vicleucel</strong>
+                            <div class="cart-drug-brand">ide-cel · Abecma</div>
+                        </div>
+                        <div class="cart-drug">
+                            <strong>Ciltacabtagene autoleucel</strong>
+                            <div class="cart-drug-brand">cilta-cel · Carvykti</div>
+                        </div>
+                    </div>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Indication</th>
+                        <th>Target</th>
+                        <th>Generic Name</th>
+                        <th>Brand Name</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">DLBCL / B-cell Lymphoma</td>
+                        <td rowspan="3">CD19</td>
+                        <td>Axicabtagene ciloleucel (axi-cel)</td>
+                        <td>Yescarta</td>
+                    </tr>
+                    <tr>
+                        <td>Lisocabtagene maraleucel (liso-cel)</td>
+                        <td>Breyanzi</td>
+                    </tr>
+                    <tr>
+                        <td>Tisagenlecleucel</td>
+                        <td>Kymriah</td>
+                    </tr>
+                    <tr>
+                        <td>Mantle Cell Lymphoma</td>
+                        <td>CD19</td>
+                        <td>Brexucabtagene autoleucel</td>
+                        <td>Tecartus</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Multiple Myeloma</td>
+                        <td rowspan="2">BCMA</td>
+                        <td>Idecabtagene vicleucel (ide-cel)</td>
+                        <td>Abecma</td>
+                    </tr>
+                    <tr>
+                        <td>Ciltacabtagene autoleucel (cilta-cel)</td>
+                        <td>Carvykti</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- PROPHYLACTIC DEXAMETHASONE -->
+            <section id="dex" class="section dex">
+                <h2>💉 Prophylactic Dexamethasone</h2>
+
+                <div class="info-box">
+                    <strong>Evidence Base — ZUMA-1 Trial:</strong> Dexamethasone 10mg given on Day 0 through Day +2 after axi-cel CAR-T. Studies show fewer CRS/ICANS events without a decrease in treatment response.
+                </div>
+
+                <div class="regimen-card" style="border-color: #48bb78;">
+                    <div class="regimen-header">
+                        <span class="regimen-title">Georgetown Protocol — Prophylactic Dexamethasone</span>
+                        <span class="badge standard">Institutional Protocol</span>
+                    </div>
+                    <table style="margin-bottom:0;">
+                        <tr>
+                            <th>Timing</th>
+                            <th>Dose</th>
+                            <th>Notes</th>
+                        </tr>
+                        <tr style="background:#f0fff4;">
+                            <td><strong>Day 0 through Day +7</strong> (or discharge, whichever is sooner)</td>
+                            <td><strong>Dexamethasone 10mg</strong></td>
+                            <td>Inpatient prophylaxis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>At discharge</strong></td>
+                            <td><strong>Dexamethasone 10mg × 1 dose</strong></td>
+                            <td>Given in case patient develops fever at home after discharge</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="success-box">
+                    <h4>✓ Key Points</h4>
+                    <ul style="margin-top:8px;">
+                        <li>Does <strong>not</strong> decrease treatment response to CAR-T</li>
+                        <li>Reduces incidence of CRS and ICANS</li>
+                        <li>One discharge dose provided as a safety net for post-discharge fever</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SIDE EFFECTS -->
+            <section id="sideeffects" class="section sideeffects">
+                <h2>⚠️ Side Effects</h2>
+
+                <h3>CRS and ICANS — Primary In-Hospital Concern</h3>
+
+                <div class="warning-box">
+                    <h4>⚠️ CRS / ICANS — See Dedicated Section</h4>
+                    <p>The main concern during hospitalization is CRS and ICANS. Refer to the <a href="crs-icans.html" style="color:#c53030; font-weight:600;">CRS and ICANS page</a> for full grading and management details.</p>
+                </div>
+
+                <div class="timeframe-grid">
+                    <div class="timeframe-chip crs">
+                        <span class="timeframe-icon">🔥</span>
+                        <div>
+                            <div class="timeframe-label">CRS Risk Window</div>
+                            <div class="timeframe-detail">Highest risk Days 2–7<br>Median onset Day 2</div>
+                        </div>
+                    </div>
+                    <div class="timeframe-chip icans">
+                        <span class="timeframe-icon">🧠</span>
+                        <div>
+                            <div class="timeframe-label">ICANS Risk Window</div>
+                            <div class="timeframe-detail">Highest risk Days 4–6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Cytopenias</h3>
+                <div class="orange-box">
+                    <h4>🩸 Post CAR-T Cytopenias</h4>
+                    <p>Cytopenias can occur in two patterns after CAR-T therapy:</p>
+                    <ul style="margin-top:8px;">
+                        <li><strong>Immediate:</strong> Shortly after CAR-T infusion, as expected from lymphodepletion</li>
+                        <li><strong>Delayed:</strong> A more prolonged cytopenias that can develop weeks to months after therapy</li>
+                    </ul>
+                    <p style="margin-top:8px; font-size:0.93em;">See reference link #1 below for a detailed approach to post CAR-T cytopenias.</p>
+                </div>
+            </section>
+
+            <!-- ANTIBIOTIC PROPHYLAXIS -->
+            <section id="prophylaxis" class="section prophylaxis">
+                <h2>💊 Antibiotic Prophylaxis</h2>
+
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Agent(s)</th>
+                        <th>Timing / Notes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Antiviral</strong></td>
+                        <td>
+                            <span class="drug-tag">Acyclovir 400mg BID</span>
+                            <span class="drug-tag">Valacyclovir 500mg QD</span>
+                        </td>
+                        <td><strong>All patients</strong> — start at time of CAR-T</td>
+                    </tr>
+                    <tr style="background:#f0fff4;">
+                        <td><strong>PJP Prophylaxis</strong></td>
+                        <td>
+                            <span class="drug-tag">Bactrim DS MWF</span>
+                            <span class="drug-tag">Atovaquone 1500mg daily</span>
+                        </td>
+                        <td>Starts at <strong>Day 30</strong> post CAR-T infusion</td>
+                    </tr>
+                    <tr style="background:#fffaf0;">
+                        <td><strong>Antibacterial</strong></td>
+                        <td><span class="drug-tag">Levofloxacin 500mg daily</span></td>
+                        <td><strong>Neutropenic patients only</strong></td>
+                    </tr>
+                    <tr style="background:#fffaf0;">
+                        <td><strong>Antifungal</strong></td>
+                        <td>
+                            <span class="drug-tag">Fluconazole 400mg daily</span>
+                            <span class="drug-tag">Posaconazole 300mg daily</span>
+                        </td>
+                        <td><strong>Neutropenic patients only</strong></td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>Note:</strong> Antibacterial and antifungal prophylaxis are indicated <strong>only in neutropenic patients</strong>. Antiviral prophylaxis and PJP prophylaxis (starting Day 30) are given to all patients regardless of counts.
+                </div>
+
+                <div style="margin-top: 24px;">
+                    <div style="font-weight:600; margin-bottom:10px; color:#4a5568; font-size:0.9em;">References</div>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10646792/" target="_blank" class="source-link">
+                        📖 Post CAR-T Cytopenias (PMC10646792)
+                    </a>
+                    <a href="https://ashpublications.org/hematology/article-abstract/2024/1/116/526183/Mitigating-and-managing-infection-risk-in-adults" target="_blank" class="source-link">
+                        📖 Infection Risk in CAR-T (ASH 2024)
+                    </a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8457222/" target="_blank" class="source-link">
+                        📖 ZUMA-1 Dexamethasone Trial (PMC8457222)
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

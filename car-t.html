@@ -395,6 +395,25 @@
                 border: 1px solid #e2e8f0;
             }
         }
+    
+        /* Scrollable table indicator */
+        div[style*="overflow-x"] {
+            position: relative;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar {
+            height: 6px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
     </style>
 </head>
 <body>

@@ -241,8 +241,9 @@
         
         table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 0;
             background: white;
         }
         
@@ -400,6 +401,52 @@
         @media (max-width: 480px) {
             .symptom-grid { grid-template-columns: 1fr; }
         }
+    
+        @media (max-width: 600px) {
+            table {
+                min-width: 480px;
+                font-size: 0.82em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            div[style*="overflow-x"] {
+                border-radius: 6px;
+                border: 1px solid #e2e8f0;
+            }
+        }
+    
+        /* Scrollable table indicator */
+        div[style*="overflow-x"] {
+            position: relative;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar {
+            height: 6px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+    
+        .scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.78em;
+            color: #667eea;
+            padding: 4px 0 2px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        @media (max-width: 768px) {
+            .scroll-hint { display: block; }
+        }
     </style>
 </head>
 <body>
@@ -534,7 +581,7 @@
 
                 <h3>Specialized Studies</h3>
 
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Study</th>
                         <th>Details / Notes</th>
@@ -555,7 +602,7 @@
                         <td><strong>HLA Typing</strong></td>
                         <td>Defer to BMT team — needed for potential allogeneic transplant</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
             </section>
 
             <!-- ADDITIONAL CONSIDERATIONS -->
@@ -605,7 +652,7 @@
                     </div>
 
                     <h4 style="margin-bottom: 10px;">Cytoreduction Options</h4>
-                    <table>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                         <tr>
                             <th>Agent</th>
                             <th>Notes</th>
@@ -622,7 +669,7 @@
                             <td><strong>Leukapheresis</strong></td>
                             <td>Reserve for rapid end-organ damage only; discuss with fellow</td>
                         </tr>
-                    </table>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 </div>
 
                 <!-- APL -->
@@ -645,7 +692,7 @@
                         <div class="drug-tag" style="background:#faf5ff; border-color:#9f7aea; color:#44337a;">Low WBC with severe coagulopathy</div>
                     </div>
 
-                    <table>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                         <tr>
                             <th>Drug</th>
                             <th>Order As</th>
@@ -658,7 +705,7 @@
                             <td><strong>22.5 mg/m²</strong> — one-time dose</td>
                             <td>Confirm with fellow before ordering overnight</td>
                         </tr>
-                    </table>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                     <div class="info-box" style="margin-top: 12px;">
                         <strong>After ATRA:</strong> Monitor for Differentiation Syndrome — fever, dyspnea, pulmonary infiltrates, fluid overload. Treat with dexamethasone 10mg IV BID if suspected.

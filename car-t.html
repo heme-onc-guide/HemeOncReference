@@ -414,6 +414,19 @@
         div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover {
             background: #4338ca;
         }
+    
+        .scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.78em;
+            color: #667eea;
+            padding: 4px 0 2px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        @media (max-width: 768px) {
+            .scroll-hint { display: block; }
+        }
     </style>
 </head>
 <body>
@@ -496,7 +509,7 @@
                             <td><strong>D0</strong></td>
                             <td><strong>CAR-T cell infusion</strong></td>
                         </tr>
-                    </table></div>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 </div>
             </section>
 
@@ -582,7 +595,7 @@
                         <td>Ciltacabtagene autoleucel (cilta-cel)</td>
                         <td>Carvykti</td>
                     </tr>
-                </table></div>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
             </section>
 
             <!-- PROPHYLACTIC DEXAMETHASONE -->
@@ -614,7 +627,7 @@
                             <td><strong>Dexamethasone 10mg × 1 dose</strong></td>
                             <td>Given in case patient develops fever at home after discharge</td>
                         </tr>
-                    </table></div>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 </div>
 
                 <div class="success-box">
@@ -706,7 +719,7 @@
                         </td>
                         <td><strong>Neutropenic patients only</strong></td>
                     </tr>
-                </table></div>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <div class="info-box">
                     <strong>Note:</strong> Antibacterial and antifungal prophylaxis are indicated <strong>only in neutropenic patients</strong>. Antiviral prophylaxis and PJP prophylaxis (starting Day 30) are given to all patients regardless of counts.

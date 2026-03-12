@@ -182,8 +182,9 @@
 
         table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 0;
             background: white;
         }
         th {
@@ -379,6 +380,20 @@
             .timeframe-grid { grid-template-columns: 1fr; }
             table { font-size: 0.9em; }
             .content { padding: 20px 15px; }
+        }
+    
+        @media (max-width: 600px) {
+            table {
+                min-width: 480px;
+                font-size: 0.82em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            div[style*="overflow-x"] {
+                border-radius: 6px;
+                border: 1px solid #e2e8f0;
+            }
         }
     </style>
 </head>

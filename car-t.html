@@ -1,758 +1,3 @@
-
-
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Hematology-Oncology Clinical Reference | Resident Guide</title> <meta name="description" content="Comprehensive clinical reference guide
-
-pasted
-
-Mar 11
-
-Reading frontend design skill
-Reading frontend design skill
-It looks like you've shared an HTML file for a Hematology-Oncology Clinical Reference site. What would you like me to do with it?
-
-What would you like me to do with this file? Let me know your goal and I'll get started!
-
-That looks good I would take out the 5 clinical guides, treatment protocol,s free access and available clincal resouces section
-
-Mar 11
-
-View the HTML file to understand the structure
-View the HTML file to understand the structure
-I'll work from the document in context directly and remove those sections.
-
-
-Created a file, read a file
-Created a file, read a file
-Done! I removed the stats bar (5 Clinical Guides, 12+ Treatment Protocols, 100% Free Access) and the "Available Clinical Resources" section header/subtitle. The page now goes straight from the title and subtitle into the cards grid.
-
-Index
-Code · HTML 
-
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Acute Leukemia Treatment Guide</title> <style> * { margin: 0; padding: 0; box-sizing: bor
-
-pasted
-
-Neutropenic Fever
-Overnight Recommendation:
-* If concern for neutropenic fever, send infectious workup (CXR, blood culture, UA), assess patient for infectious symptoms, and start cefepime
-* Add vancomycin if concern for lung/skin/oral/line involvement or hemodynamic instability (any concern for line involvement, pneumonia, or hemodynamic instability add vancomycin to cefepime)
-Neutropenia
-* Neutropenia definition: absolute neutrophil count (ANC) <500-1000.
-* In patients experiencing prolonged neutropenia, or an absolute neutrophil count <500 cells/microL for 7 days or greater, antimicrobial prophylaxis is indicated (antibacterial, antifungal and antiviral), see the section on anti-microbial prophylaxis.
-* Consider holding prophylactic antibiotics if starting a patient on broader antibiotics overnight.
-Fungal Infections
-Types of infection: Mold vs. Yeast
-* Mold: have hyphae, includes aspergillus and mucor, coverage with micafungin, posaconazole
-* Yeast: no hyphae, includes candida, coverage with fluconazole
-Fungal testing:
-* B-D glucan (Fungitell): element in fungal cell wall, is positive in Candida, Aspergillus, and PJP infections
-* Galactomannan: specific testing to identify Aspergillus infections
-Fungal coverage:
-* Fluconazole: good coverage of Candida infections (ex: thrush, esophagitis)
-* Posaconazole: broad coverage including Candida, Aspergillus, and Mucor
-* Micafungin: coverage of Candida and Aspergillus, not Mucor
-* Consider fungal coverage for 4+ days of fevers with appropriate antibiotic coverage
-Neutropenic enterocolitis
-* Common cause of neutropenic fever is enterocolitis (mucosal injury leading to translocation of gut bacteria in neutropenic patients leading to sepsis)
-* Symptoms: abdominal pain, diarrhea, nausea/vomiting
-* On CT scan, will see inflammation and bowel wall thickening
-* Treatment: zosyn or cefepime + flagyl
-* Consider C. diff testing in these patients
-Additional testing for infectious workup
-* Any sinus symptoms or pain: sinus CT for fungal infection
-* Concern for intra-abdominal infection: CT abdomen
-* Diarrhea: Consider C. diff
-* Oral lesion: swab for viral culture, assess for thrush
-* Respiratory involvement: initial testing includes RVP, CXR, if additional information needed CT chest can be considered
-* Bronchoscopy: can be used to obtain bronchoalveolar lavage that can be cultured
-When is it ok to give Tylenol?
-* In a patient already receiving appropriate antibiotics for neutropenic fever, ok to give Tylenol for symptomatic relief of fever
-
-I am creating a hemeonc reference gruide upgradiing from one that already exisist on Glide. I have made other pages before use this as reference guide: Create a new page for antimicrobial prophylaxis
-
-Show more
-Mar 11
-
-Reading frontend design skill for reference
-Reading frontend design skill for reference
-I'll study the existing acute leukemia page to match the design system exactly, then build the neutropenic fever / antimicrobial prophylaxis page.
-
-
-Created a file, read a file
-Created a file, read a file
-Here's your new Neutropenic Fever & Antimicrobial Management page, fully matching the existing site design. It covers:
-
-Overnight Recommendations — when to send workup, start cefepime, and when to add vancomycin, plus the Tylenol guidance
-Neutropenia — ANC thresholds and when prophylaxis is triggered
-Antimicrobial Selection Algorithm — interactive visual matching the figure from your image
-Fungal Infections — mold vs. yeast, diagnostic tests (B-D glucan vs. galactomannan), drug coverage table, and neutropenic enterocolitis
-Prophylaxis — antibacterial, antifungal, antiviral, and PJP tables with a disease-specific summary (AML, ALL, lymphoma, myeloma, allo-SCT)
-Additional Workup by Symptom — symptom-directed testing table and a standard initial workup checklist
-The nav buttons scroll to each section, and it links back to the home page. Let me know if you'd like any content additions or adjustments!
-
-Neutropenic fever
-Code · HTML 
-can you just change the title to neutropenic fever
-
-Mar 11
-
-Edited 3 files, viewed a file, read a file
-Edited 3 files, viewed a file, read a file
-Done — both the browser tab title and the page header now just read Neutropenic Fever.
-
-Neutropenic fever
-Code · HTML 
-Can you do another page for this: New Leukemia Diagnosis
-When to be concerned about leukemia:
-* New, severe leukocytosis with no other explanation
-* Abnormal bleeding or bruising
-* New cytopenia
-* Frequent infections, fever, chills
-* Petechiae
-* Gingival hyperplasia
-* Weight loss
-* Lymphadenopathy
-Things to do:
-* Call the fellow
-* Call hematology lab for peripheral smear to review
-* Obtain blood consent
-Initial workup to order:
-* CBC
-* LDH
-* Magnesium
-* Type and screen
-* DIC labs: d-dimer, fibrinogen, PT/INR, PTT
-* TLS labs: CMP (calcium, potassium, kidney function), phosphorous, uric acid, ionized calcium
-* Infectious evaluation: hepatitis B, C, HIV
-* G6PD
-* Pregnancy test (if applicable)
-* Peripheral flow cytometry (“leukemia/lymphoma flow cytometry medstar”), can confirm with heme fellow if they want this overnight
-* ECHO
-* Bone marrow biopsy
-* HLA typing – defer to BMT team
-Additional considerations:
-* TLS prophylaxis (IV fluids, allopurinol)
-* Antimicrobial prophylaxis (acyclovir, posaconazole, levofloxacin)
-* PICC line placement
-Situations that need urgent overnight treatment:
-If WBC>100K concern for leukostasis
-* Proceed with cytoreduction while waiting for confirmation of diagnosis
-* Cytoreduction options: Hydroxyurea (most common), Cytarabine, Leukapheresis (only if rapid end organ damage)
-* We can order a one time emergency dose of hydroxyurea overnight (confirm this with fellow)
-Concern for APML
-* Signs include CD34 negative, auer rods on peripheral smear
-* We can order a one time emergency dose of atra overnight (confirm this with fellow) search "tretinoin" it is the 22.5mg/m2 one time dose
-
-Show more
-Mar 11
-
-Created a file, read a file
-Created a file, read a file
-Here's your New Leukemia Diagnosis page. It includes:
-
-When to Be Concerned — visual symptom cards for quick scanning
-Immediate Actions — numbered steps (call fellow → heme lab → blood consent)
-Initial Workup — organized into grouped panels: basic labs, DIC panel, TLS labs, infectious eval, and specialized studies
-Additional Considerations — TLS prophylaxis, antimicrobial prophylaxis, and PICC line
-Urgent Overnight Treatment — two clearly flagged emergency cards: leukostasis (WBC >100K with hydroxyurea/leukapheresis) and APL (with the ATRA ordering tip and dosing)
-Let me know if you'd like any changes!
-
-New leukemia diagnosis
-Code · HTML 
-Same for this: Tumor Lysis Syndrome
-When to be concerned:
-* Highest risk is when starting treatment, the first 72 hours after chemo is administered
-* You can also see it when someone is being treated again at relapse for high volume disease
-Diagnosis
-Cairo-Bishop Definition: need 2 or more laboratory changes
-* Uric acid >8mg/dL or 25% increase
-* Potassium >6 mmol/L or 25% increase
-* Phosphorous >4.5mg/dL or 25% increase
-* Calcium <7mg/dL or 25% decrease
-Clinical Criteria
-* Creatinine greater than 1.5 times the upper limit of normal
-* Seizure
-* Cardiac arrhythmia
-* Sudden death
-Prophylaxis
-Classification of risk:
-Low risk
-* Solid tumors
-* Multiple myeloma
-* CLL
-Intermediate risk
-* SCLC
-* AML with high WBC (>25K)
-High risk
-* Lymphomas with large disease burden
-* Leukemia with high WBC (>100K)
-* High LDH >2x ULN
-* Renal involvement
-* High baseline uric acid, potassium, phosphate
-Prophylaxis based on risk:
-* Low risk: no intervention
-* Intermediate risk: allopurinol for prophylaxis (as long as uric acid <8) + fluid
-* High risk: rasburicase + fluid
-Fluid in prophylaxis:
-* Fluid hydration goals: 2 to 3 L/m2 daily to achieve a urine output of at least 80 to 100 mL/m2 per hour
-* Normal saline preferred over LR
-Treatment
-IV fluid
-* Normal saline preferred over LR (K in the LR)
-* 2 to 3 L/m2 per day of IV fluid
-* Urine output goal: 80-100 mL/m2/hour
-Rasburicase
-* For uric acid >8
-* Check G6PD prior to administration
-* Always reach out to the fellow if considering giving Rasburicase
-Supportive care
-* Telemetry cardiac monitoring
-* Strict urine output measurement
-* TLS labs (uric acid, BMP, phosphorous)
-Mange electrolytes
-* Hyperkalemia: binders (Lokelma, Kayexalate), calcium gluconate, cardiac monitoring, insulin/D50
-* Hyperphosphatemia: phosphate binders (calcium acetate, sevelamer, calcium carbonate)
-* Hypocalcemia: calcium gluconate only if symptomatic
-Indications for hemodialysis
-* Severe cases may require HD
-* Consult nephrology first but indications for HD in TLS include hyperkalemia, oliguria, fluid overload
-https://www.uptodate.com/contents/tumor-lysis-syndrome-prevention-and-treatment
-
-Show more
-Mar 11
-
-Created a file, read a file
-Created a file, read a file
-Here's your Tumor Lysis Syndrome page. It includes:
-
-When to Be Concerned — 72-hour window and relapse/re-treatment highlight
-Diagnosis — Cairo-Bishop lab criteria table and clinical TLS criteria
-Prophylaxis — color-coded Low/Intermediate/High risk cards, prophylaxis-by-risk table, and fluid goals
-Treatment — interactive HTML version of the TLS treatment algorithm from your figure, plus IV fluid protocol and a Rasburicase card with the G6PD warning
-Electrolyte Management — individual cards for hyperkalemia, hyperphosphatemia, hypocalcemia, and hyperuricemia with specific treatments
-Hemodialysis — indications table with nephrology consult reminder, and the UpToDate reference link
-Let me know if you'd like any changes!
-
-Tumor lysis syndrome
-Code · HTML 
-CRS and ICANS
-* This app can be helpful: CARTOX
-* Can use Olivia's dot phrase: .ofwcrsicans for an outline of treatment guidelines for notes
-* CRS risk timeframe is highest D2-7, median onset D2
-* ICANS risk timeframe is highest D4-6
-Diagnosis
-Treatments that can cause CRS/ICANS:
-* CAR-T
-* Bispecific T-cell engagers (BiTE) (Ex: Talquetamab for MM, Epcoritamab for lymphoma)
-Initial workup:
-* Labs: CBC, CMP, magnesium, phosphorous, CRP, LDH, uric acid, fibrinogen, PT/PTT, ferritin
-* Infectious workup if a fever: blood/urine culture, CXR
-* Telemetry and continuous pulse oximetry
-* For ICANS: consider MRI brain, EEG, diagnostic LP
-
-Treatment
-Use this article: Management of Immune-Related Adverse Events in Patients Treated With Chimeric Antigen Receptor T-Cell Therapy: ASCO Guideline (link below)
-Any suspicion of CRS -> call the attending/fellow
-CRS
-Grade 1
-* Fever, no hypotension or hypoxia
-* Supportive care (Tylenol, IV fluids)
-* Antibiotics if neutropenic
-Grade 2
-* Fever + hypotension (not requiring vasopressor) or hypoxia (NC only)
-* Supportive care (Tylenol, IV fluids)
-* Tocilizumab (8 mg/kg), repeat every 8 hours up to 3 doses in 24h, 4 doses total
-* Hypotension refractory to fluid bolus, tocilizumab -> add Dex 10mg IV q12h
-Grade 3
-* Fever + hypotension (requiring vasopressor) or hypoxia (NRB or high flow)
-* Supportive care
-* ICU admission for vasopressors
-* ECHO
-* Tocilizumab (8 mg/kg), repeat every 8 hours up to 3 doses in 24h, 4 doses total
-* Dex 10mg IV q6h
-Grade 4
-* Fever + hypotension (requiring multiple vasopressors) or hypoxia (requiring BiPAP or mechanical ventilation)
-* Supportive care
-* ICU admission for vasopressors/mechanical ventilation
-* Tocilizumab (8 mg/kg), repeat every 8 hours up to 3 doses in 24h, 4 doses total
-* Methylprednisolone 500mg q12h
-ICANS
-Grade 1 (ICE score 7-9, fatigued but awakens spontaneously)
-* No CRS: supportive care, IV fluids, aspiration precautions
-* Concurrent CRS: Tocilizumab, consider IV Dex after first Tocilizumab dose
-Grade 2 (ICE score 3-6, awakens to voice)
-* No CRS: 10mg IV Dex q6-12h until resolution
-* Concurrent CRS: Tocilizumab, consider ICU, consider IV Dex after first Tocilizumab dose
-Grade 3 (ICE score 0-2, awakens to stimuli only, mild/subclinical seizure, focal cerebral edema)
-* ICU admission
-* No CRS: 10mg IV Dex q6-12h until resolution
-* Concurrent CRS: Tocilizumab, consider IV Dex after first Tocilizumab dose
-Grade 4 (ICE score 0, unarousable, severe seizure, diffuse cerebral edema)
-* ICU admission
-* No CRS: 1g IV methylprednisolone 1-2x/day for 3 days, can increase frequency if refractory
-* Concurrent CRS: Tocilizumab, 1g IV methylprednisolone 1-2x/day for 3 days, can increase frequency if refractory
-https://ascopubs.org/doi/10.1200/JCO.21.01992
-
-Same for this
-
-Show more
-Mar 11
-
-Created a file, read a file
-Created a file, read a file
-Here's your CRS and ICANS page. It includes:
-
-Overview — CARTOX app callout, dot phrase reminder, risk timeframe chips for CRS (D2–7) and ICANS (D4–6), and causative treatments (CAR-T, BiTEs)
-Diagnosis & Workup — organized lab panel, continuous monitoring checklist, and ICANS-specific workup (MRI, EEG, LP)
-Grading Tables — full ASTCT CRS grading table (fever/hypotension/hypoxia) and ASTCT ICANS grading table (ICE score, consciousness, seizure, motor findings, ICP/edema) — both reproduced from your image
-CRS Treatment — color-coded grade cards (1–4) with criteria and stepwise treatment including tocilizumab dosing reference table
-ICANS Treatment — grade cards with split layout showing no-CRS vs. concurrent-CRS management, plus the ASCO guideline link
-Let me know if anything needs adjusting!
-
-Crs icans
-Code · HTML 
-Same for this: When To Call the Fellow?
-Whenever you're feeling unsure about a clinical decision or major update for patient!
-Specific situations:
-* Concern for new leukemia
-* New leukemia diagnosis (or transfer from outside hospital with new diagnosis)
-* Any CRS/ICANS (not just new) unless a predefined plan already in place
-* CRS or ICANS – consideration of giving tocilizumab
-* TLS with uric acid >8 – consideration of giving rasburicase
-* Chemotherapy infusion reactions (pharmacy is also helpful in this case)
-* Blood product infusion reaction (blood bank is also helpful in this case)
-* Any chemotherapy delays or issues
-
-Mar 11
-
-Created 2 files, read a file
-Created 2 files, read a file
-Here's your When to Call the Fellow page. It's intentionally cleaner and more scannable than the other pages — designed for a resident to quickly check at 2am:
-
-A bold golden rule banner at the top reinforcing the "when in doubt, call" principle
-Color-coded call cards with left border accents by category (red for leukemia, purple for CRS/ICANS, orange for TLS/chemo issues, blue/teal for reactions)
-Helper tags on the infusion reaction cards noting pharmacy and blood bank as additional resources
-A closing "Still unsure? Just call" green box for reassurance
-Let me know if you'd like any changes!
-
-When to call fellow
-Code · HTML 
-Same for this: Differentiation Syndrome
-* Commonly seen in patients with acute promyelocytic leukemia (APL) undergoing induction therapy with all-trans retinoic acid (ATRA) and/or arsenic trioxide (ATO)
-* Risk is highest during induction (first 28 days) of treatment for APL
-* Consider this around the time that you start to see count/neutrophil count recovery in someone undergoing treatment
-* Can also be seen in IDH inhibitors for AML
-Symptoms:
-* Unexplained fever
-* Weight gain
-* Edema
-* Dyspnea with pulmonary infiltrates
-* Pleuropericardial effusion
-* Hypotension
-* Renal failure
-* Can sometimes have associated rash
-Severity correlates with the number of clinical features that are present:
-* Severe: ≥4 clinical features
-* Moderate: 3 clinical features
-* Indeterminate: 1 to 2 clinical features
-Timing
-* Can occur within 1-31 days of starting treatment (sometimes see biphasic risk with higher risk ~day7, then again ~day21)
-Treatment
-* Dexamethasone, IV 10 mg twice daily
-* If no response to dexamethasone or life-threatening complication, stop ATRA/ATO (resume as soon as able)
-* Continue steroids until symptoms have resolved
-https://ashpublications.org/blood/article/123/18/2777/32479/How-we-prevent-and-treat-differentiation-syndrome
-
-Show more
-Mar 11
-
-Created a file, read a file
-Created a file, read a file
-Here's your Differentiation Syndrome page. It includes:
-
-Overview — causative treatment cards (APL/ATRA/ATO as primary, IDH inhibitors as secondary), with a mechanism callout
-Symptoms — visual chip grid for quick scanning at the bedside, plus a clinical pearl about mimicking infection
-Severity Grading — three bold cards (Indeterminate/Moderate/Severe) showing feature counts at a glance, plus a management summary table
-Timing — vertical timeline showing the biphasic risk pattern (Day ~7 and ~Day 21 peaks) with count recovery highlighted as a key trigger
-Treatment — numbered steps (dex → continue until resolved → hold ATRA/ATO if refractory), dosing table, and the ASH reference link
-Let me know if you'd like any adjustments!
-
-Differentiation syndrome
-Code · HTML 
-Same for this: Transfusions
-Thresholds
-* Blood: HGB <7
-* Platelets: <10K, <20K if fever, <50K if bleeding
-Special requirements in orders
-Irradiated products
-* Always choose "heme malignancy" under irradiated products drop down in the order when ordering transfusions (blood, platelets)
-Pathogen reduced
-* Always write "non-pathogen reduced" in comments section when ordering platelets
-* This is something done to platelets to remove pathogens, the process can make the platelets themselves less effective
-* For all patients not responding to platelet transfusions, consider that the blood bank is issuing "PR PLATELETS" which are pathogen reduced, you can call the blood bank to add a note to patient's chart to only give non-pathogen reduced
-
-Show more
-Mar 11
-
-Created a file, read a file
-Created a file, read a file
-Here's your Transfusions page. It includes:
-
-Thresholds — visual cards for pRBC (Hgb <7) and platelets with the three tiers (<10K, <20K with fever, <50K with bleeding), plus a summary table
-Irradiated Products — clear "Always Do This" card showing exactly where in the order to select "Heme Malignancy," with a brief explanation of why irradiation matters
-Pathogen Reduced Platelets — explains what PR is and why it reduces efficacy, how to write "non-pathogen reduced" in comments, the platelet refractoriness troubleshooting tip, and a closing checklist covering every transfusion order
-Let me know if anything needs tweaking!
-
-Transfusions
-Code · HTML 
-Same for this: CAR-T
-Chimeric antigen receptor T-cell (CAR-T)
-Lymphodepletion
-* Fludarabine and Cyclophosphamide IV given on D-5, D-4, D-3
-* No treatment D-2, D-1
-* CAR-T cells given D0
-Types of CAR-T
-DLBCL/CD19-targeted
-* Axicabtagene ciloleucel (axi-cel, Yescarta)
-* Lisocabtagene maraleucel (liso-cel, Breyanzi)
-* Tisagenlecleucel (Kymriah)
-Mantle Cell Lymphoma/CD19-targeted
-* Brexucabtagene autoleucel (Tecartus)
-Multiple Myeloma/B-cell-maturation antigen (BCMA)-directed
-* Idecabtagene vicleucel (ide-cel, Abcema)
-* Ciltacabtagene autoleucel (cilta-cel, Carvykti)
-Prophylactic Dexamethasone
-* Based on ZUMA-1 trial (link #3 below)which gave Dex 10mg Day 0 through +2 after Axi-cel CAR-T
-* Studies show fewer CRS/ICANS without decrease in treatment response
-* At Georgetown, we are giving Dex 10mg starting day 0 up to 7 days or discharge (whichever is sooner)
-* We also discharge with one dose of Dex 10mg (in case they develop fever at home)
-Side effects
-* Main concern in the hospital is CRS/ICANS (see separate section on this)
-* CRS risk timeframe is highest D2-7, median onset D2
-* ICANS risk timeframe is highest D4-6
-* Can see cytopenia, immediately after CAR-T, also as a more delayed side effect (see paper link #1 below on how to approach post CAR-T cytopenias)
-Antibiotic prophylaxis
-* All patients get anti-virals (acyclovir 400mg BID, valacyclovir 500mg QD)
-* PJP prophylaxis starts at day 30 (Bactrim DS MWF, Atovaquone 1500mg daily)
-* Antibacterial (levofloxacin 500mg daily) and anti-fungal prophylaxis (fluconazole 400mg daily or posaconazole 300mg daily) is needed in patients who are neutropenic only
-https://pmc.ncbi.nlm.nih.gov/articles/PMC10646792/
-https://ashpublications.org/hematology/article-abstract/2024/1/116/526183/Mitigating-and-managing-infection-risk-in-adults?redirectedFrom=fulltext
-https://pmc.ncbi.nlm.nih.gov/articles/PMC8457222/
-
-Show more
-Mar 11
-
-Created a file, read a file
-Created a file, read a file
-Here's your CAR-T Cell Therapy page. It includes:
-
-Lymphodepletion — visual day-by-day timeline (D−5 to D0) with color-coded dots for chemo days, rest days, and infusion day, plus a summary table
-CAR-T Products — three target-grouped cards (CD19/DLBCL, CD19/MCL, BCMA/Myeloma) with generic and brand names, plus a full reference table
-Prophylactic Dexamethasone — Georgetown protocol (D0 through D+7 or discharge), discharge dose rationale, and ZUMA-1 evidence callout
-Side Effects — CRS/ICANS risk timeframe chips linking to the dedicated page, plus the immediate vs. delayed cytopenia distinction
-Antibiotic Prophylaxis — clean table distinguishing all-patient prophylaxis (antivirals, PJP at D30) from neutropenic-only (antibacterial/antifungal), with all three reference links
-Let me know if you'd like any changes!
-
-Car t
-Code · HTML 
-what is the file name for these ones
-
-Mar 11
-Here are all the file names for the pages created:
-
-index.html — Home / Clinical Reference landing page
-acute-leukemia.html — Acute Leukemia Treatment (provided by you)
-neutropenic-fever.html — Neutropenic Fever
-new-leukemia-diagnosis.html — New Leukemia Diagnosis
-tumor-lysis-syndrome.html — Tumor Lysis Syndrome
-crs-icans.html — CRS and ICANS
-when-to-call-fellow.html — When to Call the Fellow
-differentiation-syndrome.html — Differentiation Syndrome
-transfusions.html — Transfusions
-car-t.html — CAR-T Cell Therapy
-These match the href links already in the home page cards, so everything should link correctly once all files are in the same folder.
-
-can you rewrite the front page so I can access all the page snow
-
-Mar 11
-
-Created 2 files, viewed a file, ran a command
-Created 2 files, viewed a file, ran a command
-Done! The home page now shows all 12 pages as active, clickable cards — every one marked "Available Now" with a green badge. As long as all the HTML files are in the same folder, all the links will work correctly.
-
-Index
-Code · HTML 
-Get rid of home, clinical guides, disclaimer, contact and feedback
-
-Mar 11
-
-Edited 2 files, read a file
-Edited 2 files, read a file
-Done — removed the Home, Clinical Guides nav links and the Disclaimer, Contact, and Feedback footer links. The navbar now just shows the logo and Beta badge, and the footer just has the about text.
-
-Index
-Code · HTML 
-Get rid of available now for all of them
-
-Mar 11
-
-Ran a command, read a file
-Ran a command, read a file
-Done — all "Available Now" badges have been removed from every card.
-
-Index
-Code · HTML 
-Is there a way that looks good that would indicate someone to click on the box, without saying click here
-
-Mar 11
-Yes! A few subtle design cues work really well for this:
-
-Arrow icon — a small → in the bottom right of each card naturally signals "go somewhere"
-"Learn more" style chevron — a › or ⟩ next to the title
-Subtle "View guide" text — small muted label at the bottom, like a link underline
-The most elegant option for a clinical reference is a small right-arrow → that appears at the bottom of each card — clean, universally understood, and doesn't clutter the content. Want me to add that?
-
-Which style do you prefer?
-
-Q: Which style do you prefer?
-A: Arrow → in bottom right corner
-
-Mar 11
-
-Edited 2 files, viewed 2 files
-Edited 2 files, viewed 2 files
-Now add the arrow element to every card:
-
-
-Ran a command, read a file
-Ran a command, read a file
-Done! Each card now has a subtle → arrow in a circle at the bottom right. On hover it slides right and turns purple — a clean visual cue without any text.
-
-Index
-Code · HTML 
-Make the arrow a bit bolder
-
-Mar 11
-
-Edited a file, read a file
-Edited a file, read a file
-Done — the arrow is now slightly larger, bolder weight, and uses a deeper indigo color so it stands out more against the card background.
-
-Index
-Code · HTML 
-maybe a chevron is better
-
-Mar 11
-
-Edited 2 files, ran a command, read a file
-Edited 2 files, ran a command, read a file
-Done — switched to a › chevron, sized up and centered in the circle. It's a softer cue than an arrow but still clearly signals "go here." Let me know if you'd like it tweaked further!
-
-Index
-Code · HTML 
-make it larger
-
-Mar 11
-
-Edited a file, read a file
-Edited a file, read a file
-Done — the chevron and its circle are now noticeably larger. Let me know if you'd like it even bigger or any other tweaks!
-
-Index
-Code · HTML 
-Any other suggestions
-
-Mar 11
-Here are a few ideas to make the site even more polished and useful:
-
-Usability
-
-Search bar at the top to quickly find a topic across all pages
-"Last updated" date on each card so users know how current the content is
-Mobile bottom nav bar with quick links to the most-used pages (Neutropenic Fever, TLS, CRS/ICANS)
-Design
-
-Category color coding — group cards by color (e.g. blue for diagnosis pages, red for emergencies, green for management)
-Dark mode toggle — useful for overnight use when screen brightness matters
-Subtle card entrance animation — cards fade/slide in on page load for a more polished feel
-Content
-
-"Quick Reference" strip at the very top — a horizontal bar with the most commonly needed one-liners (transfusion thresholds, neutropenic fever first steps, TLS labs) visible without clicking anything
-Related pages links at the bottom of each page (e.g. the CRS/ICANS page linking to CAR-T)
-The two I'd most recommend for a clinical tool used overnight are the dark mode toggle and the Quick Reference strip — both directly improve usability when someone is tired and needs information fast. Want me to implement any of these?
-
-any other suggestions to do something other than the chevron
-
-Mar 11
-Here are some alternatives:
-
-Icon-based
-
-📖 Small book/open icon — fits the "reference guide" feel
-A subtle lock-open icon or eye icon — signals "view this"
-Text-based
-
-"Open" or "View" as small pill-shaped button at the bottom — clean and unambiguous
-"Explore →" as a small muted text link
-Border/Shape
-
-A thin colored bottom border on each card that fills from left to right on hover — very modern
-The entire card gets a left accent bar in a unique color per topic on hover
-My top recommendations:
-
-"View Guide" pill button — most intuitive for a clinical reference, feels like a real button without being loud
-Animated bottom border fill — very sleek, no text needed, purely visual
-Double chevron » — more visually substantial than a single ›
-Personally for a medical reference tool I'd go with the "View Guide" pill button — it's unambiguous, looks professional, and works well on mobile too. Want me to try any of these?
-
-lets remove the chevron
-
-Mar 11
-
-Ran a command, edited a file, read a file
-Ran a command, edited a file, read a file
-Done — chevron and all its styling removed. The cards are clean again. Ready to try a new approach whenever you'd like!
-
-Index
-Code · HTML 
-any other improvements to the design of the front page
-
-Mar 11
-Here are some ideas specific to what you have:
-
-Quick wins
-
-The card descriptions are quite long — trimming them to 1 short sentence each would make the grid feel cleaner and faster to scan
-Larger card icons — the emoji icons could be bigger to make each card more visually distinct at a glance
-Card hover color accent — each card gets its own unique top border color by topic (red for emergencies, blue for diagnostics, etc.) rather than all green
-Layout
-
-Two columns max instead of three — on a wide screen the cards feel cramped; wider cards with more breathing room look more premium
-Group cards into sections — e.g. "Emergencies" (Neutropenic Fever, TLS, CRS/ICANS, Differentiation Syndrome) vs. "Diagnosis & Workup" vs. "Treatment Protocols" with a small section label between groups
-Header
-
-The gradient header is quite tall — tightening it up and making the title slightly smaller would give the cards more prominence
-A thin horizontal rule or divider between the header and the cards to create separation
-My top 3 recommendations:
-
-Shorter descriptions — biggest impact for readability
-Color-coded top borders by category — adds visual organization without adding text
-Section groupings — makes it feel like a real reference tool, not just a grid
-Want me to implement any or all of these?
-
-I like the original available now but maybe replace it with another word/words
-
-Mar 11
-Here are some options to replace "Available Now":
-
-Action-oriented
-
-"Open Guide"
-"View Guide"
-"Read More"
-Status-oriented
-
-"Live"
-"Ready"
-"Published"
-Clinical feel
-
-"Reference Ready"
-"On Call"
-"Active"
-What do you think fits the tone best?
-
-What about view guide
-
-Mar 11
-
-Ran 2 commands, edited a file, read a file
-Ran 2 commands, edited a file, read a file
-Done! All 12 cards now show a "View Guide" badge in blue. The green checkmark is gone and the color shifted to blue to better match a "navigation" feel rather than a status indicator. Let me know what you think!
-
-Index
-Code · HTML 
-I like the original green color and make sure they are all at the same level
-
-Mar 11
-
-Edited 2 files, viewed a file, read a file
-Edited 2 files, viewed a file, read a file
-Done! The badges are back to the original green, and all cards now use flexbox so the "View Guide" badge sits at the same level across every card regardless of how long the description is.
-
-Index
-Code · HTML 
-there should be a symbol before view guide may be a a play button
-
-Mar 11
-
-Edited a file, read a file
-Edited a file, read a file
-Done! Each badge now has a ▶ play button before "View Guide" in the green badge. Let me know if you'd like it tweaked!
-
-Index
-Code · HTML 
-How do a create a mobile version, it looks good on desktop but clunky on phone
-
-Mar 11
-The site is actually already set up to work on mobile — the issue is likely just that the cards stack but keep too much padding, font sizes are large, and the header takes up too much space.
-
-There are two approaches:
-
-Option A — Responsive tweaks to what you have Add better mobile CSS breakpoints — smaller header, tighter card padding, smaller fonts, 1-column grid. Quick fix, same site.
-
-Option B — Dedicated mobile-first redesign Rebuild the layout so it feels native on phone — more like an app with a compact header, full-width tap targets, and a cleaner list-style layout instead of cards.
-
-Which sounds better to you?
-
-The issue is some of the large charts go out of frame
-
-Mar 11
-I can see the issue — the tables are overflowing horizontally off-screen on mobile. The fix is straightforward: wrap all tables in a scrollable container so users can swipe horizontally on wide tables instead of them getting cut off.
-
-I can add this fix to all your pages at once. Want me to do that?
-
-Q: How would you like to proceed?
-A: Yes — fix all pages at once
-
-Mar 11
-
-Ran 3 commands, read a file
-Ran 3 commands, read a file
-All 9 pages have been updated. Here's what was fixed:
-
-Every table is now wrapped in a horizontally scrollable container — so on mobile, wide tables can be swiped left/right instead of getting cut off
-Smaller font size and tighter padding on table cells at mobile screen widths so more content fits on screen
-Works with -webkit-overflow-scrolling: touch for smooth momentum scrolling on iPhone
-Try opening one of the pages on your phone — the tables should now scroll smoothly instead of overflowing off screen.
-
-Crs icans
-Code · HTML 
-Car t
-Code · HTML 
-Neutropenic fever
-Code · HTML 
-Tumor lysis syndrome
-Code · HTML 
-Differentiation syndrome
-Code · HTML 
-Transfusions
-Code · HTML 
-New leukemia diagnosis
-Code · HTML 
-When to call fellow
-Code · HTML 
-Index
-Code · HTML 
-
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-Car t · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -761,7 +6,7 @@ Copy
     <title>CAR-T Cell Therapy</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -769,7 +14,7 @@ Copy
             background: #f7fafc;
             padding: 20px;
         }
- 
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -777,14 +22,14 @@ Copy
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
- 
+
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 30px;
             border-radius: 12px 12px 0 0;
         }
- 
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -796,10 +41,10 @@ Copy
             transition: color 0.2s;
         }
         .back-link:hover { color: white; }
- 
+
         h1 { font-size: 2em; margin-bottom: 10px; }
         .header-subtitle { opacity: 0.9; font-size: 0.95em; }
- 
+
         .quick-nav {
             background: #edf2f7;
             padding: 20px 30px;
@@ -808,7 +53,7 @@ Copy
             gap: 15px;
             flex-wrap: wrap;
         }
- 
+
         .nav-btn {
             padding: 8px 16px;
             background: white;
@@ -821,9 +66,9 @@ Copy
             font-size: 0.9em;
         }
         .nav-btn:hover, .nav-btn.active { background: #667eea; color: white; }
- 
+
         .content { padding: 30px; }
- 
+
         .section {
             margin-bottom: 40px;
             border-left: 4px solid #667eea;
@@ -834,7 +79,7 @@ Copy
         .section.dex             { border-left-color: #48bb78; }
         .section.sideeffects     { border-left-color: #f56565; }
         .section.prophylaxis     { border-left-color: #ed8936; }
- 
+
         h2 {
             color: #1a202c;
             font-size: 1.8em;
@@ -843,7 +88,7 @@ Copy
             align-items: center;
             gap: 10px;
         }
- 
+
         h3 {
             color: #2d3748;
             font-size: 1.3em;
@@ -852,9 +97,9 @@ Copy
             background: #edf2f7;
             border-radius: 6px;
         }
- 
+
         h4 { font-size: 1.05em; color: #2d3748; margin-bottom: 8px; }
- 
+
         .warning-box {
             background: #fff5f5;
             border-left: 4px solid #f56565;
@@ -863,7 +108,7 @@ Copy
             border-radius: 6px;
         }
         .warning-box h4 { color: #c53030; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
- 
+
         .info-box {
             background: #ebf8ff;
             border-left: 4px solid #4299e1;
@@ -871,7 +116,7 @@ Copy
             margin: 15px 0;
             border-radius: 6px;
         }
- 
+
         .success-box {
             background: #f0fff4;
             border-left: 4px solid #48bb78;
@@ -880,7 +125,7 @@ Copy
             border-radius: 6px;
         }
         .success-box h4 { color: #276749; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
- 
+
         .purple-box {
             background: #faf5ff;
             border-left: 4px solid #9f7aea;
@@ -889,7 +134,7 @@ Copy
             border-radius: 6px;
         }
         .purple-box h4 { color: #553c9a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
- 
+
         .orange-box {
             background: #fffaf0;
             border-left: 4px solid #ed8936;
@@ -898,7 +143,7 @@ Copy
             border-radius: 6px;
         }
         .orange-box h4 { color: #9c4221; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
- 
+
         .regimen-card {
             background: #f7fafc;
             border: 2px solid #e2e8f0;
@@ -920,7 +165,7 @@ Copy
             gap: 10px;
         }
         .regimen-title { font-size: 1.2em; font-weight: 600; color: #2d3748; }
- 
+
         .badge {
             display: inline-block;
             padding: 4px 12px;
@@ -934,7 +179,7 @@ Copy
         .badge.standard { background: #48bb78; color: white; }
         .badge.info     { background: #4299e1; color: white; }
         .badge.purple   { background: #9f7aea; color: white; }
- 
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -954,7 +199,7 @@ Copy
             vertical-align: top;
         }
         tr:hover { background: #f7fafc; }
- 
+
         /* Timeline */
         .timeline-row {
             display: flex;
@@ -963,14 +208,14 @@ Copy
             overflow-x: auto;
             padding-bottom: 4px;
         }
- 
+
         .timeline-day {
             flex: 1;
             min-width: 80px;
             text-align: center;
             position: relative;
         }
- 
+
         .timeline-day::after {
             content: '';
             position: absolute;
@@ -993,7 +238,7 @@ Copy
         }
         .timeline-day:first-child::before { display: none; }
         .timeline-day:last-child::after  { display: none; }
- 
+
         .timeline-dot {
             width: 44px;
             height: 44px;
@@ -1008,11 +253,11 @@ Copy
             z-index: 1;
             border: 3px solid;
         }
- 
+
         .timeline-dot.chemo   { background: #bee3f8; border-color: #4299e1; color: #1a365d; }
         .timeline-dot.rest    { background: #e2e8f0; border-color: #a0aec0; color: #4a5568; }
         .timeline-dot.infusion{ background: #c6f6d5; border-color: #48bb78; color: #1c4532; }
- 
+
         .timeline-day-label {
             font-size: 0.78em;
             font-weight: 700;
@@ -1024,7 +269,7 @@ Copy
             color: #718096;
             line-height: 1.3;
         }
- 
+
         /* CAR-T type cards */
         .cart-types-grid {
             display: grid;
@@ -1032,7 +277,7 @@ Copy
             gap: 14px;
             margin: 15px 0;
         }
- 
+
         .cart-type-card {
             border-radius: 10px;
             border: 2px solid;
@@ -1041,7 +286,7 @@ Copy
         .cart-type-card.cd19-dlbcl { background: #ebf8ff; border-color: #4299e1; }
         .cart-type-card.cd19-mcl   { background: #f0fff4; border-color: #48bb78; }
         .cart-type-card.bcma       { background: #faf5ff; border-color: #9f7aea; }
- 
+
         .cart-type-title {
             font-weight: 700;
             font-size: 0.9em;
@@ -1052,7 +297,7 @@ Copy
         .cart-type-card.cd19-dlbcl .cart-type-title { color: #1a365d; border-color: #bee3f8; }
         .cart-type-card.cd19-mcl   .cart-type-title { color: #1c4532; border-color: #c6f6d5; }
         .cart-type-card.bcma       .cart-type-title { color: #44337a; border-color: #e9d8fd; }
- 
+
         .cart-type-target {
             display: inline-block;
             font-size: 0.75em;
@@ -1064,7 +309,7 @@ Copy
         .cart-type-card.cd19-dlbcl .cart-type-target { background: #bee3f8; color: #1a365d; }
         .cart-type-card.cd19-mcl   .cart-type-target { background: #c6f6d5; color: #1c4532; }
         .cart-type-card.bcma       .cart-type-target { background: #e9d8fd; color: #44337a; }
- 
+
         .cart-drug {
             padding: 5px 0;
             border-bottom: 1px solid rgba(0,0,0,0.06);
@@ -1072,7 +317,7 @@ Copy
         }
         .cart-drug:last-child { border-bottom: none; }
         .cart-drug-brand { color: #718096; font-size: 0.9em; }
- 
+
         /* Risk timeframe chips */
         .timeframe-grid {
             display: grid;
@@ -1080,7 +325,7 @@ Copy
             gap: 12px;
             margin: 15px 0;
         }
- 
+
         .timeframe-chip {
             border-radius: 8px;
             padding: 14px 16px;
@@ -1090,13 +335,13 @@ Copy
         }
         .timeframe-chip.crs   { background: #fff5f5; border: 1.5px solid #fc8181; }
         .timeframe-chip.icans { background: #faf5ff; border: 1.5px solid #b794f4; }
- 
+
         .timeframe-icon { font-size: 1.5em; flex-shrink: 0; }
         .timeframe-label { font-weight: 700; font-size: 0.9em; margin-bottom: 2px; }
         .timeframe-chip.crs   .timeframe-label { color: #c53030; }
         .timeframe-chip.icans .timeframe-label { color: #553c9a; }
         .timeframe-detail { font-size: 0.88em; color: #4a5568; }
- 
+
         .drug-tag {
             background: #e6fffa;
             color: #234e52;
@@ -1107,7 +352,7 @@ Copy
             display: inline-block;
             margin: 2px;
         }
- 
+
         .source-link {
             display: inline-flex;
             align-items: center;
@@ -1122,10 +367,10 @@ Copy
             transition: all 0.2s;
         }
         .source-link:hover { background: #ebf8ff; }
- 
+
         ul { padding-left: 20px; }
         ul li { margin-bottom: 6px; }
- 
+
         @media (max-width: 900px) {
             .cart-types-grid { grid-template-columns: 1fr; }
         }
@@ -1144,7 +389,7 @@ Copy
             <h1>🎯 CAR-T Cell Therapy</h1>
             <p class="header-subtitle">Chimeric antigen receptor T-cell therapy — lymphodepletion, product types, prophylactic dexamethasone, and toxicity management</p>
         </header>
- 
+
         <nav class="quick-nav">
             <button class="nav-btn" onclick="scrollToSection('lymphodepletion')">Lymphodepletion</button>
             <button class="nav-btn" onclick="scrollToSection('types')">CAR-T Products</button>
@@ -1152,21 +397,21 @@ Copy
             <button class="nav-btn" onclick="scrollToSection('sideeffects')">Side Effects</button>
             <button class="nav-btn" onclick="scrollToSection('prophylaxis')">Antibiotic Prophylaxis</button>
         </nav>
- 
+
         <div class="content">
- 
+
             <!-- LYMPHODEPLETION -->
             <section id="lymphodepletion" class="section lymphodepletion">
                 <h2>💊 Lymphodepletion</h2>
- 
+
                 <p style="margin-bottom:16px; color:#4a5568;">Lymphodepletion chemotherapy is given prior to CAR-T infusion to create space for CAR-T cell expansion and enhance engraftment.</p>
- 
+
                 <div class="regimen-card">
                     <div class="regimen-header">
                         <span class="regimen-title">Flu/Cy Lymphodepletion Schedule</span>
                         <span class="badge info">Standard Regimen</span>
                     </div>
- 
+
                     <div class="timeline-row">
                         <div class="timeline-day">
                             <div class="timeline-dot chemo">D−5</div>
@@ -1199,7 +444,7 @@ Copy
                             <div class="timeline-day-detail">CAR-T cell infusion</div>
                         </div>
                     </div>
- 
+
                     <table style="margin-top:8px;">
                         <tr>
                             <th>Days</th>
@@ -1220,11 +465,11 @@ Copy
                     </table></div>
                 </div>
             </section>
- 
+
             <!-- CAR-T TYPES -->
             <section id="types" class="section types">
                 <h2>🧬 Types of CAR-T Products</h2>
- 
+
                 <div class="cart-types-grid">
                     <div class="cart-type-card cd19-dlbcl">
                         <div class="cart-type-title">DLBCL & B-cell Lymphomas</div>
@@ -1242,7 +487,7 @@ Copy
                             <div class="cart-drug-brand">Kymriah</div>
                         </div>
                     </div>
- 
+
                     <div class="cart-type-card cd19-mcl">
                         <div class="cart-type-title">Mantle Cell Lymphoma</div>
                         <div class="cart-type-target">CD19-targeted</div>
@@ -1251,7 +496,7 @@ Copy
                             <div class="cart-drug-brand">Tecartus</div>
                         </div>
                     </div>
- 
+
                     <div class="cart-type-card bcma">
                         <div class="cart-type-title">Multiple Myeloma</div>
                         <div class="cart-type-target">BCMA-directed</div>
@@ -1265,7 +510,7 @@ Copy
                         </div>
                     </div>
                 </div>
- 
+
                 <div style="overflow-x:auto; -webkit-overflow-scrolling:touch; margin: 15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Indication</th>
@@ -1305,15 +550,15 @@ Copy
                     </tr>
                 </table></div>
             </section>
- 
+
             <!-- PROPHYLACTIC DEXAMETHASONE -->
             <section id="dex" class="section dex">
                 <h2>💉 Prophylactic Dexamethasone</h2>
- 
+
                 <div class="info-box">
                     <strong>Evidence Base — ZUMA-1 Trial:</strong> Dexamethasone 10mg given on Day 0 through Day +2 after axi-cel CAR-T. Studies show fewer CRS/ICANS events without a decrease in treatment response.
                 </div>
- 
+
                 <div class="regimen-card" style="border-color: #48bb78;">
                     <div class="regimen-header">
                         <span class="regimen-title">Georgetown Protocol — Prophylactic Dexamethasone</span>
@@ -1337,7 +582,7 @@ Copy
                         </tr>
                     </table></div>
                 </div>
- 
+
                 <div class="success-box">
                     <h4>✓ Key Points</h4>
                     <ul style="margin-top:8px;">
@@ -1347,18 +592,18 @@ Copy
                     </ul>
                 </div>
             </section>
- 
+
             <!-- SIDE EFFECTS -->
             <section id="sideeffects" class="section sideeffects">
                 <h2>⚠️ Side Effects</h2>
- 
+
                 <h3>CRS and ICANS — Primary In-Hospital Concern</h3>
- 
+
                 <div class="warning-box">
                     <h4>⚠️ CRS / ICANS — See Dedicated Section</h4>
                     <p>The main concern during hospitalization is CRS and ICANS. Refer to the <a href="crs-icans.html" style="color:#c53030; font-weight:600;">CRS and ICANS page</a> for full grading and management details.</p>
                 </div>
- 
+
                 <div class="timeframe-grid">
                     <div class="timeframe-chip crs">
                         <span class="timeframe-icon">🔥</span>
@@ -1375,7 +620,7 @@ Copy
                         </div>
                     </div>
                 </div>
- 
+
                 <h3>Cytopenias</h3>
                 <div class="orange-box">
                     <h4>🩸 Post CAR-T Cytopenias</h4>
@@ -1387,11 +632,11 @@ Copy
                     <p style="margin-top:8px; font-size:0.93em;">See reference link #1 below for a detailed approach to post CAR-T cytopenias.</p>
                 </div>
             </section>
- 
+
             <!-- ANTIBIOTIC PROPHYLAXIS -->
             <section id="prophylaxis" class="section prophylaxis">
                 <h2>💊 Antibiotic Prophylaxis</h2>
- 
+
                 <div style="overflow-x:auto; -webkit-overflow-scrolling:touch; margin: 15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Category</th>
@@ -1428,11 +673,11 @@ Copy
                         <td><strong>Neutropenic patients only</strong></td>
                     </tr>
                 </table></div>
- 
+
                 <div class="info-box">
                     <strong>Note:</strong> Antibacterial and antifungal prophylaxis are indicated <strong>only in neutropenic patients</strong>. Antiviral prophylaxis and PJP prophylaxis (starting Day 30) are given to all patients regardless of counts.
                 </div>
- 
+
                 <div style="margin-top: 24px;">
                     <div style="font-weight:600; margin-bottom:10px; color:#4a5568; font-size:0.9em;">References</div>
                     <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10646792/" target="_blank" class="source-link">
@@ -1446,10 +691,10 @@ Copy
                     </a>
                 </div>
             </section>
- 
+
         </div>
     </div>
- 
+
     <script>
         function scrollToSection(id) {
             const el = document.getElementById(id);
@@ -1462,8 +707,3 @@ Copy
     </script>
 </body>
 </html>
- 
-
-
-
-

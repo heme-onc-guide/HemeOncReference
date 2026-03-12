@@ -172,8 +172,9 @@
 
         table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 0;
             background: white;
         }
         th {
@@ -391,6 +392,52 @@
         @media (max-width: 480px) {
             .symptom-grid { grid-template-columns: 1fr; }
         }
+    
+        @media (max-width: 600px) {
+            table {
+                min-width: 480px;
+                font-size: 0.82em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            div[style*="overflow-x"] {
+                border-radius: 6px;
+                border: 1px solid #e2e8f0;
+            }
+        }
+    
+        /* Scrollable table indicator */
+        div[style*="overflow-x"] {
+            position: relative;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar {
+            height: 6px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+    
+        .scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.78em;
+            color: #667eea;
+            padding: 4px 0 2px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        @media (max-width: 768px) {
+            .scroll-hint { display: block; }
+        }
     </style>
 </head>
 <body>
@@ -518,7 +565,7 @@
                     </div>
                 </div>
 
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Grade</th>
                         <th>Features</th>
@@ -539,7 +586,7 @@
                         <td>≥4 clinical features</td>
                         <td>Start dexamethasone; hold ATRA/ATO if life-threatening</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
             </section>
 
             <!-- TIMING -->
@@ -619,7 +666,7 @@
                     </ol>
                 </div>
 
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Drug</th>
                         <th>Dose</th>
@@ -630,7 +677,7 @@
                         <td>10 mg IV <strong>twice daily</strong></td>
                         <td>Until complete symptom resolution</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <div class="success-box">
                     <h4>✓ Resuming ATRA / ATO After Hold</h4>

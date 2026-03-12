@@ -241,8 +241,9 @@
         
         table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 0;
             background: white;
         }
         
@@ -461,6 +462,52 @@
             table { font-size: 0.9em; }
             .content { padding: 20px 15px; }
         }
+    
+        @media (max-width: 600px) {
+            table {
+                min-width: 480px;
+                font-size: 0.82em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            div[style*="overflow-x"] {
+                border-radius: 6px;
+                border: 1px solid #e2e8f0;
+            }
+        }
+    
+        /* Scrollable table indicator */
+        div[style*="overflow-x"] {
+            position: relative;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar {
+            height: 6px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+    
+        .scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.78em;
+            color: #667eea;
+            padding: 4px 0 2px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        @media (max-width: 768px) {
+            .scroll-hint { display: block; }
+        }
     </style>
 </head>
 <body>
@@ -501,7 +548,7 @@
                         <span class="badge urgent">Escalate</span>
                     </div>
                     <p style="margin-bottom: 12px;">Add vancomycin if <strong>any</strong> of the following are present:</p>
-                    <table>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                         <tr>
                             <th>Indication</th>
                             <th>Rationale</th>
@@ -530,7 +577,7 @@
                             <td>Known MRSA colonization</td>
                             <td>Empiric MRSA coverage</td>
                         </tr>
-                    </table>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                     <div class="info-box" style="margin-top:12px;">
                         <strong>Note:</strong> Consider holding prophylactic antibiotics when starting a patient on broader antibiotics overnight.
                     </div>
@@ -554,7 +601,7 @@
                         <span class="regimen-title">Definition & Thresholds</span>
                         <span class="badge caution">Definition</span>
                     </div>
-                    <table>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                         <tr>
                             <th>Category</th>
                             <th>ANC</th>
@@ -570,7 +617,7 @@
                             <td><strong>&lt;500 cells/µL for ≥7 days</strong></td>
                             <td><strong>Antimicrobial prophylaxis indicated</strong></td>
                         </tr>
-                    </table>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 </div>
 
                 <div class="orange-box">
@@ -662,7 +709,7 @@
                 <h2>🍄 Fungal Infections</h2>
 
                 <h3>Mold vs. Yeast — Key Distinction</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Type</th>
                         <th>Morphology</th>
@@ -681,7 +728,7 @@
                         <td>Candida</td>
                         <td><span class="drug-tag">Fluconazole</span></td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <h3>Fungal Diagnostic Testing</h3>
                 <div class="two-col">
@@ -703,7 +750,7 @@
                 </div>
 
                 <h3>Antifungal Drug Coverage Summary</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Drug</th>
                         <th>Coverage</th>
@@ -734,7 +781,7 @@
                         <td>PJP (Pneumocystis jirovecii)</td>
                         <td>Treatment dose for active PJP; lower dose for prophylaxis</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <div class="info-box">
                     <strong>⏱ When to initiate empiric antifungal coverage:</strong> Consider fungal coverage after <strong>4+ days of fevers</strong> despite appropriate antibacterial coverage.
@@ -788,7 +835,7 @@
                 </div>
 
                 <h3>Antibacterial Prophylaxis</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Agent</th>
                         <th>Target</th>
@@ -804,13 +851,13 @@
                         <td>Gram-negative organisms</td>
                         <td>Alternative; less coverage of gram-positives</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 <div class="info-box">
                     <strong>Note:</strong> Hold prophylactic antibiotics when starting the patient on broader empiric antibiotics for neutropenic fever.
                 </div>
 
                 <h3>Antifungal Prophylaxis</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Scenario</th>
                         <th>Agent</th>
@@ -831,10 +878,10 @@
                         <td>Fluconazole</td>
                         <td>Candida only</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <h3>Antiviral Prophylaxis</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Agent</th>
                         <th>Target</th>
@@ -850,10 +897,10 @@
                         <td>HSV, VZV</td>
                         <td>Oral alternative to acyclovir</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <h3>PJP (Pneumocystis jirovecii) Prophylaxis</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Agent</th>
                         <th>Dose</th>
@@ -879,10 +926,10 @@
                         <td>300mg monthly</td>
                         <td>Alternative; less effective, no systemic coverage</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <h3>Disease-Specific Prophylaxis Summary</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Disease / Setting</th>
                         <th>Antibacterial</th>
@@ -925,7 +972,7 @@
                         <td>Acyclovir</td>
                         <td>Bactrim</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
             </section>
 
             <!-- ADDITIONAL WORKUP -->
@@ -933,7 +980,7 @@
                 <h2>🔍 Additional Workup by Symptom</h2>
 
                 <h3>Symptom-Directed Testing</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Symptom / Concern</th>
                         <th>Recommended Workup</th>
@@ -974,7 +1021,7 @@
                         <td><strong>LP</strong>; Cryptococcal antigen, fungal culture</td>
                         <td>Rule out cryptococcal meningitis</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
 
                 <h3>Standard Initial Infectious Workup Checklist</h3>
                 <div class="regimen-card">

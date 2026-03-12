@@ -222,9 +222,93 @@
             .nav-content { padding: 1rem; }
             .logo { font-size: 1.1rem; }
         }
+    
+        @media (max-width: 600px) {
+            table {
+                min-width: 480px;
+                font-size: 0.82em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            div[style*="overflow-x"] {
+                border-radius: 6px;
+                border: 1px solid #e2e8f0;
+            }
+        }
+    
+        /* Scrollable table indicator */
+        div[style*="overflow-x"] {
+            position: relative;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar {
+            height: 6px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+    
+        .scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.78em;
+            color: #667eea;
+            padding: 4px 0 2px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        @media (max-width: 768px) {
+            .scroll-hint { display: block; }
+        }
+
+        /* iOS install banner */
+        .install-banner {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 16px;
+            font-size: 0.88em;
+            align-items: center;
+            gap: 10px;
+        }
+        .install-banner.visible { display: flex; }
+        .install-banner-text { flex: 1; line-height: 1.4; }
+        .install-banner-text strong { display: block; font-size: 0.95em; }
+        .install-banner-text span { opacity: 0.88; font-size: 0.9em; }
+        .install-banner-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1em;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
+    <!-- iOS Safari install banner -->
+    <div class="install-banner" id="installBanner">
+        <div class="install-banner-text">
+            <strong>📱 Add to Home Screen</strong>
+            <span>Tap <strong>Share</strong> then <strong>"Add to Home Screen"</strong> for quick access</span>
+        </div>
+        <button class="install-banner-close" onclick="dismissBanner()" aria-label="Dismiss">✕</button>
+    </div>
+
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">
@@ -353,5 +437,24 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        // Show install banner only on iPhone Safari, not already installed, not dismissed
+        (function() {
+            var isIphone = /iphone/i.test(navigator.userAgent);
+            var isSafari = /safari/i.test(navigator.userAgent) && !/chrome|crios|fxios/i.test(navigator.userAgent);
+            var isStandalone = window.navigator.standalone === true;
+            var dismissed = localStorage.getItem('installBannerDismissed');
+
+            if (isIphone && isSafari && !isStandalone && !dismissed) {
+                document.getElementById('installBanner').classList.add('visible');
+            }
+        })();
+
+        function dismissBanner() {
+            document.getElementById('installBanner').classList.remove('visible');
+            localStorage.setItem('installBannerDismissed', '1');
+        }
+    </script>
 </body>
 </html>

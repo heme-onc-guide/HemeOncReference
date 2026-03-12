@@ -300,11 +300,11 @@
     </style>
 </head>
 <body>
-    <!-- iOS Safari install banner -->
+    <!-- Install banner -->
     <div class="install-banner" id="installBanner">
         <div class="install-banner-text">
             <strong>📱 Add to Home Screen</strong>
-            <span>Tap <strong>Share</strong> then <strong>"Add to Home Screen"</strong> for quick access</span>
+            <span id="installBannerMsg"></span>
         </div>
         <button class="install-banner-close" onclick="dismissBanner()" aria-label="Dismiss">✕</button>
     </div>
@@ -439,16 +439,31 @@
     </div>
 
     <script>
-        // Show install banner only on iPhone Safari, not already installed, not dismissed
         (function() {
-            var isIphone = /iphone/i.test(navigator.userAgent);
-            var isSafari = /safari/i.test(navigator.userAgent) && !/chrome|crios|fxios/i.test(navigator.userAgent);
-            var isStandalone = window.navigator.standalone === true;
+            var ua = navigator.userAgent;
+            var isIphone = /iphone/i.test(ua);
+            var isAndroid = /android/i.test(ua);
+            var isSafari = /safari/i.test(ua) && !/chrome|crios|fxios/i.test(ua);
+            var isChrome = /chrome|crios/i.test(ua);
+            var isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
             var dismissed = localStorage.getItem('installBannerDismissed');
+            var isMobile = isIphone || isAndroid;
 
-            if (isIphone && isSafari && !isStandalone && !dismissed) {
-                document.getElementById('installBanner').classList.add('visible');
+            if (!isMobile || isStandalone || dismissed) return;
+
+            var msg = '';
+            if (isIphone && isSafari) {
+                msg = 'Tap <strong>Share ⎋</strong> then <strong>"Add to Home Screen"</strong> for quick access';
+            } else if (isIphone && !isSafari) {
+                msg = 'Open this page in <strong>Safari</strong>, then tap Share ⎋ → <strong>"Add to Home Screen"</strong>';
+            } else if (isAndroid && isChrome) {
+                msg = 'Tap the <strong>⋮ menu</strong> then <strong>"Add to Home Screen"</strong> for quick access';
+            } else {
+                msg = 'Open in <strong>Chrome</strong> or your browser menu to add this to your home screen';
             }
+
+            document.getElementById('installBannerMsg').innerHTML = msg;
+            document.getElementById('installBanner').classList.add('visible');
         })();
 
         function dismissBanner() {

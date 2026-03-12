@@ -30,15 +30,20 @@
             border-radius: 12px 12px 0 0;
         }
         
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+            transition: color 0.2s;
         }
-        
-        .header-subtitle {
-            opacity: 0.9;
-            font-size: 0.95em;
-        }
+        .back-link:hover { color: white; }
+
+        h1 { font-size: 2em; margin-bottom: 10px; }
+        .header-subtitle { opacity: 0.9; font-size: 0.95em; }
         
         .quick-nav {
             background: #edf2f7;
@@ -59,15 +64,9 @@
             font-weight: 500;
             color: #9f7aea;
         }
+        .nav-btn:hover { background: #9f7aea; color: white; }
         
-        .nav-btn:hover {
-            background: #9f7aea;
-            color: white;
-        }
-        
-        .content {
-            padding: 30px;
-        }
+        .content { padding: 30px; }
         
         .section {
             margin-bottom: 40px;
@@ -75,239 +74,89 @@
             padding-left: 20px;
         }
         
-        h2 {
-            color: #1a202c;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        h2 { color: #1a202c; font-size: 1.8em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        h3 { color: #2d3748; font-size: 1.3em; margin: 25px 0 15px 0; padding: 10px; background: #edf2f7; border-radius: 6px; }
+        h4 { color: #2d3748; font-size: 1.1em; margin: 15px 0 10px 0; font-weight: 600; }
         
-        h3 {
-            color: #2d3748;
-            font-size: 1.3em;
-            margin: 25px 0 15px 0;
-            padding: 10px;
-            background: #edf2f7;
-            border-radius: 6px;
-        }
-        
-        h4 {
-            color: #2d3748;
-            font-size: 1.1em;
-            margin: 15px 0 10px 0;
-            font-weight: 600;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.75em; font-weight: 600; text-transform: uppercase; }
         .badge.first-line { background: #9f7aea; color: white; }
         .badge.maintenance { background: #48bb78; color: white; }
         .badge.relapsed { background: #ed8936; color: white; }
         .badge.high-risk { background: #f56565; color: white; }
         .badge.bispecific { background: #4299e1; color: white; }
         
-        .warning-box {
-            background: #fff5f5;
-            border-left: 4px solid #f56565;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
+        .warning-box { background: #fff5f5; border-left: 4px solid #f56565; padding: 15px; margin: 15px 0; border-radius: 6px; }
+        .warning-box h4 { color: #c53030; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .info-box { background: #ebf8ff; border-left: 4px solid #4299e1; padding: 15px; margin: 15px 0; border-radius: 6px; }
         
-        .warning-box h4 {
-            color: #c53030;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .resident-alert { background: #fef5e7; border-left: 4px solid #f6ad55; padding: 15px; margin: 15px 0; border-radius: 6px; }
+        .resident-alert h4 { color: #c05621; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         
-        .info-box {
-            background: #ebf8ff;
-            border-left: 4px solid #4299e1;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
+        .checklist { background: #f0fff4; border-left: 4px solid #48bb78; padding: 15px; margin: 15px 0; border-radius: 6px; }
+        .checklist h4 { color: #22543d; margin-bottom: 10px; }
+        .checklist ul { list-style: none; padding-left: 0; }
+        .checklist li { padding: 5px 0; padding-left: 25px; position: relative; }
+        .checklist li:before { content: "☐"; position: absolute; left: 0; color: #48bb78; font-size: 1.2em; }
         
-        .resident-alert {
-            background: #fef5e7;
-            border-left: 4px solid #f6ad55;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
+        .regimen-card { background: #f7fafc; border: 2px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 15px 0; transition: all 0.3s; }
+        .regimen-card:hover { border-color: #9f7aea; box-shadow: 0 4px 12px rgba(159, 122, 234, 0.15); }
         
-        .resident-alert h4 {
-            color: #c05621;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .checklist {
-            background: #f0fff4;
-            border-left: 4px solid #48bb78;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
-        
-        .checklist h4 {
-            color: #22543d;
-            margin-bottom: 10px;
-        }
-        
-        .checklist ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .checklist li {
-            padding: 5px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .checklist li:before {
-            content: "☐";
-            position: absolute;
-            left: 0;
-            color: #48bb78;
-            font-size: 1.2em;
-        }
-        
-        .regimen-card {
-            background: #f7fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            transition: all 0.3s;
-        }
-        
-        .regimen-card:hover {
-            border-color: #9f7aea;
-            box-shadow: 0 4px 12px rgba(159, 122, 234, 0.15);
-        }
-        
-        .regimen-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .regimen-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #2d3748;
-        }
+        .regimen-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .regimen-title { font-size: 1.2em; font-weight: 600; color: #2d3748; }
         
         table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 0;
             background: white;
         }
+        th { background: #edf2f7; padding: 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #cbd5e0; }
+        td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:hover { background: #f7fafc; }
         
-        th {
-            background: #edf2f7;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid #cbd5e0;
-        }
+        .indication { background: #fef5e7; padding: 12px; border-radius: 6px; margin: 10px 0; font-style: italic; border-left: 3px solid #f6ad55; }
+        ul, ol { margin-left: 20px; margin-top: 8px; margin-bottom: 8px; }
+        li { margin: 5px 0; }
         
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
-        }
-        
-        tr:hover {
-            background: #f7fafc;
-        }
-        
-        .indication {
-            background: #fef5e7;
-            padding: 12px;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-style: italic;
-            border-left: 3px solid #f6ad55;
-        }
-        
-        ul, ol {
-            margin-left: 20px;
-            margin-top: 8px;
-            margin-bottom: 8px;
-        }
-        
-        li {
-            margin: 5px 0;
-        }
-        
-        .glossary {
-            background: #f7fafc;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-        }
-        
-        .glossary h3 {
-            background: none;
-            padding: 0;
-            margin-bottom: 10px;
-        }
-        
-        .abbrev {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 10px 20px;
-            margin-top: 10px;
-        }
-        
-        .abbrev-term {
-            font-weight: 600;
+        .glossary { background: #f7fafc; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .glossary h3 { background: none; padding: 0; margin-bottom: 10px; }
+        .abbrev { display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; margin-top: 10px; }
+        .abbrev-term { font-weight: 600; color: #9f7aea; }
+
+        .criteria-box { background: #fff; border: 2px solid #9f7aea; border-radius: 8px; padding: 15px; margin: 15px 0; }
+        .criteria-box h4 { color: #6b46c1; margin-bottom: 10px; }
+
+        /* Scrollable table indicator */
+        div[style*="overflow-x"] { position: relative; }
+        div[style*="overflow-x"]::-webkit-scrollbar { height: 6px; }
+        div[style*="overflow-x"]::-webkit-scrollbar-track { background: #edf2f7; border-radius: 10px; }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb { background: #9f7aea; border-radius: 10px; }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover { background: #6b46c1; }
+
+        .scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.78em;
             color: #9f7aea;
-        }
-
-        .criteria-box {
-            background: #fff;
-            border: 2px solid #9f7aea;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-
-        .criteria-box h4 {
-            color: #6b46c1;
-            margin-bottom: 10px;
+            padding: 4px 0 2px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
         }
 
         @media (max-width: 768px) {
             .quick-nav { flex-direction: column; }
             .regimen-header { flex-direction: column; align-items: flex-start; }
-            table { font-size: 0.9em; }
+            .scroll-hint { display: block; }
+            th, td { padding: 8px 10px; }
+            div[style*="overflow-x"] { border-radius: 6px; border: 1px solid #e2e8f0; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
+            <a href="index.html" class="back-link">← Back to Clinical Reference Home</a>
             <h1>🔬 Multiple Myeloma Treatment Guide</h1>
             <p class="header-subtitle">Comprehensive resident reference for MM diagnosis, treatment protocols, and monitoring</p>
         </header>
@@ -362,57 +211,27 @@
                 </div>
 
                 <h4>End-Organ Damage (CRAB)</h4>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                 <table>
-                    <tr>
-                        <th style="width: 80px;">Letter</th>
-                        <th>Criterion</th>
-                        <th>Definition</th>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #9f7aea;">C</strong></td>
-                        <td><strong>Calcium elevation</strong></td>
-                        <td>Serum calcium >11 mg/dL (>1 mg/dL above ULN)</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #9f7aea;">R</strong></td>
-                        <td><strong>Renal impairment</strong></td>
-                        <td>CrCl <40 mL/min OR Creatinine >2 mg/dL</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #9f7aea;">A</strong></td>
-                        <td><strong>Anemia</strong></td>
-                        <td>Hemoglobin <10 g/dL (or >2 g/dL below lower limit of normal)</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #9f7aea;">B</strong></td>
-                        <td><strong>Bone lesions</strong></td>
-                        <td>One or more osteolytic lesions on CT, MRI, or PET/CT</td>
-                    </tr>
+                    <tr><th style="width: 80px;">Letter</th><th>Criterion</th><th>Definition</th></tr>
+                    <tr><td><strong style="color: #9f7aea;">C</strong></td><td><strong>Calcium elevation</strong></td><td>Serum calcium >11 mg/dL (>1 mg/dL above ULN)</td></tr>
+                    <tr><td><strong style="color: #9f7aea;">R</strong></td><td><strong>Renal impairment</strong></td><td>CrCl &lt;40 mL/min OR Creatinine >2 mg/dL</td></tr>
+                    <tr><td><strong style="color: #9f7aea;">A</strong></td><td><strong>Anemia</strong></td><td>Hemoglobin &lt;10 g/dL (or >2 g/dL below lower limit of normal)</td></tr>
+                    <tr><td><strong style="color: #9f7aea;">B</strong></td><td><strong>Bone lesions</strong></td><td>One or more osteolytic lesions on CT, MRI, or PET/CT</td></tr>
                 </table>
+                </div>
+                <div class="scroll-hint">← swipe to scroll →</div>
 
                 <h4>Biomarkers of Malignancy (SLiM)</h4>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                 <table>
-                    <tr>
-                        <th style="width: 80px;">Letter</th>
-                        <th>Criterion</th>
-                        <th>Definition</th>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #9f7aea;">S</strong></td>
-                        <td><strong>Sixty percent</strong></td>
-                        <td>≥60% clonal plasma cells in bone marrow</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #9f7aea;">Li</strong></td>
-                        <td><strong>Light chain ratio</strong></td>
-                        <td>Involved/uninvolved free light chain ratio ≥100</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color: #9f7aea;">M</strong></td>
-                        <td><strong>MRI lesions</strong></td>
-                        <td>>1 focal lesion (≥5mm) on MRI involving bone or bone marrow</td>
-                    </tr>
+                    <tr><th style="width: 80px;">Letter</th><th>Criterion</th><th>Definition</th></tr>
+                    <tr><td><strong style="color: #9f7aea;">S</strong></td><td><strong>Sixty percent</strong></td><td>≥60% clonal plasma cells in bone marrow</td></tr>
+                    <tr><td><strong style="color: #9f7aea;">Li</strong></td><td><strong>Light chain ratio</strong></td><td>Involved/uninvolved free light chain ratio ≥100</td></tr>
+                    <tr><td><strong style="color: #9f7aea;">M</strong></td><td><strong>MRI lesions</strong></td><td>>1 focal lesion (≥5mm) on MRI involving bone or bone marrow</td></tr>
                 </table>
+                </div>
+                <div class="scroll-hint">← swipe to scroll →</div>
 
                 <div class="info-box">
                     <p><strong>Remember:</strong> SLiM criteria indicate high risk of progression to end-organ damage within 2 years - these patients should be treated even without CRAB features!</p>
@@ -424,33 +243,15 @@
                 <h2>Risk Stratification</h2>
 
                 <h3>ISS and R-ISS Staging</h3>
-
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                 <table>
-                    <tr>
-                        <th>Stage</th>
-                        <th>ISS Criteria</th>
-                        <th>R-ISS Additional Criteria</th>
-                        <th>Median OS</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Stage I</strong></td>
-                        <td>β2M <3.5 mg/L AND albumin ≥3.5 g/dL</td>
-                        <td>ISS I + standard risk CA + normal LDH</td>
-                        <td>~8-10 years</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Stage II</strong></td>
-                        <td>Not Stage I or III</td>
-                        <td>Not Stage I or III</td>
-                        <td>~5-7 years</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Stage III</strong></td>
-                        <td>β2M ≥5.5 mg/L</td>
-                        <td>ISS III + (high-risk CA OR elevated LDH)</td>
-                        <td>~3-4 years</td>
-                    </tr>
+                    <tr><th>Stage</th><th>ISS Criteria</th><th>R-ISS Additional Criteria</th><th>Median OS</th></tr>
+                    <tr><td><strong>Stage I</strong></td><td>β2M &lt;3.5 mg/L AND albumin ≥3.5 g/dL</td><td>ISS I + standard risk CA + normal LDH</td><td>~8-10 years</td></tr>
+                    <tr><td><strong>Stage II</strong></td><td>Not Stage I or III</td><td>Not Stage I or III</td><td>~5-7 years</td></tr>
+                    <tr><td><strong>Stage III</strong></td><td>β2M ≥5.5 mg/L</td><td>ISS III + (high-risk CA OR elevated LDH)</td><td>~3-4 years</td></tr>
                 </table>
+                </div>
+                <div class="scroll-hint">← swipe to scroll →</div>
 
                 <div class="info-box">
                     <p><strong>Quick ISS/R-ISS Calculator:</strong> Use MDCalc for easy calculation</p>
@@ -458,23 +259,19 @@
                 </div>
 
                 <h3>High-Risk Cytogenetics</h3>
-
                 <div class="warning-box">
                     <h4>⚠️ High-Risk Features (Require Intensified Therapy)</h4>
-                    
                     <p><strong>Translocations:</strong></p>
                     <ul>
                         <li><strong>t(4;14)</strong> - FGFR3/MMSET rearrangement</li>
                         <li><strong>t(14;16)</strong> - MAF rearrangement</li>
                         <li><strong>t(14;20)</strong> - MAFB rearrangement</li>
                     </ul>
-                    
                     <p style="margin-top:10px;"><strong>Deletions:</strong></p>
                     <ul>
                         <li><strong>del(17p)</strong> - TP53 deletion (worst prognosis)</li>
                         <li><strong>del(1p)</strong></li>
                     </ul>
-                    
                     <p style="margin-top:10px;"><strong>Gain/Amplification:</strong></p>
                     <ul>
                         <li><strong>gain(1q)</strong> or amp(1q)</li>
@@ -510,49 +307,24 @@
                         <span class="badge first-line">First-Line</span>
                     </div>
 
-                    <div class="indication">
-                        <strong>Indication:</strong> Newly diagnosed MM, transplant-eligible
-                    </div>
+                    <div class="indication"><strong>Indication:</strong> Newly diagnosed MM, transplant-eligible</div>
 
                     <h4>Components:</h4>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Drug Class</th>
-                            <th>Drug</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td>CD38 mAb</td>
-                            <td><strong>Daratumumab (D)</strong></td>
-                            <td>16 mg/kg SQ</td>
-                            <td>Weekly × 8 weeks, then every 2 weeks</td>
-                        </tr>
-                        <tr>
-                            <td>Proteasome Inhibitor</td>
-                            <td><strong>Bortezomib (V/Velcade)</strong></td>
-                            <td>1.3 mg/m² IV or SQ</td>
-                            <td>Days 1, 4, 8, 11 (twice weekly)</td>
-                        </tr>
-                        <tr>
-                            <td>IMiD</td>
-                            <td><strong>Lenalidomide (R/Revlimid)</strong></td>
-                            <td>25 mg PO daily</td>
-                            <td>Days 1-14 (or Days 1-21)</td>
-                        </tr>
-                        <tr>
-                            <td>Steroid</td>
-                            <td><strong>Dexamethasone (d)</strong></td>
-                            <td>40 mg PO/IV</td>
-                            <td>Days 1, 8, 15, 22 (weekly)</td>
-                        </tr>
+                        <tr><th>Drug Class</th><th>Drug</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td>CD38 mAb</td><td><strong>Daratumumab (D)</strong></td><td>16 mg/kg SQ</td><td>Weekly × 8 weeks, then every 2 weeks</td></tr>
+                        <tr><td>Proteasome Inhibitor</td><td><strong>Bortezomib (V/Velcade)</strong></td><td>1.3 mg/m² IV or SQ</td><td>Days 1, 4, 8, 11 (twice weekly)</td></tr>
+                        <tr><td>IMiD</td><td><strong>Lenalidomide (R/Revlimid)</strong></td><td>25 mg PO daily</td><td>Days 1-14 (or Days 1-21)</td></tr>
+                        <tr><td>Steroid</td><td><strong>Dexamethasone (d)</strong></td><td>40 mg PO/IV</td><td>Days 1, 8, 15, 22 (weekly)</td></tr>
                     </table>
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
 
                     <p style="margin-top:10px;"><strong>Cycle length:</strong> 21 days (some use 28 days)</p>
                     <p><strong>Number of cycles:</strong> 4-6 cycles pre-transplant, can continue 2 more post-transplant</p>
 
-                    <!-- D-VRd Day Chart -->
-                    <div style="overflow-x:auto; margin: 15px 0;">
+                    <div style="overflow-x:auto;margin:15px 0;">
                         <p style="font-weight:600; margin-bottom:8px;">28-Day Cycle Schedule:</p>
                         <table style="min-width:700px; border-collapse:collapse; width:100%;">
                             <thead>
@@ -605,13 +377,14 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
 
                     <div class="resident-alert">
                         <h4>📋 Resident Action Items</h4>
                         <ul>
                             <li><strong>Daratumumab:</strong> Pre-med with acetaminophen, diphenhydramine, montelukast (or steroid). Post-med with steroid. Monitor for infusion reactions (first dose especially).</li>
                             <li><strong>Bortezomib:</strong> SQ preferred over IV to reduce neuropathy risk. Hold/reduce dose if Grade 2+ neuropathy.</li>
-                            <li><strong>Lenalidomide:</strong> Dose adjust for CrCl <60. Requires REMS program enrollment. Give with aspirin 81mg daily for VTE prophylaxis (or LMWH if high risk).</li>
+                            <li><strong>Lenalidomide:</strong> Dose adjust for CrCl &lt;60. Requires REMS program enrollment. Give with aspirin 81mg daily for VTE prophylaxis (or LMWH if high risk).</li>
                             <li><strong>Dexamethasone:</strong> Reduce to 20mg weekly in frail/elderly patients. PPI for GI prophylaxis. Monitor blood sugars.</li>
                             <li><strong>Supportive care:</strong> PJP prophylaxis (Bactrim or atovaquone), acyclovir 400mg BID for HSV prophylaxis, calcium/vitamin D.</li>
                         </ul>
@@ -634,41 +407,18 @@
                         <span class="regimen-title">D-KRd (Daratumumab-KRd)</span>
                         <span class="badge first-line">First-Line</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Newly diagnosed MM, transplant-eligible (alternative to D-VRd)
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Newly diagnosed MM, transplant-eligible (alternative to D-VRd)</div>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Drug</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Daratumumab (D)</strong></td>
-                            <td>16 mg/kg SQ</td>
-                            <td>Weekly × 8 weeks, then every 2 weeks</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Carfilzomib (K/Kyprolis)</strong></td>
-                            <td>20/56 mg/m² IV (20 mg/m² cycle 1 days 1-2, then 56 mg/m²)</td>
-                            <td>Days 1, 2, 8, 9, 15, 16</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Lenalidomide (R)</strong></td>
-                            <td>25 mg PO daily</td>
-                            <td>Days 1-21</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dexamethasone (d)</strong></td>
-                            <td>20-40 mg PO/IV</td>
-                            <td>Weekly (or Days 1, 8, 15, 22)</td>
-                        </tr>
+                        <tr><th>Drug</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td><strong>Daratumumab (D)</strong></td><td>16 mg/kg SQ</td><td>Weekly × 8 weeks, then every 2 weeks</td></tr>
+                        <tr><td><strong>Carfilzomib (K/Kyprolis)</strong></td><td>20/56 mg/m² IV (20 mg/m² cycle 1 days 1-2, then 56 mg/m²)</td><td>Days 1, 2, 8, 9, 15, 16</td></tr>
+                        <tr><td><strong>Lenalidomide (R)</strong></td><td>25 mg PO daily</td><td>Days 1-21</td></tr>
+                        <tr><td><strong>Dexamethasone (d)</strong></td><td>20-40 mg PO/IV</td><td>Weekly (or Days 1, 8, 15, 22)</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <p style="margin-top:10px;"><strong>Cycle length:</strong> 28 days</p>
-
                     <div class="warning-box">
                         <h4>⚠️ Carfilzomib-Specific Monitoring</h4>
                         <ul>
@@ -681,17 +431,12 @@
                 </div>
 
                 <h3>Transplant-Ineligible / Frail Patients</h3>
-
                 <div class="regimen-card">
                     <div class="regimen-header">
                         <span class="regimen-title">Dara-VRd or Isa-VRd (Reduced Intensity)</span>
                         <span class="badge first-line">First-Line</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Frail, elderly, or transplant-ineligible newly diagnosed MM
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Frail, elderly, or transplant-ineligible newly diagnosed MM</div>
                     <p>Same regimen as above but with modifications:</p>
                     <ul>
                         <li><strong>Bortezomib:</strong> Weekly dosing (Days 1, 8, 15, 22) instead of twice weekly</li>
@@ -699,7 +444,6 @@
                         <li><strong>Dexamethasone:</strong> 20 mg weekly (instead of 40 mg)</li>
                         <li><strong>Isatuximab (Isa):</strong> Can substitute for daratumumab: 10 mg/kg IV weekly × 4, then every 2 weeks</li>
                     </ul>
-
                     <div class="info-box">
                         <p><strong>Key trials:</strong> BENEFIT (Nature) and CEPHEUS (Nature) support quadruplet therapy even in transplant-ineligible patients</p>
                     </div>
@@ -715,26 +459,15 @@
                         <span class="regimen-title">Lenalidomide Maintenance</span>
                         <span class="badge maintenance">Maintenance</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Post-transplant or after induction in transplant-ineligible patients
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Post-transplant or after induction in transplant-ineligible patients</div>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Drug</th>
-                            <th>Dose</th>
-                            <th>Duration</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Lenalidomide (Revlimid)</strong></td>
-                            <td>10-15 mg PO daily</td>
-                            <td>Days 1-21 of 28-day cycle, continue until progression</td>
-                        </tr>
+                        <tr><th>Drug</th><th>Dose</th><th>Duration</th></tr>
+                        <tr><td><strong>Lenalidomide (Revlimid)</strong></td><td>10-15 mg PO daily</td><td>Days 1-21 of 28-day cycle, continue until progression</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <p style="margin-top:10px;"><strong>Standard approach:</strong> Continue indefinitely until progression or intolerance</p>
-
                     <div class="resident-alert">
                         <h4>📋 Maintenance Monitoring</h4>
                         <ul>
@@ -752,17 +485,12 @@
                         <span class="regimen-title">Dual-Agent Maintenance (High-Risk)</span>
                         <span class="badge high-risk">High-Risk</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> High-risk cytogenetics post-transplant
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> High-risk cytogenetics post-transplant</div>
                     <p><strong>Options:</strong></p>
                     <ul>
                         <li><strong>Lenalidomide + Bortezomib:</strong> Lenalidomide 10-15 mg daily (D1-21) + Bortezomib 1.3 mg/m² SQ every 2 weeks</li>
                         <li><strong>Lenalidomide + Carfilzomib:</strong> Lenalidomide 10-15 mg daily (D1-21) + Carfilzomib 56 mg/m² IV Days 1, 2, 15, 16</li>
                     </ul>
-
                     <div class="info-box">
                         <p><strong>Rationale:</strong> High-risk patients benefit from continued proteasome inhibitor exposure</p>
                     </div>
@@ -780,34 +508,16 @@
                         <span class="regimen-title">DPd (Daratumumab-Pomalidomide-Dex)</span>
                         <span class="badge relapsed">Relapsed</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Relapsed MM after ≥1 prior line (lenalidomide-exposed)
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Relapsed MM after ≥1 prior line (lenalidomide-exposed)</div>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Drug</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Daratumumab (D)</strong></td>
-                            <td>16 mg/kg SQ</td>
-                            <td>Weekly × 8 weeks, then every 2 weeks × 16 weeks, then monthly</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Pomalidomide (P/Pomalyst)</strong></td>
-                            <td>4 mg PO daily</td>
-                            <td>Days 1-21</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dexamethasone (d)</strong></td>
-                            <td>40 mg PO/IV</td>
-                            <td>Weekly (Days 1, 8, 15, 22)</td>
-                        </tr>
+                        <tr><th>Drug</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td><strong>Daratumumab (D)</strong></td><td>16 mg/kg SQ</td><td>Weekly × 8 weeks, then every 2 weeks × 16 weeks, then monthly</td></tr>
+                        <tr><td><strong>Pomalidomide (P/Pomalyst)</strong></td><td>4 mg PO daily</td><td>Days 1-21</td></tr>
+                        <tr><td><strong>Dexamethasone (d)</strong></td><td>40 mg PO/IV</td><td>Weekly (Days 1, 8, 15, 22)</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <div class="warning-box">
                         <h4>⚠️ Pomalidomide Considerations</h4>
                         <ul>
@@ -824,34 +534,16 @@
                         <span class="regimen-title">DKd (Daratumumab-Carfilzomib-Dex)</span>
                         <span class="badge relapsed">Relapsed</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Relapsed MM after 1-3 prior lines
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Relapsed MM after 1-3 prior lines</div>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Drug</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Daratumumab (D)</strong></td>
-                            <td>16 mg/kg SQ</td>
-                            <td>Weekly × 8, then q2 weeks × 16, then monthly</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Carfilzomib (K)</strong></td>
-                            <td>20/56 mg/m² IV</td>
-                            <td>Days 1, 2, 8, 9, 15, 16</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dexamethasone (d)</strong></td>
-                            <td>20-40 mg PO/IV</td>
-                            <td>Weekly</td>
-                        </tr>
+                        <tr><th>Drug</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td><strong>Daratumumab (D)</strong></td><td>16 mg/kg SQ</td><td>Weekly × 8, then q2 weeks × 16, then monthly</td></tr>
+                        <tr><td><strong>Carfilzomib (K)</strong></td><td>20/56 mg/m² IV</td><td>Days 1, 2, 8, 9, 15, 16</td></tr>
+                        <tr><td><strong>Dexamethasone (d)</strong></td><td>20-40 mg PO/IV</td><td>Weekly</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <p style="margin-top:10px;"><strong>28-day cycles</strong></p>
                 </div>
 
@@ -860,34 +552,16 @@
                         <span class="regimen-title">XPd (Selinexor-Pomalidomide-Dex)</span>
                         <span class="badge relapsed">Relapsed</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Heavily pretreated MM (≥2 prior lines including PI and IMiD)
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Heavily pretreated MM (≥2 prior lines including PI and IMiD)</div>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Drug</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Selinexor (X/Xpovio)</strong></td>
-                            <td>100 mg PO</td>
-                            <td>Days 1, 3 weekly (or Days 1, 8, 15, 22)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Pomalidomide (P)</strong></td>
-                            <td>4 mg PO daily</td>
-                            <td>Days 1-21</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dexamethasone (d)</strong></td>
-                            <td>40 mg PO/IV</td>
-                            <td>Weekly</td>
-                        </tr>
+                        <tr><th>Drug</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td><strong>Selinexor (X/Xpovio)</strong></td><td>100 mg PO</td><td>Days 1, 3 weekly (or Days 1, 8, 15, 22)</td></tr>
+                        <tr><td><strong>Pomalidomide (P)</strong></td><td>4 mg PO daily</td><td>Days 1-21</td></tr>
+                        <tr><td><strong>Dexamethasone (d)</strong></td><td>40 mg PO/IV</td><td>Weekly</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <div class="warning-box">
                         <h4>⚠️ Selinexor Side Effects</h4>
                         <ul>
@@ -905,34 +579,16 @@
                         <span class="regimen-title">CyBorD (Cyclophosphamide-Bortezomib-Dex)</span>
                         <span class="badge relapsed">Relapsed</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Relapsed MM, renal failure, AL amyloidosis
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Relapsed MM, renal failure, AL amyloidosis</div>
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Drug</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Cyclophosphamide (Cy)</strong></td>
-                            <td>300 mg/m² PO or IV</td>
-                            <td>Weekly (Days 1, 8, 15, 22)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Bortezomib (Bor)</strong></td>
-                            <td>1.3 mg/m² SQ</td>
-                            <td>Days 1, 8, 15, 22</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dexamethasone (d)</strong></td>
-                            <td>40 mg PO/IV</td>
-                            <td>Weekly</td>
-                        </tr>
+                        <tr><th>Drug</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td><strong>Cyclophosphamide (Cy)</strong></td><td>300 mg/m² PO or IV</td><td>Weekly (Days 1, 8, 15, 22)</td></tr>
+                        <tr><td><strong>Bortezomib (Bor)</strong></td><td>1.3 mg/m² SQ</td><td>Days 1, 8, 15, 22</td></tr>
+                        <tr><td><strong>Dexamethasone (d)</strong></td><td>40 mg PO/IV</td><td>Weekly</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <div class="info-box">
                         <p><strong>Advantages:</strong> Well-tolerated, all oral/SQ, no dose adjustment for renal failure</p>
                         <p><strong>For AL amyloid:</strong> Add daratumumab (Dara-CyBorD) - see ANDROMEDA trial (NEJM)</p>
@@ -940,7 +596,6 @@
                 </div>
 
                 <h3>Special Populations</h3>
-
                 <div class="info-box">
                     <h4>t(11;14) Translocation</h4>
                     <p><strong>Consider Venetoclax-based therapy:</strong></p>
@@ -971,31 +626,16 @@
                         <span class="regimen-title">Teclistamab (Tecvayli)</span>
                         <span class="badge bispecific">Bispecific</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Relapsed/refractory MM after ≥4 prior lines (including PI, IMiD, anti-CD38)
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Relapsed/refractory MM after ≥4 prior lines (including PI, IMiD, anti-CD38)</div>
                     <p><strong>Mechanism:</strong> CD3 (T-cell) × BCMA (myeloma cell) bispecific antibody</p>
-
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Phase</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Step-up Dosing</strong></td>
-                            <td>0.06 mg/kg → 0.3 mg/kg → 1.5 mg/kg</td>
-                            <td>2-4 days apart</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Maintenance</strong></td>
-                            <td>1.5 mg/kg SQ</td>
-                            <td>Weekly ongoing (if tolerated)</td>
-                        </tr>
+                        <tr><th>Phase</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td><strong>Step-up Dosing</strong></td><td>0.06 mg/kg → 0.3 mg/kg → 1.5 mg/kg</td><td>2-4 days apart</td></tr>
+                        <tr><td><strong>Maintenance</strong></td><td>1.5 mg/kg SQ</td><td>Weekly ongoing (if tolerated)</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <div class="warning-box">
                         <h4>⚠️ CRS/ICANS Risk - HIGHEST after first full dose</h4>
                         <p><strong>Timing:</strong> Peak risk ~24-72 hours after 0.3 mg/kg and 1.5 mg/kg doses</p>
@@ -1007,7 +647,6 @@
                         </ul>
                         <p><strong>Treatment:</strong> See CRS/ICANS section - tocilizumab, steroids</p>
                     </div>
-
                     <div class="resident-alert">
                         <h4>📋 Monitoring During Step-Up</h4>
                         <ul>
@@ -1025,36 +664,17 @@
                         <span class="regimen-title">Talquetamab (Talvey)</span>
                         <span class="badge bispecific">Bispecific</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Relapsed/refractory MM after ≥4 prior lines
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Relapsed/refractory MM after ≥4 prior lines</div>
                     <p><strong>Mechanism:</strong> CD3 (T-cell) × GPRC5D (myeloma cell) bispecific antibody</p>
-
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;">
                     <table>
-                        <tr>
-                            <th>Phase</th>
-                            <th>Dose</th>
-                            <th>Schedule</th>
-                        </tr>
-                        <tr>
-                            <td><strong>Step-up Dosing</strong></td>
-                            <td>0.01 → 0.06 → 0.4 → 0.8 mg/kg</td>
-                            <td>2-4 days apart</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Maintenance (Option 1)</strong></td>
-                            <td>0.4 mg/kg SQ</td>
-                            <td>Weekly</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Maintenance (Option 2)</strong></td>
-                            <td>0.8 mg/kg SQ</td>
-                            <td>Every 2 weeks</td>
-                        </tr>
+                        <tr><th>Phase</th><th>Dose</th><th>Schedule</th></tr>
+                        <tr><td><strong>Step-up Dosing</strong></td><td>0.01 → 0.06 → 0.4 → 0.8 mg/kg</td><td>2-4 days apart</td></tr>
+                        <tr><td><strong>Maintenance (Option 1)</strong></td><td>0.4 mg/kg SQ</td><td>Weekly</td></tr>
+                        <tr><td><strong>Maintenance (Option 2)</strong></td><td>0.8 mg/kg SQ</td><td>Every 2 weeks</td></tr>
                     </table>
-
+                    </div>
+                    <div class="scroll-hint">← swipe to scroll →</div>
                     <div class="warning-box">
                         <h4>⚠️ Unique Toxicities (GPRC5D expression in skin/nails)</h4>
                         <ul>
@@ -1066,17 +686,12 @@
                 </div>
 
                 <h3>CAR-T Cell Therapy</h3>
-
                 <div class="regimen-card">
                     <div class="regimen-header">
                         <span class="regimen-title">Ide-cel (Abecma) & Cilta-cel (Carvykti)</span>
                         <span class="badge bispecific">CAR-T</span>
                     </div>
-
-                    <div class="indication">
-                        <strong>Indication:</strong> Relapsed/refractory MM after 1-3 prior lines (depending on product)
-                    </div>
-
+                    <div class="indication"><strong>Indication:</strong> Relapsed/refractory MM after 1-3 prior lines (depending on product)</div>
                     <p><strong>Process:</strong></p>
                     <ol>
                         <li><strong>Leukapheresis:</strong> Collect T-cells</li>
@@ -1085,7 +700,6 @@
                         <li><strong>CAR-T infusion:</strong> Single infusion</li>
                         <li><strong>Monitoring:</strong> Inpatient × 7-10 days minimum</li>
                     </ol>
-
                     <div class="warning-box">
                         <h4>⚠️ CAR-T Specific Toxicities</h4>
                         <ul>
@@ -1096,7 +710,6 @@
                             <li><strong>Hypogammaglobulinemia:</strong> Monitor Igs, may need IVIG replacement</li>
                         </ul>
                     </div>
-
                     <div class="resident-alert">
                         <h4>📋 Post-CAR-T Monitoring</h4>
                         <ul>
@@ -1104,7 +717,7 @@
                             <li><strong>Days 7-30:</strong> Outpatient with close follow-up, must stay within 2 hours of CAR-T center</li>
                             <li><strong>Labs:</strong> CBC, CMP, LFTs 2-3x/week initially</li>
                             <li><strong>Antimicrobials:</strong> Continue prophylaxis for 6-12 months</li>
-                            <li><strong>IVIG:</strong> Check IgG monthly, replace if <400 mg/dL</li>
+                            <li><strong>IVIG:</strong> Check IgG monthly, replace if &lt;400 mg/dL</li>
                         </ul>
                     </div>
                 </div>
@@ -1113,74 +726,32 @@
             <!-- GLOSSARY -->
             <section id="glossary" class="glossary">
                 <h3>📚 Abbreviations & Glossary</h3>
-                
                 <div class="abbrev">
-                    <span class="abbrev-term">BCMA</span>
-                    <span>B-Cell Maturation Antigen</span>
-                    
-                    <span class="abbrev-term">BiTE</span>
-                    <span>Bispecific T-cell Engager</span>
-                    
-                    <span class="abbrev-term">CAR-T</span>
-                    <span>Chimeric Antigen Receptor T-cell therapy</span>
-                    
-                    <span class="abbrev-term">CRS</span>
-                    <span>Cytokine Release Syndrome</span>
-                    
-                    <span class="abbrev-term">GPRC5D</span>
-                    <span>G Protein-Coupled Receptor Class C Group 5 Member D</span>
-                    
-                    <span class="abbrev-term">ICANS</span>
-                    <span>Immune Effector Cell-Associated Neurotoxicity Syndrome</span>
-                    
-                    <span class="abbrev-term">IMiD</span>
-                    <span>Immunomodulatory Drug (lenalidomide, pomalidomide, thalidomide)</span>
-                    
-                    <span class="abbrev-term">ISS</span>
-                    <span>International Staging System</span>
-                    
-                    <span class="abbrev-term">MM</span>
-                    <span>Multiple Myeloma</span>
-                    
-                    <span class="abbrev-term">PI</span>
-                    <span>Proteasome Inhibitor (bortezomib, carfilzomib, ixazomib)</span>
-                    
-                    <span class="abbrev-term">R-ISS</span>
-                    <span>Revised International Staging System</span>
-                    
-                    <span class="abbrev-term">SPEP</span>
-                    <span>Serum Protein Electrophoresis</span>
-                    
-                    <span class="abbrev-term">UPEP</span>
-                    <span>Urine Protein Electrophoresis</span>
-                    
-                    <span class="abbrev-term">VTE</span>
-                    <span>Venous Thromboembolism</span>
+                    <span class="abbrev-term">BCMA</span><span>B-Cell Maturation Antigen</span>
+                    <span class="abbrev-term">BiTE</span><span>Bispecific T-cell Engager</span>
+                    <span class="abbrev-term">CAR-T</span><span>Chimeric Antigen Receptor T-cell therapy</span>
+                    <span class="abbrev-term">CRS</span><span>Cytokine Release Syndrome</span>
+                    <span class="abbrev-term">GPRC5D</span><span>G Protein-Coupled Receptor Class C Group 5 Member D</span>
+                    <span class="abbrev-term">ICANS</span><span>Immune Effector Cell-Associated Neurotoxicity Syndrome</span>
+                    <span class="abbrev-term">IMiD</span><span>Immunomodulatory Drug (lenalidomide, pomalidomide, thalidomide)</span>
+                    <span class="abbrev-term">ISS</span><span>International Staging System</span>
+                    <span class="abbrev-term">MM</span><span>Multiple Myeloma</span>
+                    <span class="abbrev-term">PI</span><span>Proteasome Inhibitor (bortezomib, carfilzomib, ixazomib)</span>
+                    <span class="abbrev-term">R-ISS</span><span>Revised International Staging System</span>
+                    <span class="abbrev-term">SPEP</span><span>Serum Protein Electrophoresis</span>
+                    <span class="abbrev-term">UPEP</span><span>Urine Protein Electrophoresis</span>
+                    <span class="abbrev-term">VTE</span><span>Venous Thromboembolism</span>
                 </div>
 
                 <h3 style="margin-top:20px;">Common Regimen Abbreviations</h3>
-                
                 <div class="abbrev">
-                    <span class="abbrev-term">D-VRd</span>
-                    <span>Daratumumab-Bortezomib-Lenalidomide-Dexamethasone</span>
-                    
-                    <span class="abbrev-term">D-KRd</span>
-                    <span>Daratumumab-Carfilzomib-Lenalidomide-Dexamethasone</span>
-                    
-                    <span class="abbrev-term">DPd</span>
-                    <span>Daratumumab-Pomalidomide-Dexamethasone</span>
-                    
-                    <span class="abbrev-term">DKd</span>
-                    <span>Daratumumab-Carfilzomib-Dexamethasone</span>
-                    
-                    <span class="abbrev-term">XPd</span>
-                    <span>Selinexor-Pomalidomide-Dexamethasone</span>
-                    
-                    <span class="abbrev-term">CyBorD</span>
-                    <span>Cyclophosphamide-Bortezomib-Dexamethasone</span>
-                    
-                    <span class="abbrev-term">KPd</span>
-                    <span>Carfilzomib-Pomalidomide-Dexamethasone</span>
+                    <span class="abbrev-term">D-VRd</span><span>Daratumumab-Bortezomib-Lenalidomide-Dexamethasone</span>
+                    <span class="abbrev-term">D-KRd</span><span>Daratumumab-Carfilzomib-Lenalidomide-Dexamethasone</span>
+                    <span class="abbrev-term">DPd</span><span>Daratumumab-Pomalidomide-Dexamethasone</span>
+                    <span class="abbrev-term">DKd</span><span>Daratumumab-Carfilzomib-Dexamethasone</span>
+                    <span class="abbrev-term">XPd</span><span>Selinexor-Pomalidomide-Dexamethasone</span>
+                    <span class="abbrev-term">CyBorD</span><span>Cyclophosphamide-Bortezomib-Dexamethasone</span>
+                    <span class="abbrev-term">KPd</span><span>Carfilzomib-Pomalidomide-Dexamethasone</span>
                 </div>
             </section>
         </div>

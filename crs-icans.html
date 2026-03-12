@@ -184,8 +184,9 @@
 
         table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 0;
             background: white;
         }
         th {
@@ -349,6 +350,52 @@
             .content { padding: 20px 15px; }
             th, td { padding: 8px; }
         }
+    
+        @media (max-width: 600px) {
+            table {
+                min-width: 480px;
+                font-size: 0.82em;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            div[style*="overflow-x"] {
+                border-radius: 6px;
+                border: 1px solid #e2e8f0;
+            }
+        }
+    
+        /* Scrollable table indicator */
+        div[style*="overflow-x"] {
+            position: relative;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar {
+            height: 6px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        div[style*="overflow-x"]::-webkit-scrollbar-thumb:hover {
+            background: #4338ca;
+        }
+    
+        .scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.78em;
+            color: #667eea;
+            padding: 4px 0 2px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        @media (max-width: 768px) {
+            .scroll-hint { display: block; }
+        }
     </style>
 </head>
 <body>
@@ -426,7 +473,7 @@
 
                 <h3>Labs to Order</h3>
                 <div class="regimen-card">
-                    <table style="margin:0;">
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                         <tr>
                             <th>Category</th>
                             <th>Labs</th>
@@ -447,7 +494,7 @@
                             <td><strong>Infectious (if fever)</strong></td>
                             <td>Blood cultures ×2, urine culture, CXR</td>
                         </tr>
-                    </table>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 </div>
 
                 <h3>Monitoring</h3>
@@ -475,8 +522,8 @@
                 <h2>📊 ASTCT Consensus Grading Tables</h2>
 
                 <h3>CRS Grading (ASTCT)</h3>
-                <div style="overflow-x:auto;">
-                    <table>
+                
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                         <tr>
                             <th style="min-width:120px;">CRS Parameter</th>
                             <th><span class="badge g1">Grade 1</span></th>
@@ -510,12 +557,12 @@
                             <td class="g3-row">Requiring high-flow nasal cannula, facemask, nonrebreather mask, or Venturi mask</td>
                             <td class="g4-row">Requiring positive pressure (CPAP, BiPAP, intubation, mechanical ventilation)</td>
                         </tr>
-                    </table>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 </div>
 
                 <h3>ICANS Grading — Adults (ASTCT)</h3>
-                <div style="overflow-x:auto;">
-                    <table>
+                
+                    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                         <tr>
                             <th style="min-width:140px;">Neurotoxicity Domain</th>
                             <th><span class="badge g1">Grade 1</span></th>
@@ -558,7 +605,7 @@
                             <td class="g3-row">Focal/local edema on neuroimaging</td>
                             <td class="g4-row">Diffuse cerebral edema on neuroimaging; decerebrate or decorticate posturing; cranial nerve VI palsy; papilledema; or Cushing's triad</td>
                         </tr>
-                    </table>
+                    </table></div><div class="scroll-hint">← swipe to scroll →</div>
                 </div>
 
                 <div class="info-box">
@@ -635,7 +682,7 @@
                 </div>
 
                 <h3>Tocilizumab Quick Reference</h3>
-                <table>
+                <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:15px 0;"><table style="margin:0;">
                     <tr>
                         <th>Parameter</th>
                         <th>Details</th>
@@ -656,7 +703,7 @@
                         <td><strong>Escalation</strong></td>
                         <td>If refractory: add dexamethasone (Grade 2) or methylprednisolone (Grade 4)</td>
                     </tr>
-                </table>
+                </table></div><div class="scroll-hint">← swipe to scroll →</div>
             </section>
 
             <!-- ICANS TREATMENT -->
